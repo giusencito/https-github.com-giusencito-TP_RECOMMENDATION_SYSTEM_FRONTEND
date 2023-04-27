@@ -1,0 +1,73 @@
+.background {
+    background-image: url('../../../../assets/images/login-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 101vh;
+    width: 100vw;
+    
+    z-index: -1;
+
+
+
+
+    display: flex;
+  justify-content: center;
+  align-items: center;
+
+  }
+  
+  
+  
+  .card {
+    width: 700px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    padding: 30px;
+    background-color: #cceeff
+  }
+  
+  .title {
+    text-align: center;
+    
+    margin-bottom: 30px;
+  }
+  
+  .input {
+    width: 100%;
+    margin-bottom: 20px;
+   
+  }
+  
+  :root {
+    --mi-color: #FFA500;
+  }
+
+
+
+  .button {
+    width: 100%;
+    margin-bottom: 70px;
+    background-color:#0288D1;
+  }
+  .login-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .login-links a {
+   
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .login-links span {
+    margin: 0 10px;
+    font-size: 14px;
+  }
+  @media (max-width: 767px) {
+    .card {
+      max-width: 400px;
+    }
+  }
