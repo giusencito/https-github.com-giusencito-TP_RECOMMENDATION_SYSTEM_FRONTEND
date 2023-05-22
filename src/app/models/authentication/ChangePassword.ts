@@ -1,5 +1,6 @@
 export interface ChangePassword {
-    newpassword:string
-    repeatpassword:string
+    password:string
+    password2:string
+    token:string
 
 }

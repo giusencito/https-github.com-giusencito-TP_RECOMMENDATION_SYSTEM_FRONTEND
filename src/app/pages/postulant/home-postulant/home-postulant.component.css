@@ -1,0 +1,10 @@
+.background{
+
+    background-image: url('../../../../assets/images/home-postulant.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vw;
+    width: 100vw;
+    z-index: -1;
+
+}

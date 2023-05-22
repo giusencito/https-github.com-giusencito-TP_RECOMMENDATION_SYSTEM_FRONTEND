@@ -20,7 +20,7 @@
         <span></span>
         <a routerLink="/register">Registrarse</a>
       </div>
-      <button mat-raised-button class="button"  [disabled]="!(loginform.valid)">LOGIN</button>
+      <button mat-raised-button class="button"  [disabled]="!(loginform.valid)" (click)="login()">LOGIN</button>
    
       
     </mat-card>

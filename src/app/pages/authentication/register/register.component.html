@@ -5,46 +5,46 @@
 
 <form [formGroup]="signupform" >
   <mat-form-field class="input" appearance="outline" >
-    <input matInput placeholder="Usuario" [(ngModel)]="SignIn.username" formControlName="username" #username/>
+    <input matInput placeholder="Usuario" [(ngModel)]="SignIn.username" formControlName="username" #username maxlength="255"/>
     <mat-icon matSuffix>person</mat-icon>
     <mat-error  align="start" *ngIf="signupform.controls['username'].dirty && signupform.hasError('required','username')">Es requerido</mat-error>
     <mat-error  align="start" *ngIf="signupform.controls['username'].dirty && signupform.hasError('minlength','username')">Más de tres caracteres</mat-error>
 
-    <mat-hint align="end">{{username.value.length}} / 256</mat-hint>
+    <mat-hint align="end">{{username.value.length}} / 255</mat-hint>
   </mat-form-field>
   <mat-form-field class="input" appearance="outline">
-    <input matInput placeholder="Correo electronico" type="email" [(ngModel)]="SignIn.email" formControlName="email" #email/>
+    <input matInput placeholder="Correo electronico" type="email" [(ngModel)]="SignIn.email" formControlName="email" #email maxlength="255"/>
     <mat-icon matSuffix>email</mat-icon>
     <mat-error  align="start" *ngIf="signupform.controls['email'].dirty && signupform.hasError('required','email')">Es requerido</mat-error>
     <mat-error  align="start" *ngIf="signupform.controls['email'].dirty && signupform.hasError('email','email')">Debe ser un email</mat-error>
 
-    <mat-hint align="end">{{email.value.length}} / 256</mat-hint>
+    <mat-hint align="end">{{email.value.length}} / 255</mat-hint>
 
   </mat-form-field>
   <mat-form-field class="input" appearance="outline">
-    <input matInput placeholder="Nombre" [(ngModel)]="SignIn.name" formControlName="name" #name/>
+    <input matInput placeholder="Nombre" [(ngModel)]="SignIn.name" formControlName="name" #name maxlength="30"/>
     <mat-icon matSuffix>face</mat-icon>
     <mat-error  align="start" *ngIf="signupform.controls['name'].dirty && signupform.hasError('required','name')">Es requerido</mat-error>
     <mat-error  align="start" *ngIf="signupform.controls['name'].dirty && signupform.hasError('minlength','name')">Más de tres caracteres</mat-error>
 
-    <mat-hint align="end">{{name.value.length}} / 256</mat-hint>
+    <mat-hint align="end">{{name.value.length}} / 30</mat-hint>
   </mat-form-field>
   <mat-form-field class="input" appearance="outline">
-    <input matInput placeholder="Apellido" [(ngModel)]="SignIn.lastname" formControlName="lastname" #lastname/>
+    <input matInput placeholder="Apellido" [(ngModel)]="SignIn.last_name" formControlName="lastname" #lastname maxlength="50"/>
     <mat-icon matSuffix>account_circle</mat-icon>
     <mat-error  align="start" *ngIf="signupform.controls['lastname'].dirty && signupform.hasError('required','lastname')">Es requerido</mat-error>
     <mat-error  align="start" *ngIf="signupform.controls['lastname'].dirty && signupform.hasError('minlength','lastname')">Más de tres caracteres</mat-error>
 
-    <mat-hint align="end">{{lastname.value.length}} / 256</mat-hint>
+    <mat-hint align="end">{{lastname.value.length}} / 50</mat-hint>
 
   </mat-form-field>
   <mat-form-field class="input" appearance="outline">
-    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="SignIn.password" formControlName="password" #password/>
+    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="SignIn.password" formControlName="password" #password maxlength="128"/>
     <mat-icon matSuffix>lock</mat-icon>
     <mat-error  align="start" *ngIf="signupform.controls['password'].dirty && signupform.hasError('required','password')">Es requerido</mat-error>
-    <mat-error  align="start" *ngIf="signupform.controls['password'].dirty && signupform.hasError('minlength','password')">Más de tres caracteres</mat-error>
+    <mat-error  align="start" *ngIf="signupform.controls['password'].dirty && signupform.hasError('minlength','password')">contraseña muy corta</mat-error>
 
-    <mat-hint align="end">{{password.value.length}} / 256</mat-hint>
+    <mat-hint align="end">{{password.value.length}} / 128</mat-hint>
 
   </mat-form-field>
 </form>
@@ -59,7 +59,7 @@
       Acepto los términos y condiciones 
     </mat-checkbox>
   </div>
-  <button mat-raised-button class="button" [disabled]="!(signupform.valid && termsChecked)">Registrarse como postulante </button>
+  <button mat-raised-button class="button" [disabled]="!(signupform.valid && termsChecked)" (click)="onSubmit()">Registrarse como postulante </button>
 
 
   <div class="register-links">
