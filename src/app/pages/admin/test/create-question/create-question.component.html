@@ -1,0 +1,45 @@
+<app-navigation-admin></app-navigation-admin>
+<div class="background">
+<form [formGroup]="changesquestion">
+<mat-card class="principal">
+  <h2 class="title">Crear Preguntas para la Sección</h2>
+  <mat-form-field appearance="outline" class="matfield">
+         
+    <input matInput placeholder="Nombre de la pregunta" type="text"  formControlName="namequestion"   #namequestion maxlength="50" >
+    <mat-icon matSuffix >view_headline</mat-icon>
+    <mat-error  align="center" *ngIf="changesquestion.controls['namequestion'].dirty && changesquestion.hasError('matching','namequestion')">Debe contener ¿? en sus respesctivas posiciones</mat-error>
+    <mat-error  align="start" *ngIf="changesquestion.controls['namequestion'].dirty && changesquestion.hasError('required','namequestion')">Es requerido</mat-error>
+    <mat-error  align="end" *ngIf="changesquestion.controls['namequestion'].dirty && changesquestion.hasError('minlength','namequestion')">Más de tres caracteres</mat-error>
+    <mat-hint align="end">{{namequestion.value.length}} / 50</mat-hint>
+   
+    
+   
+</mat-form-field>
+  <button mat-raised-button class="button" [disabled]="!(changesquestion.valid) || !createquestionavalible" (click)="createquestion()">Crear Pregunta</button>
+  <form [formGroup]="changesoption">
+  <mat-card class="secondary">
+    <h2 class="title">Crear Opciones</h2>
+    <mat-form-field appearance="outline" class="matfield">
+         
+      <input matInput placeholder="Nombre de la opción" type="text" [disabled]="!chargeoption" formControlName="nameoption"  #nameoption maxlength="50" [(ngModel)]="CreateOption.optionname"> 
+      <mat-icon matSuffix >label_important</mat-icon>
+      <mat-error  align="start" *ngIf="changesoption.controls['nameoption'].dirty && changesoption.hasError('required','nameoption')">Es requerido</mat-error>
+    <mat-error  align="end" *ngIf="changesoption.controls['nameoption'].dirty && changesoption.hasError('minlength','nameoption')">Más de tres caracteres</mat-error>
+      <mat-hint align="end">{{nameoption.value.length}} / 50</mat-hint>
+     
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="matfield" >
+         
+    <input matInput placeholder="Puntaje" type="number" [disabled]="!chargeoption" formControlName="scoreoption" [(ngModel)]="CreateOption.optionscore">
+    <mat-icon matSuffix >score</mat-icon>
+    <mat-error  align="start" *ngIf="changesoption.controls['scoreoption'].dirty && changesoption.hasError('required','scoreoption')">Es requerido</mat-error>
+   
+</mat-form-field>
+    <button mat-raised-button class="button" [disabled]="!chargeoption ||!(changesoption.valid)" (click)="createoption()">Crear Opción</button>
+  </mat-card>
+</form>
+  <button mat-raised-button class="button" [disabled]="optionnumber<=3" (click)="finishquestion()">Terminar Pregunta</button>
+  <button mat-raised-button class="button" [disabled]="chargequestion<=2 && !nextsection" (click)="finishsection()">Terminar Sección</button>
+</mat-card>
+</form>
+</div>

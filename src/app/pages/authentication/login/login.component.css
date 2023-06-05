@@ -2,7 +2,7 @@
     background-image: url('../../../../assets/images/login-image.jpg');
     background-size: cover;
     background-position: center;
-    height: 101vh;
+    height: 105vh;
     width: 100vw;
     
     z-index: -1;
@@ -43,7 +43,10 @@
   }
 
 
-
+.imgaelog{
+  display: flex;
+  justify-content: center;
+}
   .button {
     width: 100%;
     margin-bottom: 70px;
@@ -66,8 +69,13 @@
     margin: 0 10px;
     font-size: 14px;
   }
+  .img{
+    width: 50%;
+    padding-top: 10px;
+  }
   @media (max-width: 767px) {
     .card {
       max-width: 400px;
     }
+    
   }

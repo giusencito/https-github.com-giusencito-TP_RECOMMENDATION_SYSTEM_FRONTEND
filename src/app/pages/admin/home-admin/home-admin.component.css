@@ -1,0 +1,54 @@
+.background{
+
+
+    background-image: url('../../../../assets/images/adminimage.png');
+    background-size: cover;
+    background-position: center;
+    height: 95%;
+   
+    z-index: -1;
+
+
+
+}
+.text-1 {
+    padding-top: 10px;
+    padding-left: 10px;
+    vertical-align: middle;
+    font-size: 36px;
+    font-family: Roboto;
+    line-height: auto;
+    color: white;
+  }
+
+  .card{
+    width: 25%;
+   
+    background-color: #C2C2C2;
+  }
+  .centercorc{
+   
+    margin-right: 200px;
+    
+    display: flex;
+    
+    justify-content: space-evenly;
+  }
+  .centerall{
+     display: flex;
+     flex-direction: column;
+    height: 80%;
+     justify-content:space-evenly;
+  
+  }
+  .text-2 {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    font-family: Roboto;
+    line-height: auto;
+    color: #000000;
+  }
+  img{
+    width: 50%;
+  }

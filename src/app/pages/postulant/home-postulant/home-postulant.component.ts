@@ -10,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class HomePostulantComponent implements OnInit {
   name!:string;
   last_name!:string
-  constructor(private PostulantService:PostulantService,private TokenService:TokenService) { }
+  width!:number
+   height !:string
+   myVariable = 'red';
+  constructor(private PostulantService:PostulantService,private TokenService:TokenService) { 
+    window.addEventListener('resize', () => {
+    this.width=window.innerWidth;
+    
+    this.height=window.innerHeight.toString()+'px';
+    console.log(this.height)
+    });
+  }
 
   ngOnInit() {
     this.getpostu()

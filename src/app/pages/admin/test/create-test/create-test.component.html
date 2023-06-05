@@ -1,0 +1,41 @@
+<app-navigation-admin></app-navigation-admin>
+<div class="background">
+  <form [formGroup]="changetest">
+    <mat-card  class="card">
+      <h2 class="title">Crear Cuestionario</h2>
+     
+     
+      <mat-form-field appearance="outline" class="matfield">
+         
+          <input matInput placeholder="Nombre de test" type="text" formControlName="nametest" #nametest maxlength="30" [(ngModel)]="CreateTest.testname">
+          <mat-icon matSuffix >insert_drive_file</mat-icon>
+          <mat-error  align="start" *ngIf="changetest.controls['nametest'].dirty && changetest.hasError('required','nametest')">Es requerido</mat-error>
+          <mat-error  align="start" *ngIf="changetest.controls['nametest'].dirty && changetest.hasError('minlength','nametest')">Más de tres caracteres</mat-error>
+          <mat-hint align="end">{{nametest.value.length}} / 30</mat-hint>
+         
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="matfield">
+
+
+        <textarea matInput placeholder="Descripción de test" formControlName="descriptiontest" [(ngModel)]="CreateTest.testdescription"></textarea>
+        <mat-error  align="start" *ngIf="changetest.controls['descriptiontest'].dirty && changetest.hasError('required','descriptiontest')">Es requerido</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field  appearance="outline" class="matfield">
+        
+        <mat-select placeholder="Tipo de Test" formControlName="type" [(ngModel)]="CreateTest.typetest" name="typetest">
+          <mat-option *ngFor="let typetest of dataSource.data" [value]="typetest.id">{{typetest.typename}}</mat-option>
+        </mat-select>
+        <mat-error  align="start" *ngIf="changetest.controls['type'].dirty && changetest.hasError('required','type')">Es requerido</mat-error>
+      </mat-form-field>
+
+
+      <div class="space">
+        <button mat-raised-button class="button" [disabled]="!(changetest.valid)" (click)="submit()">Continuar</button>
+      </div>
+      
+    </mat-card>
+    
+  </form>
+</div>

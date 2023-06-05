@@ -40,6 +40,10 @@ export class ConfigurePostulantComponent implements OnInit {
     this.Name = {} as Name
     this.Lastname = {} as Lastname
     this.ConfigurePassword = {} as ConfigurePassword
+    window.addEventListener('resize', () => {
+      console.log(window.innerWidth);
+      console.log(window.innerHeight);
+    });
 
   }
   matchPasswordValidators(controlName: string): ValidatorFn {

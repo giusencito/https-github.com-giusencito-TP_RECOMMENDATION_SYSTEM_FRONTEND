@@ -77,6 +77,27 @@ public isPostulant(){
   }
   return true;
 }
+public isAdmin(){
+
+  if (!this.isLogged()) {
+   
+    return false;
+  }
+  const token = this.getToken()!;
+  const payload = token.split('.')[1];
+  const payloadDecoded = atob(payload);
+  const values = JSON.parse(payloadDecoded);
+  const role = values.roles;
+  if (role!=2) {
+    return false;
+  }
+  return true;
+
+
+
+
+
+}
 
 
 

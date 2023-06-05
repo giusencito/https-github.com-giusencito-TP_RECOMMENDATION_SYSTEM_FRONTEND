@@ -1,0 +1,43 @@
+.background{
+
+
+    background-image: url('../../../../../assets/images/adminimage.png');
+    background-size: cover;
+    background-position: center;
+    height: 98%;
+   
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+
+
+
+
+
+
+
+
+}
+.principal{
+    background-color: #DDDDDD;
+    width: 70vw;
+}
+.secondary{
+    background-color: #7E7E7E;
+    margin-bottom: 10px;
+}
+.button{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.title {
+    text-align: center;
+    
+    margin-bottom: 20px;
+  }
+  .matfield{
+    width: 100%;
+  }

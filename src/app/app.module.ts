@@ -1,3 +1,6 @@
+import { DialogComponent } from './pages/admin/test/create-test/Dialog/Dialog.component';
+
+import { HomeAdminComponent } from './pages/admin/home-admin/home-admin.component';
 import { ConfigurePostulantComponent } from './pages/postulant/configure-postulant/configure-postulant.component';
 import { ForgotPasswordComponent } from './pages/authentication/forgot-password/forgot-password.component';
 import { TermsDialogComponent } from './pages/authentication/register/TermsDialog/TermsDialog.component';
@@ -20,6 +23,12 @@ import { RegisterErrorComponent } from './pages/authentication/register/register
 import { EmailDialogComponent } from './pages/authentication/forgot-password/email-dialog/email-dialog.component';
 import { PasswordValidComponent } from './pages/authentication/change-password/password-valid/password-valid.component';
 import { NavigaionPostulantComponent } from './pages/postulant/navigaion-postulant/navigaion-postulant.component';
+import { NavigationAdminComponent } from './pages/admin/navigation-admin/navigation-admin.component';
+import { CreateSectionComponent } from './pages/admin/test/create-section/create-section.component';
+import { CreateTestComponent } from './pages/admin/test/create-test/create-test.component';
+import { CreateQuestionComponent } from './pages/admin/test/create-question/create-question.component';
+import { DialogSectionComponent } from './pages/admin/test/create-section/dialog-section/dialog-section.component';
+import { CreateAdminComponent } from './pages/admin/create-admin/create-admin.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +44,16 @@ import { NavigaionPostulantComponent } from './pages/postulant/navigaion-postula
     EmailDialogComponent,
     PasswordValidComponent,
     ConfigurePostulantComponent,
-    NavigaionPostulantComponent
+    NavigaionPostulantComponent,
+    HomeAdminComponent,
+    NavigationAdminComponent,
+    CreateSectionComponent,
+    CreateTestComponent,
+    CreateQuestionComponent,
+    DialogComponent,
+    CreateAdminComponent,
+    DialogSectionComponent,
+  
   ],
   imports: [
     BrowserModule,

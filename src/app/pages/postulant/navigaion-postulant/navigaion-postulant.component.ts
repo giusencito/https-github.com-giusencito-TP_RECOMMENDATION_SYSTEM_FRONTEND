@@ -21,4 +21,7 @@ this.TokenService.logOut()
   Home(){
     this.Router.navigate(['/home-postulant'])
   }
+
+
+  
 }

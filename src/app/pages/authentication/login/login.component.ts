@@ -37,6 +37,9 @@ export class LoginComponent implements OnInit {
                if(this.TokenService.isPostulant()){
                            this.Router.navigate(['/home-postulant'])
                }
+               if(this.TokenService.isAdmin()){
+                          this.Router.navigate(['/home-admin'])
+               }
 
 
     },err=>{

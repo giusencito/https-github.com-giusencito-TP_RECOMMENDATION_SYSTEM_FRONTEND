@@ -1,6 +1,7 @@
 .card {
-    max-width: 800px;
-    margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
     background-color: #E3F2FD
   }
   .title {
@@ -23,12 +24,76 @@
     background-image: url('../../../../assets/images/configure.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vw;
-    width: 100vw;
+   
+    width: 100%;
     z-index: -1;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-around;
-  }
+    display: flex;
+    flex-direction: wrap;
+    justify-content: space-evenly;
   
+  }
+
+
+
+  .section{
+
+    display: flex;
+   flex-direction: column;
+    justify-content: space-evenly;
+    
+    
+  }
+  .img{
+   
+  }
+  .center{
+    display: flex;
+    justify-content: center;
+  
+  }
+  .nombre-:-nombre {
+    height: 15%;
+    width: 50%;
+    background-color: #ffffff;
+    
+  }
+  .text-1 {
+    text-align: center;
+  
+    font-size: 36px;
+    font-family: Roboto;
+    
+    color: #ffffff;
+  }
+  .sec{
+    display: flex;
+    height: 200px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .section2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 768px) {
+    .background {
+      width: 100vw;
+      height: 1200px; /* Cambia el valor del alto según tus necesidades */
+    }
+    .card{
+      width: 100%;
+    }
+  }
+  @media screen and (min-width: 1600px) {
+    /* Estilos para pantallas de 1201px o más */
+    .background {
+      width: 100vw;
+      height: 80vw;
+      /* Otros estilos específicos para pantallas más grandes */
+    }
+    .img{
+      width: 100%;
+    }
+  }

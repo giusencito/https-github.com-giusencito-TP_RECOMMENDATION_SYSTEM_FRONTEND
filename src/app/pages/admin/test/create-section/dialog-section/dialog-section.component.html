@@ -1,0 +1,9 @@
+<div *ngIf="type">
+  <h2 class="title">Sección Creado</h2>
+  <button mat-raised-button color="primary" (click)="closetrue()" class="button">Aceptar</button>
+</div>
+<div *ngIf="!type">
+
+  <h2 class="title">El Nombre de la sección ya existe</h2>
+  <button mat-raised-button color="warn" (click)="closefalse()" class="button">Aceptar</button>
+</div>

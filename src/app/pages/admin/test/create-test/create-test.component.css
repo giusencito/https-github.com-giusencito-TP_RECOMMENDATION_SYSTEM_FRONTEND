@@ -1,0 +1,40 @@
+.card {
+
+    width: 80vw;
+   background-color:#DDDDDD;
+
+
+}
+
+  
+
+
+.button{
+    width: 50%;
+}
+.background{
+    background-image: url('../../../../../assets/images/adminimage.png');
+    background-size: cover;
+    background-position: center;
+    height: 95%;
+   
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.matfield{
+    width: 100%;
+}
+.icons{
+    background-color: whitesmoke;
+}
+.title {
+    text-align: center;
+    
+    margin-bottom: 30px;
+  }
+  .space{
+    display: flex;
+    justify-content: center;
+  }
