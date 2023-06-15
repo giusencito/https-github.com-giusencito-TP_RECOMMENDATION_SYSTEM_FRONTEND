@@ -2,8 +2,7 @@
     background-image: url('../../../../assets/images/login-image.jpg');
     background-size: cover;
     background-position: center;
-    height: 105vh;
-    width: 100vw;
+   
     
     z-index: -1;
 
@@ -20,21 +19,27 @@
   
   .card {
     width: 700px;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
     padding: 30px;
     background-color: #cceeff
   }
   
   .title {
     text-align: center;
-    
-    margin-bottom: 30px;
+    font-family: 'Futura';
+    font-weight:bold;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
   }
   
   .input {
     width: 100%;
     margin-bottom: 20px;
+    font-family: 'Futura';
+    font-weight: italic;
+    font-style: normal;
+    font-size: 1.2rem;
    
   }
   
@@ -51,18 +56,27 @@
     width: 100%;
     margin-bottom: 70px;
     background-color:#0288D1;
+    font-family: 'Futura';
+    font-weight:bold;
+    font-style: normal;
+    font-size: 1rem;
   }
   .login-links {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
     margin-bottom: 20px;
+
   }
   
   .login-links a {
    
     color: #333;
-    font-size: 14px;
+
+    font-family: 'Futura';
+    font-weight:bold;
+    font-style: normal;
+    font-size: 1.2rem;
   }
   
   .login-links span {

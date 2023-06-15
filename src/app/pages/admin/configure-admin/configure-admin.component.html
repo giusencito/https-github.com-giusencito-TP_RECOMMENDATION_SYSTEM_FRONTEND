@@ -1,0 +1,84 @@
+<app-navigation-admin></app-navigation-admin>
+<div class="background">
+
+  <div class="section">
+    <div class="center">
+      <img src="../../../../assets/images/image 4.png" class="img">
+     
+    </div>
+    <div class="sec">
+      <div class="nombre-:-nombre">
+        <p class="text-1">Nombre: {{names}}</p>
+      </div>
+      <div class="nombre-:-nombre">
+        <p class="text-1">Apellido: {{lastnames}}</p>
+      </div>
+      <div class="nombre-:-nombre">
+        <p class="text-1">Email: {{email}}</p>
+      </div>
+      <div class="nombre-:-nombre">
+        <p class="text-1">Usuario: {{usernames}}</p>
+      </div>
+    </div>
+  
+  </div>
+    
+
+  <div class="section2">
+    <form [formGroup]="changename">
+      <mat-card class="card">
+        <h2 class="title">Cambiar Nombre</h2>
+        <mat-form-field class="input" appearance="outline">
+        <input matInput placeholder="Nombre" formControlName="name" #name maxlength="30"   [(ngModel)]="Name.name"/>
+        <mat-icon matSuffix>face</mat-icon>
+        <mat-error  align="start" *ngIf="changename.controls['name'].dirty && changename.hasError('required','name')">Es requerido</mat-error>
+        <mat-error  align="start" *ngIf="changename.controls['name'].dirty && changename.hasError('minlength','name')">Más de tres caracteres</mat-error>
+  
+      <mat-hint align="end">{{name.value.length}} / 30</mat-hint>
+        </mat-form-field>
+        <button mat-raised-button class="button" (click)="changenamefun()" [disabled]="!(changename.valid)">Cambiar Nombre</button>
+      </mat-card>
+    </form>
+    <form [formGroup]="changelastaname">
+      <mat-card class="card">
+        <h2 class="title">Cambiar Apellido</h2>
+        <mat-form-field class="input" appearance="outline">
+          <input matInput placeholder="Apellido"  formControlName="lastname" #lastname maxlength="50" [(ngModel)]="Lastname.last_name"/>
+          <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-error  align="start" *ngIf="changelastaname.controls['lastname'].dirty && changelastaname.hasError('required','lastname')">Es requerido</mat-error>
+          <mat-error  align="start" *ngIf="changelastaname.controls['lastname'].dirty && changelastaname.hasError('minlength','lastname')">Más de tres caracteres</mat-error>
+      
+          <mat-hint align="end">{{lastname.value.length}} / 50</mat-hint>
+        </mat-form-field>
+        <button mat-raised-button class="button" (click)=" changenlastamefun()"  [disabled]="!(changelastaname.valid)">Cambiar Apellido</button>
+      </mat-card>
+    </form>
+    <form [formGroup]="changepassword">
+      <mat-card class="card">
+        <h2 class="title">Cambiar Contraseña</h2>
+        <mat-form-field class="input" appearance="outline">
+          <input matInput placeholder="Nueva contraseña" type="text"  formControlName="password" #newpassword maxlength="128" [(ngModel)]="ConfigurePassword.password"/>
+          <mat-icon matSuffix>security</mat-icon>
+          <mat-error  align="start" *ngIf="changepassword.controls['password'].dirty && changepassword.hasError('required','password')">Es requerido</mat-error>
+          <mat-error  align="start" *ngIf="changepassword.controls['password'].dirty && changepassword.hasError('minlength','password')">contraseña muy corta</mat-error>
+      
+      
+          <mat-hint align="end">{{newpassword.value.length}} / 128</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="input">
+          <input matInput placeholder="Repetir contraseña" type="text"   formControlName="password2" #repeat  [(ngModel)]="ConfigurePassword.password2"/>
+          <mat-icon matSuffix>privacy_tip</mat-icon></mat-form-field>
+          <mat-error  align="start" *ngIf="changepassword.controls['password2'].dirty && changepassword.hasError('required','password2')">Es requerido</mat-error>
+          <mat-error  align="start" *ngIf="changepassword.controls['password2'].dirty && changepassword.hasError('matching','password2')">Debe ser igual</mat-error>
+          <mat-error  align="start" *ngIf="changepassword.controls['password2'].dirty && changepassword.hasError('minlength','password2')">Más de tres caracteres</mat-error>
+        <button mat-raised-button class="button" (click)="changepasswordfun()" [disabled]="!(changepassword.valid)">Cambiar Contraseña</button>
+      </mat-card>
+    </form>
+  </div>
+
+
+
+
+
+
+</div>

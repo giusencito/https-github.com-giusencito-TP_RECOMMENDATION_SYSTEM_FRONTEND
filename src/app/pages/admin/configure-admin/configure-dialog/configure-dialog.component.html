@@ -1,0 +1,9 @@
+<div *ngIf="type">
+  <h2 class="title">Cambio de  {{configure}} exitoso</h2>
+  <button mat-raised-button color="primary" (click)="closetrue()" class="button">Aceptar</button>
+</div>
+<div *ngIf="!type">
+
+  <h2 class="title">Error en la actualización</h2>
+  <button mat-raised-button color="warn" (click)="closefalse()" class="button">Aceptar</button>
+</div>

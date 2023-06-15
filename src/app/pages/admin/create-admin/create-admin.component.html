@@ -1,7 +1,10 @@
+
+<app-navigation-admin></app-navigation-admin>
+
 <div class="background">
   <div>
   <mat-card class="card">
-    <h2 class="title">REGISTRO DE POSTULANTE</h2>
+    <h2 class="title">REGISTRO DE ADMINISTRADOR</h2>
   
   <form [formGroup]="signupform" >
     <mat-form-field class="input" appearance="outline" >
@@ -48,23 +51,11 @@
   
     </mat-form-field>
   </form>
-    <div class="termsconditions">
-      <button  class="buttonterms" mat-raised-button (click)="openTerms()">
-        <mat-icon >info</mat-icon>
-        <span class="button-text">Términos y Condiciones</span>
-      </button>
-     
+   
+    <button mat-raised-button class="button" [disabled]="!(signupform.valid)" (click)="onSubmit()">Registrarse como postulante </button>
+  
+  
     
-      <mat-checkbox  class="checkbox" color="primary" [(ngModel)]="termsChecked">
-        Acepto los términos y condiciones 
-      </mat-checkbox>
-    </div>
-    <button mat-raised-button class="button" [disabled]="!(signupform.valid && termsChecked)" (click)="onSubmit()">Registrarse como postulante </button>
-  
-  
-    <div class="register-links">
-      <a  routerLink="/login">VOLVER AL INICIO DE SESION</a>
-    </div>
     
   </mat-card>
   

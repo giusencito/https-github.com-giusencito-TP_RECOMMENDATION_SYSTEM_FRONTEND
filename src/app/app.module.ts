@@ -1,3 +1,6 @@
+import { ConfigureAdminComponent } from './pages/admin/configure-admin/configure-admin.component';
+import { SeeOnePostulantComponent } from './pages/admin/see-one-postulant/see-one-postulant.component';
+import { SeePostulantsComponent } from './pages/admin/see-postulants/see-postulants.component';
 import { DialogComponent } from './pages/admin/test/create-test/Dialog/Dialog.component';
 
 import { HomeAdminComponent } from './pages/admin/home-admin/home-admin.component';
@@ -29,6 +32,10 @@ import { CreateTestComponent } from './pages/admin/test/create-test/create-test.
 import { CreateQuestionComponent } from './pages/admin/test/create-question/create-question.component';
 import { DialogSectionComponent } from './pages/admin/test/create-section/dialog-section/dialog-section.component';
 import { CreateAdminComponent } from './pages/admin/create-admin/create-admin.component';
+import { AdminDialogComponent } from './pages/admin/create-admin/adminDialog/adminDialog.component';
+import { ConfigureDialogComponent } from './pages/admin/configure-admin/configure-dialog/configure-dialog.component';
+import { DeleteDialogComponent } from './pages/admin/see-one-postulant/deleteDialog/deleteDialog.component';
+import { ConfigurePostulantDialogComponent } from './pages/postulant/configure-postulant/configure-postulant-dialog/configure-postulant-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +60,13 @@ import { CreateAdminComponent } from './pages/admin/create-admin/create-admin.co
     DialogComponent,
     CreateAdminComponent,
     DialogSectionComponent,
+    AdminDialogComponent,
+    SeePostulantsComponent,
+    SeeOnePostulantComponent,
+    ConfigureAdminComponent,
+    ConfigureDialogComponent,
+    DeleteDialogComponent,
+    ConfigurePostulantDialogComponent
   
   ],
   imports: [

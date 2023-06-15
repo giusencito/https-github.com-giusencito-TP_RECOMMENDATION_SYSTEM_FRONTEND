@@ -1,0 +1,35 @@
+.background{
+    background-image: url('../../../../assets/images/adminimage.png');
+    background-size: cover;
+    background-position: center;
+    height: 1000px;
+    
+    z-index: -1;
+    ;
+    
+
+
+}
+.mat-card{
+   width: 90%;
+  
+   margin-top: 10px;
+}
+.input{
+    width: 100%;
+   
+}
+.center{
+    display: flex;
+    justify-content: center;
+    
+}
+.formut{
+    display: flex;
+    justify-content: center;
+}
+.button{
+    width: 100%;
+}
+
+ 

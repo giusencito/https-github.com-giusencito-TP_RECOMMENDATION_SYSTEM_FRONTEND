@@ -1,0 +1,10 @@
+
+<div *ngIf="type">
+  <h2 class="title">Postulante Eliminado</h2>
+  <button mat-raised-button color="primary" (click)="closetrue()" class="button">Aceptar</button>
+</div>
+<div *ngIf="!type">
+
+  <h2 class="title">No se puedo eliminar</h2>
+  <button mat-raised-button color="warn" (click)="closefalse()" class="button">Aceptar</button>
+</div>

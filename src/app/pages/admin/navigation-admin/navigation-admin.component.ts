@@ -15,8 +15,9 @@ export class NavigationAdminComponent implements OnInit {
 
 
   configuration(){
-    this.Router.navigate(['/configure-postulant'])
+    this.Router.navigate(['/configure-admin'])
   }
+ 
   exit(){
 this.TokenService.logOut()
   }

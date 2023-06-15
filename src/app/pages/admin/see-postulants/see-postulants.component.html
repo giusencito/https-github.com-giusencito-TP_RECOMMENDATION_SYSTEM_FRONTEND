@@ -1,0 +1,56 @@
+<app-navigation-admin></app-navigation-admin>
+<div class="background">
+<div class="center">
+  <mat-card>
+    <form [formGroup]="searchform">
+    <mat-form-field class="input" appearance="outline" >
+   
+      <input matInput placeholder="Nombre" formControlName="search" [(ngModel)]="username">
+      <mat-icon matSuffix>person_search</mat-icon>
+     
+    </mat-form-field>
+    <button mat-raised-button class="button"  (click)="setusers(username)"> Buscar</button>
+  </form>
+  </mat-card>
+
+  
+
+
+</div>
+
+
+
+
+
+
+<div class="formut">
+<mat-card>
+
+  <mat-list>
+    <div mat-subheader>Postulantes</div>
+    
+    <mat-list-item  *ngFor="let postulant of dataSource.data" >
+     
+      <mat-icon mat-list-icon>perm_contact_calendar</mat-icon>
+      <h3 mat-line>{{postulant.username}} </h3>
+      <p mat-line>{{postulant.email}}</p>
+      <button mat-raised-button (click)="gopostulant(postulant.id)">Ver</button>
+    
+    </mat-list-item>
+  </mat-list>
+    
+</mat-card>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+

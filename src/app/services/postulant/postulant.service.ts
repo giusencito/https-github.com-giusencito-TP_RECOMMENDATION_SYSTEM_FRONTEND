@@ -24,6 +24,19 @@ registerpostulant(item:SignIn){
     retry(2),
     );
 }
+
+getpostulants(){
+  return this.http.get<any>(`${this.basePath}`, this.httpOptions)
+  .pipe(
+    retry(2),
+    );
+}
+deletedpostulants(id:number){
+  return this.http.delete<any>(`${this.basePath}${id}/`, this.httpOptions)
+  .pipe(
+    retry(2),
+    );
+}
 changename(id:string,item:Name){
 
   return this.http.put<any>(`${this.basePath2}/ChangeNameViewSet/${id}/`, JSON.stringify(item),this.httpOptions)

@@ -20,11 +20,23 @@ export class HomeAdminComponent implements OnInit {
 
     this.Router.navigate(['create-test'])
   }
+  createAdmin(){
+
+    this.Router.navigate(['create-admin'])
+
+
+
+  }
   getadmin(){
     this.AdminService.getAdmin(this.TokenService.getId()).subscribe((response:any)=>{
       this.name=response.name
       this.last_name=response.last_name
     })
+  }
+  postulants(){
+
+    this.Router.navigate(['/see-postulants'])
+
   }
   
 }

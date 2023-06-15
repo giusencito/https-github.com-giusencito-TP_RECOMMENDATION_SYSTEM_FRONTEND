@@ -8,68 +8,87 @@
     background-image: url('../../../../assets/images/home-postulant.jpg');
     background-size: cover;
     background-position: center;
-   height: 100%;
+ 
+   
    
     z-index: -1;
 
 }
-.text-2 {
-    text-align: center;
-    vertical-align: middle;
-    font-size: 20px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-  }
-  .text-1 {
-    padding-top: 10px;
-    vertical-align: middle;
-    font-size: 36px;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
-  }
-  .center{
-    display: flex;
-    justify-content: center;
-  }
-  .card{
-    width: 30%;
-    background-color: #87ceeb;
-  }
-  .button{
-    width: 50%;
-  }
-  .centercorc{
-    margin-left: 50px;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  @media screen and (max-width: 1200px) {
-    
-    .card{
-      width: 80%;
-    }
-    .text-1 {
-      padding-top: 10px;
-      vertical-align: middle;
-      font-size: 20px;
-      font-family: Roboto;
-      line-height: auto;
-      color: #000000;
-    }
-    .text-2 {
-      text-align: center;
-      vertical-align: middle;
-      font-size: 15px;
-      font-family: Roboto;
-      line-height: auto;
-      color: #000000;
-    }
-    img{
-      height: 100px;
-    }
-  }
+.center{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.content{
+  display: flex;
+  
+  justify-content: space-between;
+}
 
+.content2{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width:70%;
+}
+.content22{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width:50%;
+}
+.mat-card{
+  width: 90%;
+  border-radius: 35px;
+  margin-bottom: 40px;
+ 
+}
+.multiline-text {
+  white-space: pre-wrap;
+  text-align: center;
+
+}
+
+.start{
+  border-radius: 24px;
+  font-size: 1.2rem;
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 700;
+  color:white;
+  background-color:#1E88E5;
+}
+   
+.big{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.contenthistorial{
+  display: flex;
+  
+  justify-content: space-between;
+}
+.hisimg{
+  border-color: red;
+}
+.text-1{
+  font-family: 'Futura';
+font-style: normal;
+font-weight: 700;
+text-align: center;
+}
+mat-card-title{
+  font-family: 'Futura';
+  font-style: normal;
+font-weight: 700;
+
+}
+p{
+  font-family: 'Futura';
+  font-weight: italic;
+  font-style: normal;
+  font-size: 1.2rem;
+}

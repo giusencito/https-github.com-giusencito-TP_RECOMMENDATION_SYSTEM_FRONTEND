@@ -12,6 +12,10 @@ import { HomeAdminComponent } from './pages/admin/home-admin/home-admin.componen
 import { CreateTestComponent } from './pages/admin/test/create-test/create-test.component';
 import { CreateSectionComponent } from './pages/admin/test/create-section/create-section.component';
 import { CreateQuestionComponent } from './pages/admin/test/create-question/create-question.component';
+import { CreateAdminComponent } from './pages/admin/create-admin/create-admin.component';
+import { SeePostulantsComponent } from './pages/admin/see-postulants/see-postulants.component';
+import { SeeOnePostulantComponent } from './pages/admin/see-one-postulant/see-one-postulant.component';
+import { ConfigureAdminComponent } from './pages/admin/configure-admin/configure-admin.component';
 
 
 const routes: Routes = [
@@ -21,10 +25,16 @@ const routes: Routes = [
 {path:'forgot-password',component:ForgotPasswordComponent,canActivate: [LoginGuard]},
 {path:'change-password/:code',component:ChangePasswordComponent,canActivate: [LoginGuard]},
 {path:'home-postulant',component:HomePostulantComponent,canActivate: [PostulantGuard]},
+
 {path:'home-admin',component:HomeAdminComponent},
+{path:'see-postulants',component:SeePostulantsComponent},
+{path:'see-postulants/:postulant',component:SeeOnePostulantComponent},
 {path:'create-test',component:CreateTestComponent},
 {path:'create-test/:id/create-section',component:CreateSectionComponent},
 {path:'create-test/:id/create-section/:section/create-question',component:CreateQuestionComponent},
+{path:'create-admin',component:CreateAdminComponent},
+{path:'configure-admin',component:ConfigureAdminComponent},
+
 {path:'configure-postulant',component:ConfigurePostulantComponent,canActivate: [PostulantGuard]}
 
 ];

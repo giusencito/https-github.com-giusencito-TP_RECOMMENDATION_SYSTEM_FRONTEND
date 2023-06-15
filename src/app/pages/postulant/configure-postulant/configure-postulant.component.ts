@@ -6,6 +6,8 @@ import { PostulantService } from './../../../services/postulant/postulant.servic
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,ValidatorFn,ValidationErrors,AbstractControl, FormControl } from '@angular/forms';
 import { Name } from 'src/app/models/authentication/Name';
+import { ConfigurePostulantDialogComponent } from './configure-postulant-dialog/configure-postulant-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-configure-postulant',
@@ -16,11 +18,16 @@ export class ConfigurePostulantComponent implements OnInit {
   public changename!:FormGroup;
   public changelastaname!:FormGroup;
   public changepassword!:FormGroup;
+  names!:string
+username!:string
+email!:string
+usernames!:string
+lastnames!:string
   Name!:Name
   Lastname!:Lastname
   ConfigurePassword!:ConfigurePassword
  
-  constructor(private formBuilder:FormBuilder,private PostulantService:PostulantService,private TokenService:TokenService,private PasswordService:PasswordService) { 
+  constructor(private formBuilder:FormBuilder,public dialog:MatDialog,private PostulantService:PostulantService,private TokenService:TokenService,private PasswordService:PasswordService) { 
     this.changename=this.formBuilder.group({
       name:['',[Validators.required, Validators.minLength(3)]],
       
@@ -68,27 +75,69 @@ export class ConfigurePostulantComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getpostu()
   }
- 
+  getpostu(){
+    this.PostulantService.getPostulant(this.TokenService.getId()).subscribe((response)=>{
+      console.log(response)
+      this.email= response.email;
+      this.names=response.name
+      this.lastnames= response.last_name;
+      this.usernames = response.username
+    })
+   }
   changenamefun(){
      this.PostulantService.changename(this.TokenService.getId(),this.Name).subscribe((response:any)=>{
 
-         console.log(response)
+         this.openTrue(this.TokenService.getId(),'nombre')
 
-     })
+     },err=>{this.openFalse('err')})
 
     
   }
   changenlastamefun(){
-    this.PostulantService.changelast_name(this.TokenService.getId(),this.Lastname).subscribe((response:any)=>{})
+    this.PostulantService.changelast_name(this.TokenService.getId(),this.Lastname).subscribe((response:any)=>{
+      this.openTrue(this.TokenService.getId(),'apellido')
+    },err=>{this.openFalse('err')})
 
    
  }
  changepasswordfun(){
   this.ConfigurePassword.token='redesdd'
-  this.PasswordService.changePassword(this.TokenService.getId(),this.ConfigurePassword).subscribe((response:any)=>{})
+  this.PasswordService.changePassword(this.TokenService.getId(),this.ConfigurePassword).subscribe((response:any)=>{
+    this.openTrue(this.TokenService.getId(),'contraseña')
+  },err=>{this.openFalse('err')})
  }
+ openTrue(id:number,configure:string) {
 
+  const dialogRef = this.dialog.open(ConfigurePostulantDialogComponent, {
+    width: '500px',
+    data: {type:true,number:id,configure:configure}
+  });
+  dialogRef.afterClosed().subscribe(result => {
+      if(configure=="nombre"){
+          this.names = this.Name.name
+      }
+      if(configure=="apellido"){
+        this.lastnames = this.Lastname.last_name
+      }if(configure=="contraseña"){
+      
+      }
+
+
+
+   
+  })
+ 
+}
+openFalse(configure:string) {
+
+  const dialogRef = this.dialog.open(ConfigurePostulantDialogComponent, {
+    width: '500px',
+    data: {type:false,configure:configure}
+  });
+ 
+}
 
 
 
