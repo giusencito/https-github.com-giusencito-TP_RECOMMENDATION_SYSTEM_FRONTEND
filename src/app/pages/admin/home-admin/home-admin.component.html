@@ -1,52 +1,101 @@
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
+  <br>
   <p class="text-1">
-    Bienvenido Admin: {{name}} {{last_name}}
+    Bienvenido Administrador {{name}} {{last_name}}
   </p>
-
-  <div class="centerall">
-    <div class="centercorc">
-    <button class="card" mat-flat-button (click)="postulants()">
-       
+  <br>
+  <br>
+<div class="big">
+  <mat-card class="card">
+    <br>
+    <mat-card-title class="cardlefttitle">Postulantes</mat-card-title>
+    <br>
+    <mat-card-content class="content">
       <div class="center">
-        <img src="../../../../assets/images/postulant.png" />
+        <img src="../../../../assets/images/postulants.jpeg" >
+
       </div>
-   
-      <p class="text-2">Postulantes</p>
-  
-  
-  
-  
-    </button>
-    <button class="card" mat-flat-button (click)="createAdmin()">
+
+      <div class="content22">
+        <p style="padding-right: 50pt;">
+          En esta sección podrás visualizar todos los postulantes registrados dentro 
+          de la plataforma para que puedas realizar el respectivo seguimiento y gestionamiento. 
+        </p>
+     
+        <div class="center"><button mat-raised-button class="start" (click)="postulants()">Ver</button></div>
+      </div>
+    </mat-card-content>
+    <br>
+  </mat-card>
+  <br>
+  <br>
+  <mat-card class="card">
+    <br>
+    <mat-card-title class="cardrighttitle">Crear administradores</mat-card-title>
+    <br>
+    <mat-card-content class="contenthistorial">
+      <div class="content2">
+        <p style="padding-left: 100pt;">
+          Aqui se encuentra el formulario de registro de nuevos administradores esto permitirá que 
+          en JobBrainProfile haya mas gestionadores para los postulantes y 
+          sus resultados dentro de la plataforma.
+        </p>
+     
+        <div class="center"><button mat-raised-button class="start" (click)="createAdmin()">Crear</button></div>
+      </div>
       <div class="center">
-        <img src="../../../../assets/images/create-admin.png" />
+        <img src="../../../../assets/images/create_admins.jpeg" class="hisimg">
+
       </div>
-   
-    <p class="text-2">Crear Administradores</p>
-    </button>
-    </div>
-    <div class="centercorc">
-    <button class="card" mat-flat-button>
+    </mat-card-content>
+    <br>
+  </mat-card>
+  <br>
+  <br>
+  <mat-card class="card">
+    <br>
+    <mat-card-title style="padding-left: 12%; padding-right: 75%; text-align: center; font-weight: bold; font-family: 'Futura';">Editar cuestionarios</mat-card-title>
+    <br>
+    <mat-card-content class="content">
       <div class="center">
-        <img src="../../../../assets/images/test.png" />
+        <img src="../../../../assets/images/edit_tests.jpeg" >
+
       </div>
-   
-    <p class="text-2">Cuestionarios de exitos</p>
-    </button>
-    <button class="card" mat-flat-button (click)="createTest()">
+
+      <div class="content2">
+        <p>
+          En esta sección se podrá realizar las ediciones de todos los cuestionarios o tests creados para la plataforma.
+        </p>
+     
+        <div class="center"><button mat-raised-button class="start">Editar</button></div>
+      </div>
+    </mat-card-content>
+    <br>
+  </mat-card>
+  <br>
+  <br>
+  <mat-card class="card">
+    <br>
+    <mat-card-title class="cardrighttitle" style="">Crear cuestionarios</mat-card-title>
+    <br>
+    <mat-card-content class="contenthistorial">
+      <div class="content22">
+        <p style="padding-left: 100pt;">
+          Aqui se encuentra el formulario de creación de todos los tests o cuestionarios para JobBrainProfile, 
+          se pueden crear todos los tests de orientación profesional, test de estabilidad emocional 
+          y test de situación actual.
+        </p>
+     
+        <div class="center"><button mat-raised-button class="start" (click)="createTest()">Crear</button></div>
+      </div>
       <div class="center">
-        <img src="../../../../assets/images/create-test.png" />
+        <img src="../../../../assets/images/create_tests.jpeg" class="hisimg">
+
       </div>
-   
-    <p class="text-2">Crear Test Profesionales</p>
-    </button>
-    </div>
-  </div>
-
-
-
-
-
+    </mat-card-content>
+    <br>
+  </mat-card>
+</div>
 
 </div>

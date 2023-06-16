@@ -4,25 +4,90 @@
     background-image: url('../../../../assets/images/adminimage.png');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    height: 165vh;
     z-index: -1;
-    height: 50vw;
-
-
+}
+.big{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.content{
+  display: flex;
+  
+  justify-content: space-between;
+}
+.content2{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width:70%;
+}
+.content22{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width:50%;
+}
+.contenthistorial{
+  display: flex;
+  
+  justify-content: space-between;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.start{
+  border-radius: 24px;
+  font-size: 1.2rem;
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 700;
+  color:white;
+  background-color:#1E88E5;
+  width: 150pt;
+  height: 35pt;
+}
+p{
+  font-family: 'Futura';
+  font-weight: italic;
+  font-style: normal;
+  font-size: 1.6rem;
+}
+.cardlefttitle{
+  padding-left: 15%; 
+  padding-right: 70%; 
+  text-align: center; 
+  font-weight: bold; 
+  font-family: 'Futura';
+}
+.cardrighttitle{
+  padding-left: 75%; 
+  padding-right: 12%; 
+  text-align: center; 
+  font-weight: bold; 
+  font-family: 'Futura';
 }
 .text-1 {
     padding-top: 10px;
     padding-left: 10px;
     vertical-align: middle;
-font-size: 2vw;
-    font-family: Roboto;
+    font-size: 2vw;
+    font-weight: bold;
+    font-family: 'Futura';
     line-height: auto;
-    color: white;
+    color: black;
   }
 
   .card{
-    width: 30%;
-   
-    background-color: #C2C2C2;
+    width: 80%;
+    border-radius: 30pt;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   .centercorc{
    

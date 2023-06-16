@@ -4,19 +4,20 @@
 <app-navigaion-postulant></app-navigaion-postulant>
 
 <div class="background" >
-
+  <br>
   <h1 class="text-1">
     Bienvenido Postulante {{name}}  {{last_name}}
   </h1>
-
+  <br>
+  <br>
   <div class="big">
-  <mat-card>
-   
-    <mat-card-title>Recomendación de empleos</mat-card-title>
-    
+  <mat-card class="card">
+    <br>
+    <mat-card-title class="cardlefttitle">Recomendación de empleos</mat-card-title>
+    <br>
     <mat-card-content class="content">
-      <div class="center">
-        <img src="../../../../assets/images/recomendationImage.png" >
+      <div style="margin-left: auto; margin-right: auto;">
+        <img src="../../../../assets/images/recomendationImage.png" style="height: 100%;">
 
       </div>
 
@@ -25,7 +26,7 @@
         <p>¡Estudiantes de pregrado en ingeniería de software, es hora de encender el motor de tu carrera profesional!</p>
      
     
-        <p>
+        <p style="padding-right: 50pt;">
           En esta sección podrás realizar tests de orientación profesional para la identificación de tu perfil,
            obtener empleos que más se relacionen contigo y conseguir cursos de capacitación que te ayudarán a 
            tener más oportunidades en la obtención de empleos. Todo presentado con respaldo experto.
@@ -35,13 +36,14 @@
       </div>
 
     </mat-card-content>
-
-
-
-
+    <br>
   </mat-card>
-  <mat-card>
-    <mat-card-title>Historial de recomendaciones</mat-card-title>
+  <br>
+  <br>
+  <mat-card class="card">
+    <br>
+    <mat-card-title class="cardrighttitle">Historial de recomendaciones</mat-card-title>
+    <br>
     <mat-card-content class="contenthistorial">
       
 
@@ -49,7 +51,7 @@
        
      
     
-        <p>
+        <p style="padding-left: 100pt;">
           Aqui se encuentran los resultados de los tests, las recomendaciones de empleo y los cursos de 
           capacitación que se han brindado en la primera sección, para que puedas revisarlas nuevamente y 
           ver si te interesan.
@@ -57,17 +59,12 @@
      
         <div class="center"><button mat-raised-button class="start">Ver</button></div>
       </div>
-      <div >
+      <div style="margin-left: auto; margin-right: auto;">
         <img src="../../../../assets/images/truehistorialiamge.png" class="hisimg">
 
       </div>
-
-
-
-
-
-
     </mat-card-content>
+    <br>
   </mat-card>
 </div>
 

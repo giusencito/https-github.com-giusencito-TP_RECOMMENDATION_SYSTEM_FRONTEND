@@ -1,13 +1,23 @@
-<mat-toolbar class="HomeBar">
-  <span>
-    <img src="../../../../assets/images/imagelogo.png" class="img">
-  </span>
-  
-    <div class="options">
-      <a mat-button (click)="Home()">Home</a>
-      <a mat-button (click)="configuration()">Configuración</a>
-      <a mat-button (click)="exit()">Cerrar sesión</a>
-  
+
+  <mat-toolbar class="HomeBar">
+    <div class="left-content">
+      <img src="../../../../assets/images/trueimagelogo.png" alt="Logo" class="img">
     </div>
-   
+    <div class="center-content">
+      <span class="slogan">"Find Your Dream Job with Us!"</span>
+    </div>
+    <div class="right-content">
+      <a mat-button (click)="Home()">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </a>
+      <a mat-button (click)="configuration()">
+        <mat-icon>settings</mat-icon>
+        <span>Ajustes</span>
+      </a>
+      <a mat-button (click)="exit()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Salir</span>
+      </a>
+    </div>
   </mat-toolbar>

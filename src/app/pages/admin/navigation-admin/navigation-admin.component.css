@@ -1,7 +1,22 @@
 .HomeBar{
+    display: flex;
     justify-content: space-between;
-    background: skyblue;
-  }
+    background-color:skyblue;
+}
+
+.slogan{
+  font-family: 'Futura';
+font-style: normal;
+font-weight: 700;
+font-size: 2rem;
+}
+
+a{
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
 
   .options a{
   
@@ -18,6 +33,5 @@
         }
 
 .img{
-  width: 40%;
-  padding-top: 10px;
+  width: 80%;
 }

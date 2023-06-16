@@ -44,7 +44,8 @@
     
   }
   .img{
-   
+    border-radius: 10%;
+    height: 250pt;
   }
   .center{
     display: flex;
