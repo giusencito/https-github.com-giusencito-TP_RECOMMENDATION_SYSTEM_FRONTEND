@@ -35,3 +35,23 @@ a{
 .img{
   width: 80%;
 }
+@media (max-width: 768px) {
+
+
+  .left-content, .right-content {
+    display: none; 
+    
+  }
+
+  .center-content {
+    margin: 0 auto; 
+  }
+
+
+
+
+
+
+
+
+}

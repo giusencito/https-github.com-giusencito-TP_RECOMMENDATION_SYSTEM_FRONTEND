@@ -21,3 +21,23 @@ a{
   font-weight: 700;
   font-size: 1.5rem;
 }
+@media (max-width: 768px) {
+
+
+  .left-content, .right-content {
+    display: none; 
+    
+  }
+
+  .center-content {
+    margin: 0 auto; 
+  }
+
+
+
+
+
+
+
+
+}

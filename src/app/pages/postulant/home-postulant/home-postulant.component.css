@@ -9,7 +9,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 97vh;
+ 
    
     z-index: -1;
 
@@ -36,8 +36,14 @@
   justify-content: space-evenly;
   flex-direction: column;
   width:50%;
+ 
+}
+.img{
+ 
+  margin-left: auto; margin-right: auto;
 }
 .card{
+  margin-bottom: 50px;
   width: 80%;
   border-radius: 30pt;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -56,13 +62,13 @@
   font-weight: 700;
   color:white;
   background-color:#1E88E5;
-  width: 150pt;
-  height: 35pt;
+width: 30%;
 }
 
 .cardlefttitle{
   padding-left: 6%; 
   padding-right: 75%; 
+  font-size: 1.7rem;
   text-align: center; 
   font-weight: bold; 
   font-family: 'Futura';
@@ -71,6 +77,7 @@
   padding-left: 65%; 
   padding-right: 15%; 
   text-align: center; 
+  font-size: 1.7rem;
   font-weight: bold; 
   font-family: 'Futura';
 }
@@ -85,7 +92,7 @@
 .contenthistorial{
   display: flex;
   
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .hisimg{
   border-color: red;
@@ -98,7 +105,7 @@
   font-style: normal;
   font-weight: bold;
   text-align: left;
-  font-size: 2vw;
+  font-size: 2.5rem;
 }
 mat-card-title{
   font-family: 'Futura';
@@ -110,5 +117,39 @@ p{
   font-family: 'Futura';
   font-weight: italic;
   font-style: normal;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  
+}
+@media (max-width: 767px) {
+
+  .content{
+    flex-direction: column;
+  }
+
+  .content2{
+    width:100%;
+  }
+  .content22{
+    width:100%;
+  }
+  .cardlefttitle{
+   padding-right: 0%;
+   padding-left: 0%;
+  }
+  .cardrighttitle{
+    padding-right: 0%;
+   padding-left: 0%;
+  }
+  .contenthistorial{
+    flex-direction:column;
+  }
+  .content22{
+    order:2;
+    
+  }
+  img{
+    order:1;
+  }
+
+
 }
