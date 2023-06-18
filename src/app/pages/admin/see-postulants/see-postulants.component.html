@@ -27,14 +27,14 @@
 <mat-card>
 
   <mat-list>
-    <div mat-subheader>Postulantes</div>
+    <div mat-subheader class="text">Postulantes</div>
     
     <mat-list-item  *ngFor="let postulant of dataSource.data" >
      
       <mat-icon mat-list-icon>perm_contact_calendar</mat-icon>
       <h3 mat-line>{{postulant.username}} </h3>
       <p mat-line>{{postulant.email}}</p>
-      <button mat-raised-button (click)="gopostulant(postulant.id)">Ver</button>
+      <button mat-raised-button (click)="gopostulant(postulant.id)" class="button2">Ver</button>
     
     </mat-list-item>
   </mat-list>

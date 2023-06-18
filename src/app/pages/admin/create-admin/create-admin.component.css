@@ -1,86 +1,104 @@
 .card {
-    max-width: 700px;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    padding: 30px;
-    background-color: #E3F2FD
-  }
-  .title {
-    text-align: center;
-    
-    margin-bottom: 30px;
-  }
-  .input {
-    width: 100%;
-    margin-bottom: 20px;
-   
-  }
-  .termsconditions{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-
-  }
-  .checkbox{
-    padding-top: 5px;
-  }
-  .buttonterms{
-
-   width: 30%;
-  background-color: #007bff;
-  display: flex;
-  align-items: center;
-  }
-  .buttonterms .mat-icon {
-    margin-right: 8px;
-  }
+  max-width: 700px;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  padding: 30px;
+  background-color: #E3F2FD
+}
+.title {
+  text-align: center;
   
-  .buttonterms .button-text {
-    display: inline-block;
-  }
-  .button {
-    width: 100%;
-    
-    
-    background-color:#0288D1;
-  }
-  .register-links {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-  @media (max-width: 767px) {
-    .card {
-      max-width: 400px;
-      
-    }
-    .buttonterms .button-text {
-        display: none;
-      }
-      .buttonterms{
-        width: 10%;
-        justify-content: center;
-      }
-      .buttonterms .mat-icon {
-        margin-left: 8px;
-      }
-      
-  }
-  .background{
-
-
-    background-image: url('../../../../assets/images/adminimage.png');
-    background-size: cover;
-    background-position: center;
-    height: 1000px;
-    
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
+  margin-bottom: 30px;
+  font-family: 'Futura';
+  font-weight:bold;
+  font-size: 2.5rem;
+}
+.input {
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: 'Futura';
+  font-weight: italic;
+  font-style: normal;
+  font-size: 1.2rem;
+ 
+}
+.termsconditions{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
 
 }
- 
+.checkbox{
+  padding-top: 5px;
+  font-family: 'Futura';
+  font-weight: italic;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+.buttonterms{
+
+ width: 30%;
+background-color: #007bff;
+display: flex;
+align-items: center;
+}
+.buttonterms .mat-icon {
+  margin-right: 8px;
+}
+
+.buttonterms .button-text {
+  display: inline-block;
+  font-family: 'Futura';
+  font-weight: italic;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: white;
+}
+.button {
+  width: 100%;
+  font-family: 'Futura';
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1.2rem;
+  color:white;
+  
+  background-color:#0288D1;
+}
+.register-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-family: 'Futura';
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+@media (max-width: 767px) {
+  .card {
+    max-width: 400px;
+    
+  }
+  .buttonterms .button-text {
+      display: none;
+    }
+    .buttonterms{
+      width: 10%;
+      justify-content: center;
+    }
+    .buttonterms .mat-icon {
+      margin-left: 8px;
+    }
+    
+}
+
+
+.background {
+  background-image: url('../../../../assets/images/register-image.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

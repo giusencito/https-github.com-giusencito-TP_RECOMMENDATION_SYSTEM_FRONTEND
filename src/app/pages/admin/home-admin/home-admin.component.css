@@ -5,21 +5,21 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 165vh;
+  
     z-index: -1;
 }
-.big{
+
+.center{
   display: flex;
-  justify-content:space-between;
-  align-items: center;
-  flex-direction: column;
-  
+  justify-content: center;
+  text-align: center;
 }
 .content{
   display: flex;
   
   justify-content: space-between;
 }
+
 .content2{
   display: flex;
   justify-content: space-evenly;
@@ -31,17 +31,24 @@
   justify-content: space-evenly;
   flex-direction: column;
   width:50%;
+ 
 }
-.contenthistorial{
-  display: flex;
-  
-  justify-content: space-between;
+.img{
+ 
+  margin-left: auto; margin-right: auto;
 }
-.center{
-  display: flex;
-  justify-content: center;
+.card{
+  margin-bottom: 50px;
+  width: 80%;
+  border-radius: 30pt;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.multiline-text {
+  white-space: pre-wrap;
   text-align: center;
+
 }
+
 .start{
   border-radius: 24px;
   font-size: 1.2rem;
@@ -50,100 +57,107 @@
   font-weight: 700;
   color:white;
   background-color:#1E88E5;
-  width: 150pt;
-  height: 35pt;
+width: 30%;
 }
-p{
-  font-family: 'Futura';
-  font-weight: italic;
-  font-style: normal;
-  font-size: 1.6rem;
-}
+
 .cardlefttitle{
-  padding-left: 15%; 
-  padding-right: 70%; 
+  padding-left: 6%; 
+  padding-right: 75%; 
+  font-size: 1.7rem;
   text-align: center; 
   font-weight: bold; 
   font-family: 'Futura';
 }
 .cardrighttitle{
-  padding-left: 75%; 
-  padding-right: 12%; 
+  padding-left: 65%; 
+  padding-right: 15%; 
   text-align: center; 
+  font-size: 1.7rem;
   font-weight: bold; 
   font-family: 'Futura';
 }
-.text-1 {
-    padding-top: 10px;
-    padding-left: 10px;
-    vertical-align: middle;
-    font-size: 2vw;
-    font-weight: bold;
-    font-family: 'Futura';
-    line-height: auto;
-    color: black;
+   
+.big{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.contenthistorial{
+  display: flex;
+  
+  justify-content: space-evenly;
+}
+.hisimg{
+  border-color: red;
+}
+.text-1{
+  padding-top: 10px;
+  padding-left: 10px;
+  font-family: 'Futura';
+  vertical-align: middle;
+  font-style: normal;
+  font-weight: bold;
+  text-align: left;
+  font-size: 2.5rem;
+}
+mat-card-title{
+  font-family: 'Futura';
+  font-style: normal;
+font-weight: 700;
+
+}
+p{
+  font-family: 'Futura';
+  font-weight: italic;
+  font-style: normal;
+  font-size: 1.5rem;
+  
+}
+
+
+@media (max-width: 767px) {
+ .text-1{
+  line-height: 1;
+ }
+  .content{
+    flex-direction: column;
   }
 
-  .card{
-    width: 80%;
-    border-radius: 30pt;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  .content2{
+    width:100%;
   }
-  .centercorc{
-   
-    display: flex;
+  .content22{
+    width:100%;
+  }
+  .cardlefttitle{
+   padding-right: 0%;
+   padding-left: 0%;
+  }
+  .cardrighttitle{
+    padding-right: 0%;
+   padding-left: 0%;
+  }
+  .contenthistorial{
+    flex-direction:column;
+  }
+  .content22{
+    order:2;
     
-    justify-content: space-evenly;
-    margin-top: 30px;
-  }
-  .centerall{
-     display: flex;
-     flex-direction: column;
-justify-content: space-between;
-   
-  
-  }
-  .text-2 {
-    text-align: center;
-    vertical-align: middle;
-    font-size: 2vw;
-    font-family: Roboto;
-    line-height: auto;
-    color: #000000;
   }
   img{
-   
-    width: 50%;
+    order:1;
   }
-  @media (max-width: 767px) {
 
-    
-   .centercorc{
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0px;
+
+}
+
+
+
+
+
+
+
+
  
-   }
-   
-    .card{
-      width: 80%;
-    }
-    .text-1 {
-      font-size: 6vw;
-    }
-    .background{
-      height: 1200px;
-    }
-    .text-2 {
-    
-      font-size: 5vw;
-    
-    }
-
-
-
-
-  }

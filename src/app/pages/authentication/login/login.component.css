@@ -14,14 +14,16 @@
   align-items: center;
 
   }
-  
+  form{
+    width:50%;
+  }
   
   
   .card {
-    width: 700px;
-    margin-top: 15vh;
-    margin-bottom: 15vh;
-    padding: 30px;
+   
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+   
     background-color: #cceeff
   }
   
@@ -89,8 +91,8 @@
     padding-top: 10px;
   }
   @media (max-width: 767px) {
-    .card {
-      max-width: 400px;
+    form {
+      width:70%;
     }
     
   }

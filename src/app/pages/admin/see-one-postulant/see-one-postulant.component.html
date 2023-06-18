@@ -1,31 +1,25 @@
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
-  <div class="section">
-    <div class="group">
-      <p class="text-1">{{name}}     {{last_name}}</p>
-      <p class="text-1">{{email}}</p>
-    </div>
-    <div class="group">
-      <img src="../../../../assets/images/image 4.png" class="img">
-    </div>
-    
-
-  </div>
- 
-  <div class="section">
-
-   <button mat-flat-button color="primary">Ver Recomendaciones</button>
-   <button mat-flat-button color="warn" (click)="deletedpostulant()">Eliminar Postulante</button>
-
-
-
-
-  </div>
 
   
 
 
+<mat-card class="card">
 
+  <div class="center">
+    <img src="../../../../assets/images/image 4.png" class="img">
+  </div>
+  <br>
+  <mat-card-title class="tittle">{{name}}     {{last_name}}</mat-card-title>
+  <br>
+  <p>{{email}}</p>
+  <div class="section">
+    <button mat-flat-button color="primary">Ver Recomendaciones</button>
+    <button mat-flat-button color="warn" (click)="deletedpostulant()">Eliminar Postulante</button>
+  </div>
+
+
+</mat-card>
 
 
 
