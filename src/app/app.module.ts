@@ -1,3 +1,4 @@
+import { ResultEmotionalTestComponent } from './pages/postulant/test/result-emotional-test/result-emotional-test.component';
 import { ConfigureAdminComponent } from './pages/admin/configure-admin/configure-admin.component';
 import { SeeOnePostulantComponent } from './pages/admin/see-one-postulant/see-one-postulant.component';
 import { SeePostulantsComponent } from './pages/admin/see-postulants/see-postulants.component';
@@ -36,6 +37,8 @@ import { AdminDialogComponent } from './pages/admin/create-admin/adminDialog/adm
 import { ConfigureDialogComponent } from './pages/admin/configure-admin/configure-dialog/configure-dialog.component';
 import { DeleteDialogComponent } from './pages/admin/see-one-postulant/deleteDialog/deleteDialog.component';
 import { ConfigurePostulantDialogComponent } from './pages/postulant/configure-postulant/configure-postulant-dialog/configure-postulant-dialog.component';
+import { StartTestComponent } from './pages/postulant/test/start-test/start-test.component';
+import { EmotionalTestComponent } from './pages/postulant/test/emotional-test/emotional-test.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,10 @@ import { ConfigurePostulantDialogComponent } from './pages/postulant/configure-p
     ConfigureAdminComponent,
     ConfigureDialogComponent,
     DeleteDialogComponent,
-    ConfigurePostulantDialogComponent
+    ConfigurePostulantDialogComponent,
+    StartTestComponent,
+    EmotionalTestComponent,
+    ResultEmotionalTestComponent
   
   ],
   imports: [

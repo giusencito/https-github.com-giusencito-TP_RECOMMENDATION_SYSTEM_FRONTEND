@@ -38,5 +38,10 @@ export class OptionService {
      retry(2),
      catchError(this.handleError));
   }
-
+  getoptionbyquestion(id:number){
+    return this.http.get<any>(`${this.basePath}${id}/getoptionbysection/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
 }

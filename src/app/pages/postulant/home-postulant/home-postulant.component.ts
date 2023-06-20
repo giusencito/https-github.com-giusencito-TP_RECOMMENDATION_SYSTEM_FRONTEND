@@ -1,6 +1,7 @@
 import { TokenService } from './../../../services/token/token.service';
 import { PostulantService } from './../../../services/postulant/postulant.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-postulant',
@@ -13,7 +14,7 @@ export class HomePostulantComponent implements OnInit {
   width!:number
    height !:string
    myVariable = 'red';
-  constructor(private PostulantService:PostulantService,private TokenService:TokenService) { 
+  constructor(private PostulantService:PostulantService,private TokenService:TokenService,private Router:Router) { 
     window.addEventListener('resize', () => {
     this.width=window.innerWidth;
     
@@ -30,6 +31,9 @@ export class HomePostulantComponent implements OnInit {
       this.name=response.name
       this.last_name=response.last_name
     })
+  }
+  startTest(){
+    this.Router.navigate(['/start-test'])
   }
 
 }

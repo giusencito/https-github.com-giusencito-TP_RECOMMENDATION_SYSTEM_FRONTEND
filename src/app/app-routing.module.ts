@@ -1,3 +1,5 @@
+import { ResultEmotionalTestComponent } from './pages/postulant/test/result-emotional-test/result-emotional-test.component';
+import { StartTestComponent } from './pages/postulant/test/start-test/start-test.component';
 import { PostulantGuard } from './guards/postulant/postulant.guard';
 import { ConfigurePostulantComponent } from './pages/postulant/configure-postulant/configure-postulant.component';
 import { ChangePasswordComponent } from './pages/authentication/change-password/change-password.component';
@@ -16,6 +18,7 @@ import { CreateAdminComponent } from './pages/admin/create-admin/create-admin.co
 import { SeePostulantsComponent } from './pages/admin/see-postulants/see-postulants.component';
 import { SeeOnePostulantComponent } from './pages/admin/see-one-postulant/see-one-postulant.component';
 import { ConfigureAdminComponent } from './pages/admin/configure-admin/configure-admin.component';
+import { EmotionalTestComponent } from './pages/postulant/test/emotional-test/emotional-test.component';
 
 
 const routes: Routes = [
@@ -25,6 +28,10 @@ const routes: Routes = [
 {path:'forgot-password',component:ForgotPasswordComponent,canActivate: [LoginGuard]},
 {path:'change-password/:code',component:ChangePasswordComponent,canActivate: [LoginGuard]},
 {path:'home-postulant',component:HomePostulantComponent,canActivate: [PostulantGuard]},
+{path:'start-test',component:StartTestComponent},
+{path:'emotional-test',component:EmotionalTestComponent},
+{path:'result-emotional-test/:totalscore',component:ResultEmotionalTestComponent},
+
 
 {path:'home-admin',component:HomeAdminComponent},
 {path:'see-postulants',component:SeePostulantsComponent},

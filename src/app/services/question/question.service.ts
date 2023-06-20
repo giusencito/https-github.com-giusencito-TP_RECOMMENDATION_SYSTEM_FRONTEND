@@ -9,7 +9,7 @@ import { CreateQuestion } from 'src/app/models/test/CreateQuestion';
 export class QuestionService {
 
   basePath = 'http://127.0.0.1:8000/question/QuestionViewSet/';
- 
+
  
    
   httpOptions = {
@@ -37,6 +37,12 @@ export class QuestionService {
    .pipe(
      retry(2),
      catchError(this.handleError));
+  }
+  getquestionbySection(id:number){
+    return this.http.get<any>(`${this.basePath}${id}/getquestionbySection/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
   }
 
 }

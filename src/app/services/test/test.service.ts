@@ -38,5 +38,11 @@ export class TestService {
       retry(2),
       catchError(this.handleError));
    }
+   getTestbyTypeTest(id:number){
+    return this.http.get<any>(`${this.basePath}${id}/getTestbyTypeTest/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+   }
 
 }

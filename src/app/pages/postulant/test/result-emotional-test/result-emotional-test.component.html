@@ -1,0 +1,23 @@
+<app-navigaion-postulant></app-navigaion-postulant>
+
+
+<div class="background">
+  <br>
+<div class="card">
+<p class="tittle">Resultados de {{TestName}}</p>
+<br>
+<div class="center">
+<mat-card class="cardexp">
+  <div class="container">
+    <mat-progress-spinner mode="determinate" [value]="score"  color="#ff0000"></mat-progress-spinner>
+    <span class="progress-number">{{score}}%</span>
+  </div>
+  <br>
+  <p class="sub">{{TestSection}}</p>
+</mat-card>
+</div>
+<br>
+<button  mat-raised-button class="button" (click)="continue()">Continuar</button>
+<br>
+</div>
+</div>

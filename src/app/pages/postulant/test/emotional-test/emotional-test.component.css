@@ -1,0 +1,87 @@
+.background{
+
+    background-image: url('../../../../../assets/images/home-postulant.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+ 
+  
+    z-index: -1;
+
+}
+.tittle{
+    font-size: 3rem;
+    font-weight: bold; 
+    font-family: 'Futura';
+    line-height: 1;
+    
+}
+.sub{
+    font-size: 1.5rem;
+    font-weight: italic; 
+    font-family: 'Futura';
+    width: 50%;
+    margin-top: 50px;
+    line-height: 1;
+}
+.subquestion{
+    font-size: 1.5rem;
+    font-weight: italic; 
+    font-family: 'Futura';
+    width: 50%;
+    margin-top: 50px;
+    line-height: 1;
+    margin-left: 120px;
+}
+.card{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    margin-left: 70px;
+}
+.button{
+    width: 50%;
+    background: #1E88E5;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: bold; 
+    font-family: 'Futura';
+    color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+.radio-button-container {
+    display: block;
+    margin-bottom: 20px; /* Ajusta el valor según el espacio deseado entre los radio buttons */
+  }
+  
+  .radio-button {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: italic; 
+    font-family: 'Futura';
+  }
+
+
+
+
+
+.text{
+    font-size: 1.3rem;
+    font-weight: italic; 
+    font-family: 'Futura';
+   
+}
+@media (max-width: 767px) {
+    .button{
+        width: 80%;
+    }
+    .sub{
+        width: 80%;
+    }
+    
+  }
