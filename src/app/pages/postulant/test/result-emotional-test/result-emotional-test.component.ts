@@ -34,6 +34,7 @@ export class ResultEmotionalTestComponent implements OnInit {
                    this.TestSection=this.dataSource.data[0].sectionname
                    this.sectionMaximun=this.dataSource.data[0].totalscore
                    this.score=(this.score / this.sectionMaximun) * 100
+                   this.score= Math.round(this.score)
                    console.log(this.score)
                })
       })

@@ -39,6 +39,7 @@ import { DeleteDialogComponent } from './pages/admin/see-one-postulant/deleteDia
 import { ConfigurePostulantDialogComponent } from './pages/postulant/configure-postulant/configure-postulant-dialog/configure-postulant-dialog.component';
 import { StartTestComponent } from './pages/postulant/test/start-test/start-test.component';
 import { EmotionalTestComponent } from './pages/postulant/test/emotional-test/emotional-test.component';
+import { ResultsComponent } from './pages/postulant/results/results.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { EmotionalTestComponent } from './pages/postulant/test/emotional-test/em
     ConfigurePostulantDialogComponent,
     StartTestComponent,
     EmotionalTestComponent,
-    ResultEmotionalTestComponent
+    ResultEmotionalTestComponent,
+    ResultsComponent
   
   ],
   imports: [

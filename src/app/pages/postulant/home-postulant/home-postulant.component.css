@@ -50,6 +50,7 @@
 }
 .multiline-text {
   white-space: pre-wrap;
+  line-height: 1.5;
   text-align: center;
 
 }

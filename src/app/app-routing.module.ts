@@ -19,6 +19,7 @@ import { SeePostulantsComponent } from './pages/admin/see-postulants/see-postula
 import { SeeOnePostulantComponent } from './pages/admin/see-one-postulant/see-one-postulant.component';
 import { ConfigureAdminComponent } from './pages/admin/configure-admin/configure-admin.component';
 import { EmotionalTestComponent } from './pages/postulant/test/emotional-test/emotional-test.component';
+import { ResultsComponent } from './pages/postulant/results/results.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,7 @@ const routes: Routes = [
 {path:'start-test',component:StartTestComponent},
 {path:'emotional-test',component:EmotionalTestComponent},
 {path:'result-emotional-test/:totalscore',component:ResultEmotionalTestComponent},
-
+{path:'results-jobs',component:ResultsComponent},
 
 {path:'home-admin',component:HomeAdminComponent},
 {path:'see-postulants',component:SeePostulantsComponent},
