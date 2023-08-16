@@ -1,3 +1,4 @@
+import { OrientationTestComponent } from './pages/postulant/test/orientation-test/orientation-test.component';
 import { ResultEmotionalTestComponent } from './pages/postulant/test/result-emotional-test/result-emotional-test.component';
 import { StartTestComponent } from './pages/postulant/test/start-test/start-test.component';
 import { PostulantGuard } from './guards/postulant/postulant.guard';
@@ -20,6 +21,7 @@ import { SeeOnePostulantComponent } from './pages/admin/see-one-postulant/see-on
 import { ConfigureAdminComponent } from './pages/admin/configure-admin/configure-admin.component';
 import { EmotionalTestComponent } from './pages/postulant/test/emotional-test/emotional-test.component';
 import { ResultsComponent } from './pages/postulant/results/results.component';
+import { StartOrientationTestComponent } from './pages/postulant/test/start-orientation-test/start-orientation-test.component';
 
 
 const routes: Routes = [
@@ -31,7 +33,9 @@ const routes: Routes = [
 {path:'home-postulant',component:HomePostulantComponent,canActivate: [PostulantGuard]},
 {path:'start-test',component:StartTestComponent},
 {path:'emotional-test',component:EmotionalTestComponent},
+{path:'orientation-test',component:OrientationTestComponent},
 {path:'result-emotional-test/:totalscore',component:ResultEmotionalTestComponent},
+{path:'start-orientation-test',component:StartOrientationTestComponent},
 {path:'results-jobs',component:ResultsComponent},
 
 {path:'home-admin',component:HomeAdminComponent},

@@ -1,3 +1,4 @@
+import { NoContinueComponent } from './pages/postulant/test/result-emotional-test/no-continue/no-continue.component';
 import { ResultEmotionalTestComponent } from './pages/postulant/test/result-emotional-test/result-emotional-test.component';
 import { ConfigureAdminComponent } from './pages/admin/configure-admin/configure-admin.component';
 import { SeeOnePostulantComponent } from './pages/admin/see-one-postulant/see-one-postulant.component';
@@ -40,6 +41,8 @@ import { ConfigurePostulantDialogComponent } from './pages/postulant/configure-p
 import { StartTestComponent } from './pages/postulant/test/start-test/start-test.component';
 import { EmotionalTestComponent } from './pages/postulant/test/emotional-test/emotional-test.component';
 import { ResultsComponent } from './pages/postulant/results/results.component';
+import { StartOrientationTestComponent } from './pages/postulant/test/start-orientation-test/start-orientation-test.component';
+import { OrientationTestComponent } from './pages/postulant/test/orientation-test/orientation-test.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,10 @@ import { ResultsComponent } from './pages/postulant/results/results.component';
     StartTestComponent,
     EmotionalTestComponent,
     ResultEmotionalTestComponent,
-    ResultsComponent
+    ResultsComponent,
+    NoContinueComponent,
+    StartOrientationTestComponent,
+    OrientationTestComponent
   
   ],
   imports: [

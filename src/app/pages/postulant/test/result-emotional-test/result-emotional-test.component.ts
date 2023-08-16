@@ -1,8 +1,10 @@
+import { NoContinueComponent } from './no-continue/no-continue.component';
 import { TestService } from './../../../../services/test/test.service';
 import { SectionService } from './../../../../services/section/section.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-result-emotional-test',
@@ -15,7 +17,7 @@ export class ResultEmotionalTestComponent implements OnInit {
   TestSection!:string
   sectionMaximun!:number
   score!:number
-  constructor(private SectionService:SectionService,private TestService:TestService,private route:ActivatedRoute,private Router:Router) {
+  constructor(private SectionService:SectionService,private TestService:TestService,private route:ActivatedRoute,private Router:Router,public dialog:MatDialog) {
     this.dataSource = new MatTableDataSource<any>();
 
    }
@@ -40,6 +42,19 @@ export class ResultEmotionalTestComponent implements OnInit {
       })
   }
   continue(){
-    this.Router.navigate([`home-postulant`]);
+    if(this.score>=70){
+      this.Router.navigate(['/start-orientation-test'])
+
+      
+    }else{
+      const dialogRef = this.dialog.open(NoContinueComponent, {
+        width: '500px',
+        data: {}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.Router.navigate([`home-postulant`]);
+      });
+    }
+   
   }
 }

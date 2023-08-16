@@ -60,6 +60,9 @@ export class CreateQuestionComponent implements OnInit {
       this.CreateOption.question=this.questionid
       this.OptionService.createOption(this.CreateOption).subscribe((response:any)=>{
       this.optionnumber=this.optionnumber+1
+      this.changesoption.controls['nameoption'].setValue('')
+      this.changesoption.controls['scoreoption'].setValue('')
+
       console.log(response)
 
 

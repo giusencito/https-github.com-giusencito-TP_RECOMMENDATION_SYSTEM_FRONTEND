@@ -59,12 +59,14 @@ export class EmotionalTestComponent implements OnInit {
     if(this.questionNumber==this.total){
       console.log(this.actualScore)
       this.seeResults()
+    }else{
+      this.actualScore=this.optionSelected+this.actualScore
+      this.optionSelected= -1
+      this.questionNumber=this.questionNumber+1
+      this.questionName=this.dataSource.data[this.questionNumber-1].questionname
+         this.getoptions(this.questionNumber)
     }
-    this.actualScore=this.optionSelected+this.actualScore
-    this.optionSelected= -1
-    this.questionNumber=this.questionNumber+1
-    this.questionName=this.dataSource.data[this.questionNumber-1].questionname
-       this.getoptions(this.questionNumber)
+    
   }
   seeResults(){
     this.Router.navigate([`result-emotional-test`,this.actualScore]);
