@@ -44,5 +44,17 @@ export class TestService {
       retry(2),
       catchError(this.handleError));
    }
+   getAllTest(){
+    return this.http.get<any>(`${this.basePath}` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+   }
+   getTestbyId(id:number){
+    return this.http.get<any>(`${this.basePath}${id}` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+   }
 
 }

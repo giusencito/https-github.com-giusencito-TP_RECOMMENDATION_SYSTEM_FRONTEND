@@ -20,6 +20,10 @@ export class HomeAdminComponent implements OnInit {
 
     this.Router.navigate(['create-test'])
   }
+  editTest(){
+    this.Router.navigate(['edit-test'])
+
+  }
   createAdmin(){
 
     this.Router.navigate(['create-admin'])

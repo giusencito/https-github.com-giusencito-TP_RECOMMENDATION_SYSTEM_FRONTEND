@@ -46,5 +46,18 @@ export class SectionService {
       retry(2),
       catchError(this.handleError));
   }
+  getSectionbyId(id:number){
+    return this.http.get<any>(`${this.basePath}${id}/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+
+
+  }
+
+
+
+
+
 
 }

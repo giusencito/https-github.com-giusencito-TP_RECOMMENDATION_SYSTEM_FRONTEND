@@ -1,0 +1,33 @@
+
+<app-navigation-admin></app-navigation-admin>
+<div class="background">
+  <br>
+  <h2 class="title">Cuestionarios</h2>
+  
+
+ 
+ 
+      <div *ngFor="let test of dataSource.data" class="formut">
+
+      <mat-card class="item">
+     
+       <div>
+        <h3>{{test.testname}} </h3>
+        <p >{{test.testdescription}}</p>
+      </div>
+      <br>
+      <button mat-flat-button  class="button2" (click)="goSection(test.id)">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+ 
+
+     
+    </mat-card>
+    </div>
+  
+  
+
+
+
+
+</div>

@@ -44,5 +44,13 @@ export class QuestionService {
       retry(2),
       catchError(this.handleError));
   }
+  getQuestionbyId(id:number){
+    return this.http.get<any>(`${this.basePath}${id}/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+
+
+  }
 
 }

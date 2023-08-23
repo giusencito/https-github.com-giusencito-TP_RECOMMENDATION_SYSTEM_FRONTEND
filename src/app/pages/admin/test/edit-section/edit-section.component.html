@@ -1,0 +1,27 @@
+<app-navigation-admin></app-navigation-admin>
+<div class="background">
+  <br>
+  <h2 class="title">Secciones del {{Test.testname}}</h2>
+  <div *ngFor="let section of dataSource.data" class="formut">
+
+    <mat-card class="item">
+   
+     
+      <p>{{section.sectionname}} </p>
+   
+    
+    <br>
+    <button mat-flat-button  class="button2" (click)="goQuestions(section.id)">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+
+
+   
+  </mat-card>
+
+</div>
+<div class="space">
+  <button mat-raised-button class="button" color="primary" (click)="goTocreate()">Crear Nueva Sección</button>
+</div>
+
+</div>

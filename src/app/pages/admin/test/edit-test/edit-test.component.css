@@ -1,0 +1,60 @@
+.background{
+    background-image: url('../../../../../assets/images/adminimage.png');
+    background-position: center;
+    background-size: cover;
+    
+    background-repeat: no-repeat;
+    
+    z-index: -1;
+
+
+}
+.title {
+    
+    text-align: center;
+  
+    margin-bottom: 30px;
+    font-family: 'Futura';
+  font-weight:bold;
+  font-size: 2.5rem;
+  }
+  .icon{
+    margin-left: auto;
+  }
+  .button2{
+    background-color: transparent;
+}
+
+.item{
+      width: 90%;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content:space-between;
+  
+
+}
+.formut{
+    display: flex;
+    justify-content: center;
+}
+.text{
+    font-family: 'Futura';
+    font-weight: bold;
+    font-style: normal;
+    font-size: 2.5rem;
+}
+.titletest{
+    font-family: 'Futura';
+    font-weight: bold;
+}
+p{
+    font-family: 'Futura';
+    font-weight: italic;
+    font-style: normal;
+   
+}
+.groups{
+    display: flex;
+    justify-content: space-between;
+}
+ 

@@ -1,3 +1,5 @@
+import { EditScoreComponent } from './pages/admin/test/edit-score/edit-score.component';
+import { EditQuestionComponent } from './pages/admin/test/edit-question/edit-question.component';
 import { NoContinueComponent } from './pages/postulant/test/result-emotional-test/no-continue/no-continue.component';
 import { ResultEmotionalTestComponent } from './pages/postulant/test/result-emotional-test/result-emotional-test.component';
 import { ConfigureAdminComponent } from './pages/admin/configure-admin/configure-admin.component';
@@ -13,7 +15,7 @@ import { RegisterComponent } from './pages/authentication/register/register.comp
 import { MaterialModule } from './material/material/material.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,6 +45,14 @@ import { EmotionalTestComponent } from './pages/postulant/test/emotional-test/em
 import { ResultsComponent } from './pages/postulant/results/results.component';
 import { StartOrientationTestComponent } from './pages/postulant/test/start-orientation-test/start-orientation-test.component';
 import { OrientationTestComponent } from './pages/postulant/test/orientation-test/orientation-test.component';
+import { EditTestComponent } from './pages/admin/test/edit-test/edit-test.component';
+import { EditSectionComponent } from './pages/admin/test/edit-section/edit-section.component';
+import { EditOptionComponent } from './pages/admin/test/edit-option/edit-option.component';
+import { EditSectionCreateComponent } from './pages/admin/test/edit-section-create/edit-section-create.component';
+import { DialogEditSectionCreateComponent } from './pages/admin/test/edit-section-create/dialog-edit-section-create/dialog-edit-section-create.component';
+import { EditQuestionCreateComponent } from './pages/admin/test/edit-question-create/edit-question-create.component';
+import { EditOptionCreateComponent } from './pages/admin/test/edit-option-create/edit-option-create.component';
+import { DialogEditQuestionCreateComponent } from './pages/admin/test/edit-question-create/dialog-edit-question-create/dialog-edit-question-create.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +90,19 @@ import { OrientationTestComponent } from './pages/postulant/test/orientation-tes
     ResultsComponent,
     NoContinueComponent,
     StartOrientationTestComponent,
-    OrientationTestComponent
+    OrientationTestComponent,
+    EditTestComponent,
+    EditSectionComponent,
+    EditQuestionComponent,
+    EditOptionComponent,
+    EditScoreComponent,
+    EditSectionCreateComponent,
+    DialogEditSectionCreateComponent,
+    DialogEditQuestionCreateComponent,
+    EditQuestionCreateComponent,
+    EditOptionCreateComponent,
+   
+
   
   ],
   imports: [
@@ -90,7 +112,8 @@ import { OrientationTestComponent } from './pages/postulant/test/orientation-tes
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

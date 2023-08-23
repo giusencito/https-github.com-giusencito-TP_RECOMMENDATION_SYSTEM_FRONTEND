@@ -1,0 +1,53 @@
+<app-navigation-admin></app-navigation-admin>
+<div class="background">
+  <br>
+  <h2 class="title">Opciones de {{Question.questionname}}</h2>
+
+<form [formGroup]="changesquestion"> 
+  <mat-card class="principal">
+    <mat-form-field appearance="outline" class="matfield">
+         
+      <input matInput placeholder="Nombre de la pregunta" type="text"  formControlName="namequestion"   #namequestion maxlength="200" >
+      <mat-icon matSuffix >view_headline</mat-icon>
+      <mat-error  align="start" *ngIf="changesquestion.controls['namequestion'].dirty && changesquestion.hasError('required','namequestion')">Es requerido</mat-error>
+      <mat-error  align="end" *ngIf="changesquestion.controls['namequestion'].dirty && changesquestion.hasError('minlength','namequestion')">Más de tres caracteres</mat-error>
+      <mat-hint align="end">{{namequestion.value.length}} / 200</mat-hint>
+     
+      
+     
+  </mat-form-field>
+  <button mat-raised-button class="button3" [disabled]="!(changesquestion.valid)" >Actualizar Pregunta</button>
+
+  </mat-card>
+</form>
+
+
+
+
+
+
+
+
+  <div *ngFor="let option of dataSource.data" class="formut">
+
+    <mat-card class="item">
+   
+     
+      <p>{{option.optionname}} </p>
+   
+    
+    <br>
+    <button mat-flat-button  class="button2" (click)="goToScore(option.id)">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+
+
+   
+  </mat-card>
+
+</div>
+<div class="space">
+  <button mat-raised-button class="button" color="primary" (click)="goToCreate()">Crear Nueva Opción</button>
+</div>
+
+</div>

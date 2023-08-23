@@ -1,0 +1,40 @@
+<app-navigation-admin></app-navigation-admin>
+<div class="background">
+  <br>
+  
+  <form [formGroup]="changesoption">
+    <mat-card class="secondary">
+      <h2 class="title">Editar Opcion</h2>
+      <mat-form-field appearance="outline" class="matfield">
+           
+        <input matInput placeholder="Nombre de la opción" type="text"  formControlName="nameoption"  #nameoption maxlength="200" [(ngModel)]="Option.optionname"> 
+        <mat-icon matSuffix >label_important</mat-icon>
+        <mat-error  align="start" *ngIf="changesoption.controls['nameoption'].dirty && changesoption.hasError('required','nameoption')">Es requerido</mat-error>
+      <mat-error  align="end" *ngIf="changesoption.controls['nameoption'].dirty && changesoption.hasError('minlength','nameoption')">Más de tres caracteres</mat-error>
+        <mat-hint align="end">{{nameoption.value.length}} / 200</mat-hint>
+       
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="matfield" >
+           
+      <input matInput placeholder="Puntaje" type="number"  formControlName="scoreoption" [(ngModel)]="Option.optionscore">
+      <mat-icon matSuffix >score</mat-icon>
+      <mat-error  align="start" *ngIf="changesoption.controls['scoreoption'].dirty && changesoption.hasError('required','scoreoption')">Es requerido</mat-error>
+     
+  </mat-form-field>
+      <button mat-raised-button class="button" [disabled]="!(changesoption.valid)" >Editar Opción</button>
+    </mat-card>
+  </form>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+</div>
+

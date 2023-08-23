@@ -14,6 +14,6 @@ export class StartOrientationTestComponent implements OnInit {
   }
   continue(){
     
-
+  this.Router.navigate(['orientation-test'])
   }
 }
