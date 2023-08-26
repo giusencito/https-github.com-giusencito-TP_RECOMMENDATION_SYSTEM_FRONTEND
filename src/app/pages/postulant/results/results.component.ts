@@ -1,4 +1,5 @@
 import { RecommendationService } from './../../../services/recommendation/recommendation.service';
+import { CourserecomendationService } from 'src/app/services/courserecomendation/courserecomendation.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -10,8 +11,11 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ResultsComponent implements OnInit {
 
   jobs: any[] = []
+  opencourses:boolean = false
+  idtest:number = 1
+  courses: any[] = []
 
-  constructor(private RecommendationService:RecommendationService) { 
+  constructor(private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService) { 
    
 
   }
@@ -70,6 +74,10 @@ gotoUrl(url:string){
   window.open(url, '_blank');
 }
 
+gotoCourseUrl(url:string){
+  window.open(url, '_blank');
+}
+
 
 
   recommendation(){
@@ -80,4 +88,29 @@ gotoUrl(url:string){
               console.log(this.jobs[0]);
     })
   }
+
+  openCourses(id:number){
+    if(this.opencourses == false){
+      this.opencourses = true
+      this.courserecommendation(id)
+    }else{
+      this.opencourses = false
+    }
+      
+  }
+
+  courserecommendation(id:number){
+    console.log(id)
+    console.log(this.idtest)
+    
+    console.log("esta afuera del servicio")
+    
+    this.CourserecomendationService.courseRecommendation(this.idtest).subscribe((response:any)=>{
+      console.log("esta entrando")
+      console.log(response)
+      this.courses = response
+    })
+    
+  }
+
 }

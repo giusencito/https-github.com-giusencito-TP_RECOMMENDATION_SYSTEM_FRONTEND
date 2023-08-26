@@ -59,7 +59,7 @@
       <div class="extras">
         
       <button mat-raised-button class="btn2" (click)="gotoUrl(job.URL)">Ver más</button>
-      <button mat-raised-button class="btn2">
+      <button mat-raised-button class="btn2" (click)="openCourses(job.id)">
         <span>Cursos</span>
         <img src="../../../../assets/images/Next page.png" class="imgd">
         </button>
@@ -130,20 +130,19 @@
   
   
   
-  <div class="section2">
+  <div class="section2" *ngIf="opencourses">
   <mat-card class="coursecard">
   
     <div class="center">
   <p class="titlteousemain">Lista de cursos de capacitación</p>
   </div>
-  <mat-card class="coursesection">
+  <mat-card class="coursesection" *ngFor="let course of courses">
     <div class="fromicon">
     <mat-icon class="courseicon">book</mat-icon>
   </div>
-    <p class="textforcouse">Cómo realizar entrevistas 
-      de trabajo exitosas</p>
+    <p class="textforcouse">{{course.CourseTitle}}</p>
       <div class="fromicon">
-        <button mat-raised-button class="buttoncourse">Ver más</button>
+        <button mat-raised-button class="buttoncourse" (click)="gotoCourseUrl(course.URL)">Ver más</button>
       </div>
       
   </mat-card>
