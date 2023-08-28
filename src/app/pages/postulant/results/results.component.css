@@ -18,6 +18,7 @@ font-size: 1rem;
 font-style: normal;
 
 text-transform: uppercase;
+margin-left: 9%;
 }
 .btn2{
 border-radius: 24px;
@@ -31,12 +32,14 @@ font-style: normal;
 }
 
 .card{
-    width: 110%;
+    width: 95%;
     border-radius: 25px;
     background: #FFF;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     display: flex;
     justify-content:space-between;
+    margin-bottom:20px;
+    margin-top: 20px;
 }
 .imgd{
     
@@ -60,12 +63,13 @@ width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-left: 5%;
 }
 .main{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
 
 }
 .first{
@@ -90,11 +94,6 @@ width: 300px;
     display: flex;
     justify-content: space-evenly;
 }
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   
   
   
@@ -105,7 +104,7 @@ width: 300px;
     
         position: absolute;
         top: 23%;
-        left: 7%;
+        left: 5%;
         transform: translate(-50%, -50%);
         font-size: 1rem;
         font-weight: italic;
@@ -115,8 +114,9 @@ width: 300px;
   }
   .icd{
     transform: scale(1.5);
-    margin-top: 10px;
-  
+    margin-top: 12px;
+    padding-left: 1%;
+    padding-right: 1%;
   }
   .iconsec{
    color: #5686E1;
@@ -130,8 +130,7 @@ font-style: bold;
     border-radius: 35px;
 background: #FFF;
 box-shadow: 0px 0px 8px 0px #BCBCBC;
-width: 80%;
-margin-left: 90px;
+width: 110%;
   }
   .center{
     display: flex;
@@ -156,6 +155,9 @@ background: #FFF;
 box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 display: flex;
 justify-content:space-between;
+width: 95%;
+margin-top: 20px;
+margin-bottom: 20px;
 
   }
   .courseicon{
@@ -183,7 +185,6 @@ font-style: normal;
   }
   .group{
     display: flex;
-    justify-content:space-between;
   
   }
 .fromicon{
@@ -202,13 +203,39 @@ font-style: normal;
   z-index: -1;
 
 }
-.job{
+.container {
+  width: 120%; /* Ajusta el ancho según tus necesidades */
+  height: 15%; /* Ajusta la altura según tus necesidades */
+  overflow-y: auto; /* Habilita el scroll vertical cuando el contenido excede la altura */
+  margin-left: 8%;
+}
 
-margin-bottom:20px;
-margin-top: 20px;
+.container::-webkit-scrollbar {
+  width: 10px;
+}
 
+.container::-webkit-scrollbar-thumb {
+  background-color: #C7C8CA;
+  border-radius: 5px;
+}
 
+.container::-webkit-scrollbar-track {
+  background-color: white;
+}
 
+.scrollable-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px; /* Agrega espaciado interno si lo deseas */
+}
 
+.progress-container {
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos */
+  gap: 10px; /* Espaciado entre el spinner y el número */
+}
 
+.containercourse{
+  max-width: 100%; /* Ajusta el valor según tus necesidades */
+  padding: 20px;
 }

@@ -16,21 +16,25 @@
   <div class="group">
   <div class="section1">
   <button mat-flat-button class="button">Ordenar Trabajos</button>
+  <br>
+  <br>
+  <br>
 
-  
-  <div *ngFor="let job of jobs" class="job">
+  <div class="container">
+    <div class="scrollable-container">
+    <div *ngFor="let job of jobs">
   
     <mat-card class="card">
   
       <div class="main">  
       
         <div class="first">
-        <div class="container">
+        <div class="progress-container">
           <mat-progress-spinner [diameter]="50" mode="determinate" [value]="job.similarity_pred*100"  color="#ff0000"></mat-progress-spinner>
           <span class="progress-number">{{job.similarity_pred*100}}%</span>
         </div>
        
-       <br>
+        <br>
         <mat-icon class="icd">work</mat-icon>
         <br>
       <p class="title">{{job.Jobname}}</p>
@@ -44,7 +48,10 @@
       <mat-icon class="iconsec"> location_on</mat-icon>
       <p class="textsec">{{job.Location}}</p>
       </div>
-      
+      <div class="location">
+        <mat-icon class="iconsec"> business</mat-icon>
+        <p class="textsec" style="padding-left: 5px;">{{job.Company}}</p>
+      </div>
       <p class="textsec">{{isRemote(job.Jobname)}}</p>
       <p class="textsec">Hace {{translate(job.Date)}}</p>
       </div>
@@ -72,82 +79,36 @@
   
   
   
+    </div>
+    </div>
   </div>
-
-  <mat-card class="card">
+  </div>
   
-    <div class="main">  
+  
+  
+  
+  <div style="margin-left: 300px;"></div>
+
+  <div *ngIf="opencourses && courses.length">
+    <div class="containercourse">  
+    <mat-card class="coursecard">
     
-      <div class="first">
-      <div class="container">
-        <mat-progress-spinner [diameter]="50" mode="determinate" [value]="90"  color="#ff0000"></mat-progress-spinner>
-        <span class="progress-number">90%</span>
+      <div class="center">
+      <p class="titlteousemain">Lista de cursos de capacitación</p>
       </div>
-     
-     <br>
-      <mat-icon class="icd">work</mat-icon>
-      <br>
-    <p class="title">Analista programador Front end</p>
-    <br>
-    
-    
+    <mat-card class="coursesection" *ngFor="let course of courses">
+      <div class="fromicon">
+      <mat-icon class="courseicon">book</mat-icon>
     </div>
-    
-    <div class="second">
-    <div class="location">
-    <mat-icon class="iconsec"> location_on</mat-icon>
-    <p class="textsec">Lima,Lima,Perú</p>
-    </div>
-    <div class="books">
-    <mat-icon class="iconsec">book</mat-icon>
-    <p class="textsec">5 cursos</p>
-    </div>
-    <p class="textsec">En remoto</p>
-    <p class="textsec">Hace 1 mes</p>
-    </div>
-    
-    
-    
-    </div>
-    
-    
-    
-    
-    <div class="extras">
-    <button mat-raised-button class="btn2">Ver más</button>
-    <button mat-raised-button class="btn2">
-      <span>Cursos</span>
-      <img src="../../../../assets/images/Next page.png" class="imgd">
-      </button>
-    <button mat-raised-button class="btn2">Postulado</button>
-    </div>
-    
+      <p class="textforcouse">{{course.CourseTitle}}</p>
+        <div class="fromicon">
+          <button mat-raised-button class="buttoncourse" (click)="gotoCourseUrl(course.URL)">Ver más</button>
+        </div>
+        
+    </mat-card>
     
     </mat-card>
-  </div>
-  
-  
-  
-  
-  
-  <div class="section2" *ngIf="opencourses">
-  <mat-card class="coursecard">
-  
-    <div class="center">
-  <p class="titlteousemain">Lista de cursos de capacitación</p>
-  </div>
-  <mat-card class="coursesection" *ngFor="let course of courses">
-    <div class="fromicon">
-    <mat-icon class="courseicon">book</mat-icon>
-  </div>
-    <p class="textforcouse">{{course.CourseTitle}}</p>
-      <div class="fromicon">
-        <button mat-raised-button class="buttoncourse" (click)="gotoCourseUrl(course.URL)">Ver más</button>
-      </div>
-      
-  </mat-card>
-  
-  </mat-card>
+    </div>
   </div>
   </div>
 

@@ -82,10 +82,9 @@ gotoCourseUrl(url:string){
 
   recommendation(){
     this.RecommendationService.hydridRecommendation().subscribe((response:any)=>{
-              this.jobs= response.slice(0,5);
-              
+              this.jobs = response;
 
-              console.log(this.jobs[0]);
+              console.log(this.jobs);
     })
   }
 
