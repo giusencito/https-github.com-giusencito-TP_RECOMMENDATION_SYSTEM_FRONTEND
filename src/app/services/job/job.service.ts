@@ -45,15 +45,15 @@ export class JobService {
       catchError(this.handleError));
   }
 
-  CreateJobs(){
-    return this.http.post<any>(`${this.basePath}/` ,this.httpOptions)
+  CreateJobs(item: any){
+    return this.http.post<any>(`${this.basePath}/` , JSON.stringify(item),this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));
   }
 
-  UpdateJobs(id:number){
-    return this.http.put<any>(`${this.basePath}/${id}/` ,this.httpOptions)
+  UpdateJobs(id:number, item: any){
+    return this.http.put<any>(`${this.basePath}/${id}/` , JSON.stringify(item) ,this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));

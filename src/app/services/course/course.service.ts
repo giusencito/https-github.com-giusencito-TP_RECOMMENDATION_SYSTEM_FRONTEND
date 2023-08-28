@@ -45,15 +45,15 @@ export class CourseService {
       catchError(this.handleError));
   }
 
-  CreateCourses(){
-    return this.http.post<any>(`${this.basePath}/` ,this.httpOptions)
+  CreateCourses(item:any){
+    return this.http.post<any>(`${this.basePath}/` ,JSON.stringify(item),this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));
   }
 
-  UpdateCourses(id:number){
-    return this.http.put<any>(`${this.basePath}/${id}/` ,this.httpOptions)
+  UpdateCourses(id:number,item:any){
+    return this.http.put<any>(`${this.basePath}/${id}/` ,JSON.stringify(item),this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));

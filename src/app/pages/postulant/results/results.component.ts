@@ -1,6 +1,10 @@
 import { RecommendationService } from './../../../services/recommendation/recommendation.service';
 import { CourserecomendationService } from 'src/app/services/courserecomendation/courserecomendation.service';
+import { CourseService } from 'src/app/services/course/course.service';
+import { JobService } from 'src/app/services/job/job.service';
 import { Component, OnInit } from '@angular/core';
+import { Job } from 'src/app/models/result/job';
+import { Course } from 'src/app/models/result/course';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -10,13 +14,18 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ResultsComponent implements OnInit {
 
-  jobs: any[] = []
+  jobs:any[] = []
   opencourses:boolean = false
-  idtest:number = 1
+  jobdata!:Job
+  coursedata!:Course
   courses: any[] = []
+  cont:number = 0
 
-  constructor(private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService) { 
-   
+  constructor(private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
+              private JobService:JobService) { 
+              
+              this.jobdata = {} as Job;
+              this.coursedata = {} as Course;
 
   }
 
@@ -82,15 +91,28 @@ gotoCourseUrl(url:string){
 
   recommendation(){
     this.RecommendationService.hydridRecommendation().subscribe((response:any)=>{
-              this.jobs = response;
-
-              console.log(this.jobs);
+          
+          for(const job of response){       
+                const validCharactersRegex: RegExp = /[\x20-\x7E\u00A0-\u00FF\u0100-\u017F]/g;
+                const cleanedText: string = job.Description.match(validCharactersRegex)?.join('') || '';
+                this.jobdata.jobName = job.Jobname
+                this.jobdata.jobDescription = cleanedText
+                this.jobdata.jobUrl = job.URL
+                this.jobdata.posibilityPercentage = job.similarity_pred
+                this.jobdata.resultTest = 1
+                this.JobService.CreateJobs(this.jobdata).subscribe((response:any)=>{
+                    this.jobs.push(response)
+                })
+            } 
+          console.log(this.jobs);
+              
     })
   }
 
   openCourses(id:number){
     if(this.opencourses == false){
       this.opencourses = true
+      this.courses = []
       this.courserecommendation(id)
     }else{
       this.opencourses = false
@@ -100,14 +122,24 @@ gotoCourseUrl(url:string){
 
   courserecommendation(id:number){
     console.log(id)
-    console.log(this.idtest)
     
     console.log("esta afuera del servicio")
     
-    this.CourserecomendationService.courseRecommendation(this.idtest).subscribe((response:any)=>{
+    this.CourserecomendationService.courseRecommendation(id).subscribe((response:any)=>{
       console.log("esta entrando")
-      console.log(response)
-      this.courses = response
+
+      for(const course of response){
+        this.coursedata.courseName = course.CourseTitle
+        this.coursedata.courseDescription = course.Description
+        this.coursedata.Url = course.URL        
+        this.coursedata.job = id   
+        
+        this.CourseService.CreateCourses(this.coursedata).subscribe((response:any)=>{
+          this.courses.push(response) 
+        }) 
+        
+      }
+      console.log(this.courses)
     })
     
   }
