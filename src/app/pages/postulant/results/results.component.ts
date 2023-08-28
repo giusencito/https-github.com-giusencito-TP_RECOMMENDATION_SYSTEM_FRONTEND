@@ -98,6 +98,9 @@ gotoCourseUrl(url:string){
                 this.jobdata.jobName = job.Jobname
                 this.jobdata.jobDescription = cleanedText
                 this.jobdata.jobUrl = job.URL
+                this.jobdata.jobLocation = job.Location
+                this.jobdata.jobCompany = job.Company
+                this.jobdata.jobDate = job.Date
                 this.jobdata.posibilityPercentage = job.similarity_pred
                 this.jobdata.resultTest = 1
                 this.JobService.CreateJobs(this.jobdata).subscribe((response:any)=>{
@@ -124,24 +127,30 @@ gotoCourseUrl(url:string){
     console.log(id)
     
     console.log("esta afuera del servicio")
-    
-    this.CourserecomendationService.courseRecommendation(id).subscribe((response:any)=>{
-      console.log("esta entrando")
+    this.CourseService.GetCoursesByLinkedinJobsId(id).subscribe((responsecoursesjob:any)=>{
+      console.log(responsecoursesjob.rows)
+      if(responsecoursesjob.rows.length == 0){
+        this.CourserecomendationService.courseRecommendation(id).subscribe((response:any)=>{
+          console.log("esta entrando")
 
-      for(const course of response){
-        this.coursedata.courseName = course.CourseTitle
-        this.coursedata.courseDescription = course.Description
-        this.coursedata.Url = course.URL        
-        this.coursedata.job = id   
-        
-        this.CourseService.CreateCourses(this.coursedata).subscribe((response:any)=>{
-          this.courses.push(response) 
-        }) 
-        
+          for(const course of response){
+            this.coursedata.courseName = course.CourseTitle
+            this.coursedata.courseDescription = course.Description
+            this.coursedata.Url = course.URL        
+            this.coursedata.job = id   
+            
+            this.CourseService.CreateCourses(this.coursedata).subscribe((response:any)=>{
+              this.courses.push(response) 
+            }) 
+            
+          }
+          console.log(this.courses)
+        })
+      } else {
+        this.courses = responsecoursesjob.rows
+        console.log(this.courses)
       }
-      console.log(this.courses)
     })
-    
   }
 
 }

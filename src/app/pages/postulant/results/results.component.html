@@ -46,14 +46,14 @@
       <div class="second">
       <div class="location">
       <mat-icon class="iconsec"> location_on</mat-icon>
-      <p class="textsec">lima lima peru</p>
+      <p class="textsec">{{job.jobLocation}}</p>
       </div>
       <div class="location">
-        <mat-icon class="iconsec"> business</mat-icon>
-        <p class="textsec" style="padding-left: 5px;">{{job.Company}}</p>
+        <mat-icon class="iconsec">business</mat-icon>
+        <p class="textsec" style="padding-left: 5px;">{{job.jobCompany}}</p>
       </div>
-      <p class="textsec">Remoto</p>
-      <p class="textsec">Hace 1 semana</p>
+      <p class="textsec">{{isRemote(job.jobName)}}</p>
+      <p class="textsec">{{translate(job.jobDate)}}</p>
       </div>
       
       
