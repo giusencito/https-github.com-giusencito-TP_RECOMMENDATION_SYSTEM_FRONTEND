@@ -89,10 +89,23 @@
   
   <div style="margin-left: 300px;"></div>
 
-  <div *ngIf="opencourses && courses.length">
+  <div *ngIf="opencourses && courses.length && questionsanswerslist.length">
     <div class="containercourse">  
     <mat-card class="coursecard">
-    
+      <div class="center">
+        <p class="titlteousemain">Lista de 5 preguntas claves en entrevistas laborales para {{jobdataselected.jobName}}</p>
+      </div>
+      <mat-card class="coursesection" *ngFor="let questionanswerobject of questionsanswerslist">
+        <div class="fromicon">
+        <mat-icon class="courseicon">question_answer</mat-icon>
+      </div>
+        <p class="textforcouse">{{questionanswerobject.question}}</p>
+          <div class="fromicon">
+            <button mat-raised-button class="buttoncourse" (click)="openAnswer(questionanswerobject.answer)">Posible Respuesta</button>
+          </div>
+          
+      </mat-card>
+
       <div class="center">
       <p class="titlteousemain">Lista de cursos de capacitación</p>
       </div>

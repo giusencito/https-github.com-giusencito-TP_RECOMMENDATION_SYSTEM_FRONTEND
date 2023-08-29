@@ -2,10 +2,14 @@ import { RecommendationService } from './../../../services/recommendation/recomm
 import { CourserecomendationService } from 'src/app/services/courserecomendation/courserecomendation.service';
 import { CourseService } from 'src/app/services/course/course.service';
 import { JobService } from 'src/app/services/job/job.service';
+import { InterviewquestionService } from 'src/app/services/interviewquestions/interviewquestion.service';
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/result/job';
 import { Course } from 'src/app/models/result/course';
+import { Interviewquestion } from 'src/app/models/result/interviewquestion';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { AnswerDialogComponent } from './answer-dialog/answer-dialog.component';
 
 @Component({
   selector: 'app-results',
@@ -17,15 +21,22 @@ export class ResultsComponent implements OnInit {
   jobs:any[] = []
   opencourses:boolean = false
   jobdata!:Job
+  jobdataselected!:Job
   coursedata!:Course
+  interviewquestiondata !:Interviewquestion
   courses: any[] = []
+  questions: any[] = []
+  answers: any[] = []
+  questionsanswerslist: any[] = []
   cont:number = 0
 
-  constructor(private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
-              private JobService:JobService) { 
+  constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
+              private JobService:JobService, private InterviewquestionService:InterviewquestionService) { 
               
               this.jobdata = {} as Job;
               this.coursedata = {} as Course;
+              this.jobdataselected = {} as Job;
+              this.interviewquestiondata = {} as Interviewquestion;
 
   }
 
@@ -116,7 +127,15 @@ gotoCourseUrl(url:string){
     if(this.opencourses == false){
       this.opencourses = true
       this.courses = []
+      this.questions = []
+      this.answers = []
+      this.questionsanswerslist = []
+      this.JobService.GetJobById(id).subscribe((response:any)=>{
+        this.jobdataselected = response
+        console.log(this.jobdataselected)
+      })
       this.courserecommendation(id)
+      this.QuestionandAnswwerRecomendation(id)
     }else{
       this.opencourses = false
     }
@@ -150,6 +169,46 @@ gotoCourseUrl(url:string){
         this.courses = responsecoursesjob.rows
         console.log(this.courses)
       }
+    })
+  }
+
+  QuestionandAnswwerRecomendation(id:number){
+    console.log(id)
+    console.log("esta afuera del servicio QuestionAnswers")
+    this.InterviewquestionService.GetQuestionsbyJobId(id).subscribe((responsequestions:any)=>{
+      console.log(responsequestions.rows)
+      if(responsequestions.rows.length == 0){
+        this.CourserecomendationService.QuestionRecommendation(id).subscribe((response:any)=>{
+          console.log("esta entrando a la recomendacion QuestionAnswers")
+          const indexRespuestas = response.indexOf("Respuestas:");
+          const preguntas = response.slice(1, indexRespuestas);
+          const respuestas = response.slice(indexRespuestas + 1);
+          this.questions = preguntas
+          this.answers = respuestas
+          for(let i = 0; i < this.questions.length; i++){
+            this.interviewquestiondata.question = this.questions[i]  
+            this.interviewquestiondata.answer = this.answers[i]
+            this.interviewquestiondata.job = id
+    
+            this.InterviewquestionService.CreateInterviewQuestions(this.interviewquestiondata).subscribe((response:any)=>{
+               this.questionsanswerslist.push(response)
+            })
+          } 
+          console.log(this.questionsanswerslist)
+        })
+      }else{
+        this.questionsanswerslist = responsequestions.rows
+        console.log(this.questionsanswerslist)
+      }
+
+    })
+    
+  }
+
+  openAnswer(answer:string){
+    console.log(answer)
+    const dialogRef= this.dialog.open(AnswerDialogComponent,{
+      data: answer
     })
   }
 

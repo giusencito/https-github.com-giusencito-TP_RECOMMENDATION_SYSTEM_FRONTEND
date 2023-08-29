@@ -104,7 +104,7 @@ width: 300px;
     
         position: absolute;
         top: 23%;
-        left: 5.5%;
+        left: 6%;
         transform: translate(-50%, -50%);
         font-size: 1rem;
         font-weight: italic;
@@ -145,7 +145,7 @@ font-weight: 700;
 line-height: 20px;
 letter-spacing: 0.25px;
 color: black;
-margin-bottom: 20px;
+margin-bottom: 20px; 
 margin-top: 20px;
   }
   .coursesection{

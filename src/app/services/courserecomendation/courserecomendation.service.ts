@@ -36,7 +36,14 @@ export class CourserecomendationService {
     .pipe(
       retry(2),
       catchError(this.handleError));
-  }  
+  }
+  
+  QuestionRecommendation(id:number){
+    return this.http.post<any>(`${this.basePath}/${id}/QuestionRecomendation/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
 
 
 }
