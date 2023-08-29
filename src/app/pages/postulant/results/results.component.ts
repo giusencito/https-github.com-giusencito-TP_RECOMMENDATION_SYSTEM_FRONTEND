@@ -185,6 +185,14 @@ gotoCourseUrl(url:string){
           const respuestas = response.slice(indexRespuestas + 1);
           this.questions = preguntas
           this.answers = respuestas
+          console.log("Con los numeros iniciales de las preguntas y respuestas")
+          console.log(this.questions)
+          console.log(this.answers)
+          this.questions = this.questions.map(question => question.split('. ')[1]);
+          this.answers = this.answers.map(answer => answer.split('. ')[1]);
+          console.log("Quitando los numeros iniciales de las preguntas y respuestas")
+          console.log(this.questions)
+          console.log(this.answers)
           for(let i = 0; i < this.questions.length; i++){
             this.interviewquestiondata.question = this.questions[i]  
             this.interviewquestiondata.answer = this.answers[i]
