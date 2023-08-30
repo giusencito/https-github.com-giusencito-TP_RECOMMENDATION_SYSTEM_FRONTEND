@@ -66,7 +66,7 @@
       <div class="extras">
         
       <button mat-raised-button class="btn2" (click)="gotoUrl(job.jobUrl)">Ver más</button>
-      <button mat-raised-button class="btn2" (click)="openCourses(job.id)">
+      <button mat-raised-button class="btn2" (click)="openCourses(job.id)" [disabled]="questionsanswerslist.length == 0 && opencourses">
         <span>Cursos</span>
         <img src="../../../../assets/images/Next page.png" class="imgd">
         </button>
