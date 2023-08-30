@@ -87,9 +87,9 @@
   
   
   
-  <div style="margin-left: 300px;"></div>
-
-  <div *ngIf="opencourses && courses.length && questionsanswerslist.length">
+  <div style="margin-left: 250px;"></div>
+  <div *ngIf="opencourses">
+  <div *ngIf="courses.length && questionsanswerslist.length; else loadingSpinner">
     <div class="containercourse">  
     <mat-card class="coursecard">
       <div class="center">
@@ -123,6 +123,15 @@
     </mat-card>
     </div>
   </div>
+</div>
+  <!-- Spinner de carga -->
+  <ng-template #loadingSpinner>
+    <div class="loading-container">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p style="padding-top: 5px;">Cargando</p>
+    </div>
+  </ng-template>
+
   </div>
 
 
