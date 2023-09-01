@@ -1,0 +1,166 @@
+.bar{
+    background-color:skyblue;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.button{
+
+    background: #12DDF8;
+    width: 30%;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: Futura;
+    font-size: 2rem
+
+}
+.center{
+    display: flex;
+    justify-content: center;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+.card{
+    border-radius: 125px;
+    background: #76B2B2;
+    display: flex;
+    width: 60%;
+    justify-content: space-evenly;
+
+}
+.functions{
+    border: 1px solid #000;
+background: #07E1FF;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+display: flex;
+width: 80%;
+justify-content: space-between;
+}
+.purpose{
+    margin-top: 20px;
+    text-align: center;
+font-family: Futura;
+font-size: 2rem;
+white-space: pre-wrap;
+
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.type{
+  
+    text-align: center;
+    font-family: Futura;
+    font-size: 2rem;
+    white-space: pre-wrap;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.slogan{
+
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: Futura;
+    font-size: 4.5rem
+
+}
+.postulant{
+    width: 30%;
+}
+.funcimg{
+    width: 50%;
+
+    
+}
+.centerimg{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.funcimg2{
+    width: 80%;
+   
+}
+.funcimg3{
+    width: 80%;
+
+}
+.background{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    background-image: url('../../../assets/images/landing.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+ 
+}
+.logo{
+    margin-top: 40px;
+    width: 80%;
+}
+span{
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: Futura;
+    font-size: 1.5rem
+}
+@media (max-width: 767px) {
+
+    .slogan{
+        font-size: 2.5rem
+
+    }
+    .postulant{
+        width: 30%;
+    }
+    .card{
+        flex-direction: column;
+    }
+    .purpose{
+        font-size: 1.5rem
+
+    }
+   .functions{
+    flex-direction: column;
+   }
+   .type{
+    width: 100%;
+   }
+   .funcimg{
+    margin-left: auto; margin-right: auto;
+    width:50%;
+   }
+   .funcimg2{
+    margin-left: auto; margin-right: auto;
+    width:50%;
+   }
+   .funcimg3{
+    margin-left: auto; margin-right: auto;
+    width:50%;
+   }
+   .postulant{
+    width: 50%;
+    margin-left: auto; margin-right: auto;
+
+   }
+   .button{
+    width: 100%;
+   }
+   
+
+
+
+
+
+
+
+
+
+}

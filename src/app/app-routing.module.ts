@@ -30,9 +30,15 @@ import { EditQuestionComponent } from './pages/admin/test/edit-question/edit-que
 import { EditSectionCreateComponent } from './pages/admin/test/edit-section-create/edit-section-create.component';
 import { EditQuestionCreateComponent } from './pages/admin/test/edit-question-create/edit-question-create.component';
 import { EditOptionCreateComponent } from './pages/admin/test/edit-option-create/edit-option-create.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 
 const routes: Routes = [
+
+
+  {path:'landing',component:LandingComponent,canActivate: [LoginGuard]},
+
+
 
 {path:'login',component:LoginComponent,canActivate: [LoginGuard]},
 {path:'register',component:RegisterComponent,canActivate: [LoginGuard]},

@@ -53,6 +53,7 @@ import { DialogEditSectionCreateComponent } from './pages/admin/test/edit-sectio
 import { EditQuestionCreateComponent } from './pages/admin/test/edit-question-create/edit-question-create.component';
 import { EditOptionCreateComponent } from './pages/admin/test/edit-option-create/edit-option-create.component';
 import { DialogEditQuestionCreateComponent } from './pages/admin/test/edit-question-create/dialog-edit-question-create/dialog-edit-question-create.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { DialogEditQuestionCreateComponent } from './pages/admin/test/edit-quest
     DialogEditQuestionCreateComponent,
     EditQuestionCreateComponent,
     EditOptionCreateComponent,
+    LandingComponent
    
 
   
