@@ -1,3 +1,4 @@
+import { OrientedTestResultComponent } from './pages/postulant/oriented-test-result/oriented-test-result.component';
 import { EditScoreComponent } from './pages/admin/test/edit-score/edit-score.component';
 import { EditOptionComponent } from './pages/admin/test/edit-option/edit-option.component';
 import { OrientationTestComponent } from './pages/postulant/test/orientation-test/orientation-test.component';
@@ -52,6 +53,7 @@ const routes: Routes = [
 {path:'orientation-test',component:OrientationTestComponent},
 {path:'result-emotional-test/:totalscore',component:ResultEmotionalTestComponent},
 {path:'start-orientation-test',component:StartOrientationTestComponent},
+{path:'orientation-test-result',component:OrientedTestResultComponent},
 {path:'results-jobs',component:ResultsComponent},
 {path:'recommendation-history',component:RecommendationHistoryComponent},
 
