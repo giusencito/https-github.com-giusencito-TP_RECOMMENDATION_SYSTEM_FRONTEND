@@ -37,7 +37,7 @@ import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat
 
 const routes: Routes = [
 
-
+  {path:'',redirectTo:'landing',pathMatch:'full'},
   {path:'landing',component:LandingComponent,canActivate: [LoginGuard]},
 
 
@@ -70,10 +70,10 @@ const routes: Routes = [
 
 
 
-{path:'edit-question/:question',component:EditOptionComponent},
+{path:'edit-question/section/:section/:question',component:EditOptionComponent},
 {path:'edit-question/:question/create-option',component:EditOptionCreateComponent},
 
-{path:'edit-score/:option',component:EditScoreComponent},
+{path:'edit-score/question/:question/:option',component:EditScoreComponent},
 
 {path:'create-test/:id/create-section',component:CreateSectionComponent},
 {path:'create-test/:id/create-section/:section/create-question',component:CreateQuestionComponent},

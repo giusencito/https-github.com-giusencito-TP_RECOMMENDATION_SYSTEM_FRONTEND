@@ -21,7 +21,7 @@
       <mat-error  align="start" *ngIf="changesoption.controls['scoreoption'].dirty && changesoption.hasError('required','scoreoption')">Es requerido</mat-error>
      
   </mat-form-field>
-      <button mat-raised-button class="button" [disabled]="!(changesoption.valid)" >Editar Opción</button>
+      <button mat-raised-button class="button" [disabled]="!(changesoption.valid)" (click)="update()">Editar Opción</button>
     </mat-card>
   </form>
 <br>

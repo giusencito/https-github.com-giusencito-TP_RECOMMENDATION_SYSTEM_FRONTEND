@@ -4,6 +4,9 @@ import { QuestionService } from './../../../../services/question/question.servic
 import { Section } from './../../../../models/test/Section';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditQuestionCreateComponent } from '../edit-question-create/dialog-edit-question-create/dialog-edit-question-create.component';
+import { TemplateDialogComponent } from 'src/app/pages/template-dialog/template-dialog.component';
 
 @Component({
   selector: 'app-edit-question',
@@ -13,7 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class EditQuestionComponent implements OnInit {
   dataSource !:MatTableDataSource<any>;
   Section!:Section
-  constructor(private QuestionService:QuestionService,private SectionService:SectionService,private ActivatedRoute:ActivatedRoute,private Router:Router) {
+  constructor(private QuestionService:QuestionService,private SectionService:SectionService,private ActivatedRoute:ActivatedRoute,private Router:Router,public dialog:MatDialog) {
     this.Section = {} as Section
     this.dataSource = new MatTableDataSource<any>();
 
@@ -39,7 +42,11 @@ this.QuestionService.getquestionbySection(id).subscribe((response:any)=>{
 
   }
   goToQuestion(id:number){
-    this.Router.navigate(['edit-question',id]);
+    let id2 =parseInt(this.ActivatedRoute.snapshot.paramMap.get('section')!);
+
+    this.Router.navigate(['edit-question','section',id2,id]);
+  
+
 
   }
   goToCreate(){
@@ -51,5 +58,6 @@ this.QuestionService.getquestionbySection(id).subscribe((response:any)=>{
 
   }
   
+
 
 }

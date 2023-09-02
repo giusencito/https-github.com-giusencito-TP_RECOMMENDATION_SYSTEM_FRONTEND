@@ -16,7 +16,7 @@
       
      
   </mat-form-field>
-  <button mat-raised-button class="button3" [disabled]="!(changesquestion.valid)" >Actualizar Pregunta</button>
+  <button mat-raised-button class="button3" [disabled]="!(changesquestion.valid)" (click)="update()">Actualizar Pregunta</button>
 
   </mat-card>
 </form>

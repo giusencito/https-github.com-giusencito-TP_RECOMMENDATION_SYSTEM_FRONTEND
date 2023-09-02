@@ -57,6 +57,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { AnswerDialogComponent } from './pages/postulant/results/answer-dialog/answer-dialog.component';
 import { RecommendationHistoryComponent } from './pages/postulant/recommendation-history/recommendation-history.component';
 import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat-recommendation-history/postulnat-recommendation-history.component';
+import { TemplateDialogComponent } from './pages/template-dialog/template-dialog.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat
     LandingComponent,
     AnswerDialogComponent,
     RecommendationHistoryComponent,
-    PostulnatRecommendationHistoryComponent
+    PostulnatRecommendationHistoryComponent,
+    TemplateDialogComponent
    
 
   

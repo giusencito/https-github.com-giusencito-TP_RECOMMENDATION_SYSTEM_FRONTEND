@@ -52,4 +52,10 @@ export class OptionService {
 
 
   }
+  update(id:number,item:CreateOption){
+    return this.http.put<any>(`${this.basePath}${id}/`, JSON.stringify(item) ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
 }

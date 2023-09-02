@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import { CreateQuestion } from 'src/app/models/test/CreateQuestion';
+import { Question } from 'src/app/models/test/Question';
 @Injectable({
   providedIn: 'root'
 })
@@ -51,6 +52,12 @@ export class QuestionService {
       catchError(this.handleError));
 
 
+  }
+  update(id:number,item:CreateQuestion){
+    return this.http.put<any>(`${this.basePath}${id}/` ,JSON.stringify(item),this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
   }
 
 }
