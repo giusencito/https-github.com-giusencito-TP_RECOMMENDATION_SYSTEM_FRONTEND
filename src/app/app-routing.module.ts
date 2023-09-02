@@ -31,6 +31,8 @@ import { EditSectionCreateComponent } from './pages/admin/test/edit-section-crea
 import { EditQuestionCreateComponent } from './pages/admin/test/edit-question-create/edit-question-create.component';
 import { EditOptionCreateComponent } from './pages/admin/test/edit-option-create/edit-option-create.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { RecommendationHistoryComponent } from './pages/postulant/recommendation-history/recommendation-history.component';
+import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat-recommendation-history/postulnat-recommendation-history.component';
 
 
 const routes: Routes = [
@@ -51,10 +53,13 @@ const routes: Routes = [
 {path:'result-emotional-test/:totalscore',component:ResultEmotionalTestComponent},
 {path:'start-orientation-test',component:StartOrientationTestComponent},
 {path:'results-jobs',component:ResultsComponent},
+{path:'recommendation-history',component:RecommendationHistoryComponent},
 
 {path:'home-admin',component:HomeAdminComponent},
 {path:'see-postulants',component:SeePostulantsComponent},
 {path:'see-postulants/:postulant',component:SeeOnePostulantComponent},
+{path:'postulant-recommendation-history',component:PostulnatRecommendationHistoryComponent},
+
 {path:'create-test',component:CreateTestComponent},
 {path:'edit-test',component:EditTestComponent},
 {path:'edit-test/:test/edit-section',component:EditSectionComponent},

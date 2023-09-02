@@ -60,5 +60,9 @@ export class SeeOnePostulantComponent implements OnInit {
     });
    
   }
+  history(){
+    this.router.navigate([`postulant-recommendation-history`]);
+
+  }
 
 }

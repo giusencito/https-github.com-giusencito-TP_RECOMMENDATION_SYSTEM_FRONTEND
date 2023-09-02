@@ -35,5 +35,9 @@ export class HomePostulantComponent implements OnInit {
   startTest(){
     this.Router.navigate(['/start-test'])
   }
+  history(){
+    this.Router.navigate(['/recommendation-history'])
+
+  }
 
 }

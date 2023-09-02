@@ -54,6 +54,9 @@ import { EditQuestionCreateComponent } from './pages/admin/test/edit-question-cr
 import { EditOptionCreateComponent } from './pages/admin/test/edit-option-create/edit-option-create.component';
 import { DialogEditQuestionCreateComponent } from './pages/admin/test/edit-question-create/dialog-edit-question-create/dialog-edit-question-create.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { AnswerDialogComponent } from './pages/postulant/results/answer-dialog/answer-dialog.component';
+import { RecommendationHistoryComponent } from './pages/postulant/recommendation-history/recommendation-history.component';
+import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat-recommendation-history/postulnat-recommendation-history.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +105,10 @@ import { LandingComponent } from './pages/landing/landing.component';
     DialogEditQuestionCreateComponent,
     EditQuestionCreateComponent,
     EditOptionCreateComponent,
-    LandingComponent
+    LandingComponent,
+    AnswerDialogComponent,
+    RecommendationHistoryComponent,
+    PostulnatRecommendationHistoryComponent
    
 
   
