@@ -1,3 +1,4 @@
+import { TestService } from './../../../../services/test/test.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,4 +17,5 @@ export class StartTestComponent implements OnInit {
     this.Router.navigate(['/emotional-test'])
 
   }
+  
 }

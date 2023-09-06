@@ -57,4 +57,9 @@ p{
     display: flex;
     justify-content: space-between;
 }
- 
+.loading-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}

@@ -1,15 +1,16 @@
+import { CreateResultSection } from 'src/app/models/result/CreateResultSection';
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
-import { CreateQuestion } from 'src/app/models/test/CreateQuestion';
-import { Question } from 'src/app/models/test/Question';
+import { CreateSection } from 'src/app/models/test/CreateSection';
 @Injectable({
   providedIn: 'root'
 })
-export class QuestionService {
+export class ResultSectionService {
 
-  basePath = 'http://127.0.0.1:8000/question/QuestionViewSet/';
+  basePath = 'http://127.0.0.1:8000/resultSection/ResultSectionViewSets/';
+  basePath2 = 'http://127.0.0.1:8000/resultSection/resultSection/getResultSectionbyTestAndResultTest/'
 
  
   httpOptions = {
@@ -31,33 +32,19 @@ export class QuestionService {
     }
   
     return throwError('Something happened with request, please try again later');
-  }   
-
-  createQuestion(item:CreateQuestion){
-   return this.http.post<any>(this.basePath, JSON.stringify(item), this.httpOptions)
-   .pipe(
-     retry(2),
-     catchError(this.handleError));
-  }
-  getquestionbySection(id:number){
-    return this.http.get<any>(`${this.basePath}${id}/getquestionbySection/` ,this.httpOptions)
+  } 
+  CreateSection(item:CreateResultSection){
+    return this.http.post<any>(this.basePath, JSON.stringify(item), this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));
-  }
-  getQuestionbyId(id:number){
-    return this.http.get<any>(`${this.basePath}${id}/` ,this.httpOptions)
+   }
+   getByTestandResulTest(test:number,resultTest:number){
+    return this.http.get<any>(`${this.basePath2}${test}/${resultTest}/` ,this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));
 
-
-  }
-  update(id:number,item:CreateQuestion){
-    return this.http.put<any>(`${this.basePath}${id}/` ,JSON.stringify(item),this.httpOptions)
-    .pipe(
-      retry(2),
-      catchError(this.handleError));
-  }
+   }
 
 }

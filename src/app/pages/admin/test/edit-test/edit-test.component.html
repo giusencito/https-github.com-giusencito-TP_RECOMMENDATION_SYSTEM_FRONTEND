@@ -6,24 +6,43 @@
   
 
  
- 
+    <div *ngIf="dataSource.data.length;else loadingSpinner">
+      
       <div *ngFor="let test of dataSource.data" class="formut">
 
-      <mat-card class="item">
-     
-       <div>
-        <h3>{{test.testname}} </h3>
-        <p >{{test.testdescription}}</p>
-      </div>
-      <br>
-      <button mat-flat-button  class="button2" (click)="goSection(test.id)">
-        <mat-icon>navigate_next</mat-icon>
-      </button>
- 
+        <mat-card class="item">
+       
+         <div>
+          <h3>{{test.testname}} </h3>
+          <p >{{test.testdescription}}</p>
+        </div>
+        <br>
+        <button mat-flat-button  class="button2" (click)="goSection(test.id)">
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+   
+  
+       
+      </mat-card>
+        </div>
 
-     
-    </mat-card>
+
+
+
+
+
     </div>
+      
+
+
+
+
+    <ng-template #loadingSpinner>
+      <div class="loading-container">
+        <mat-spinner diameter="120"></mat-spinner>
+      
+      </div>
+    </ng-template>
   
   
 

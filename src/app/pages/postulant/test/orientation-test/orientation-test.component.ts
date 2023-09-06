@@ -1,3 +1,9 @@
+import { TokenService } from './../../../../services/token/token.service';
+import { ResultSectionService } from './../../../../services/resultSection/result-section.service';
+import { ResultTestService } from './../../../../services/resultTest/result-test.service';
+
+
+import { TypetestService } from './../../../../services/typetest/typetest.service';
 import { TestService } from './../../../../services/test/test.service';
 import { OptionService } from 'src/app/services/option/option.service';
 import { QuestionService } from './../../../../services/question/question.service';
@@ -7,6 +13,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Test } from 'src/app/models/test/Test';
 import { Section } from 'src/app/models/test/Section';
+import { ResultSection } from 'src/app/models/result/ResultSection';
+import { CreateResultSection } from 'src/app/models/result/CreateResultSection';
+import { CreateResultTest } from 'src/app/models/result/CreateResultTest';
+
 
 @Component({
   selector: 'app-orientation-test',
@@ -18,9 +28,13 @@ export class OrientationTestComponent implements OnInit {
   sectionSource : any[] = []
   questionSource : any[] = []
   optionSource : any[] = []
-
+  resultSectionSource: CreateResultSection[]=[]
+testToTAL!:Number
 testOriented!:string
 Test!:Test;
+Result!:CreateResultSection
+TestNumber=2
+CreateResultTest!:CreateResultTest
 sectionNumber!:number
 Section!:Section
 sectionTotal!:number
@@ -29,21 +43,61 @@ questionNumber=1
 questionName!:string
 optionSelected=-1;
 actualScore=0
-  constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,private TestService:TestService,private Router:Router) { 
+createTestid!:number
+  constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,private TestService:TestService,
+    private Router:Router,private TypetestService:TypetestService,private ResultTestService:ResultTestService,private ResultSectionService:ResultSectionService,
+    private TokenService:TokenService
+    ) { 
    
     
     this.Test = {} as Test;
     this.Section={} as Section
+    this.Result= {} as CreateResultSection
+    this.CreateResultTest ={} as CreateResultTest
   }
 
   ngOnInit(): void {
-    this.getFirstTest()
+    this.getTest(this.TestNumber)
+    this.getTypes()
+    this.CreateResultTest.postulant= this.TokenService.getId()
   }
-  getFirstTest(){
-    this.TestService.getTestbyTypeTest(2).subscribe((response:any)=>{
+  CreateTest(){
+    
+    this.ResultTestService.CreateResultTest( this.CreateResultTest).subscribe((response:any)=>{
+            
+            this.createTestid=response.id.toString()
+            this.resultSectionSource = this.resultSectionSource.map((section: CreateResultSection) => {
+              return { ...section, resultTest: this.createTestid };
+            });
+            this.resultSectionSource.forEach((section) => {
+              console.log(section)
+               this.ResultSectionService.CreateSection(section).subscribe((response:any)=>{
+
+               })
+            });
+           
+
+
+
+
+    })
+
+    
+  }
+
+
+
+
+  getTest(id:number){
+    this.TestService.getTestbyTypeTest(id).subscribe((response:any)=>{
              this.testSource= response.rows
              this.Test= this.testSource[0]
              this.getsections(this.Test.id)
+    })
+  }
+  getTypes(){
+    this.TypetestService.getAll().subscribe((response:any)=>{
+     this.testToTAL=response.total
     })
   }
   getsections(id:number){
@@ -51,7 +105,6 @@ actualScore=0
     this.SectionService.getsectionbyTest(id).subscribe((response:any)=>{
          this.sectionSource = response.rows
          this.sectionTotal=response.total
-         console.log(this.sectionTotal)
          this.sectionNumber=0
          this.Section = this.sectionSource[this.sectionNumber]
          this.getquestions(this.Section.id)
@@ -65,7 +118,8 @@ actualScore=0
          this.total = response.total
          this.questionSource=response.rows
          this.questionName=this.questionSource[this.questionNumber-1].questionname
-         this.getoptions(this.questionNumber)
+         this.getoptions(this.questionSource[this.questionNumber-1].id)
+        
         
     })
   }
@@ -79,9 +133,36 @@ actualScore=0
       
       console.log(this.sectionNumber)
       if(this.sectionNumber+1==this.sectionTotal){
-           console.log("aqui")
+         if(this.testToTAL==this.TestNumber){
+                this.goReSULTS()
+         }else{
+          this.TestNumber=this.TestNumber+1
+          this.optionSelected= -1
+          this.questionNumber=1
+          const newResult: CreateResultSection = {
+            developmentPercentage: Math.round((this.actualScore / this.Section.totalscore) * 100),
+            section: this.Section.id,
+            resultTest: 0
+          };
+         
+          
+          this.actualScore=0
+          this.resultSectionSource.push(newResult)
+          console.log(this.resultSectionSource)
+          this.getTest(this.TestNumber)
+         }
+
+
+           
+         
       }else{
-      
+        const newResult: CreateResultSection = {
+          developmentPercentage: Math.round((this.actualScore / this.Section.totalscore) * 100),
+          section: this.Section.id,
+          resultTest: 0
+        }
+        this.resultSectionSource.push(newResult)
+        this.actualScore=0
         this.sectionNumber= this.sectionNumber+1
         this.Section = this.sectionSource[this.sectionNumber]
         this.questionNumber=1
@@ -99,10 +180,14 @@ actualScore=0
       this.optionSelected= -1
       this.questionNumber=this.questionNumber+1
       this.questionName=this.questionSource[this.questionNumber-1].questionname
-         this.getoptions(this.questionNumber)
+         this.getoptions(this.questionSource[this.questionNumber-1].id)
          
     }
 
+  }
+  goReSULTS(){
+    this.CreateTest()
+    this.Router.navigate(['orientation-test-result'])
   }
 
 

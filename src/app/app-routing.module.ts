@@ -38,8 +38,8 @@ import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat
 
 const routes: Routes = [
 
-  {path:'',redirectTo:'landing',pathMatch:'full'},
-  {path:'landing',component:LandingComponent,canActivate: [LoginGuard]},
+  {path:'',redirectTo:'login',pathMatch:'full'},
+  
 
 
 
