@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { TestService } from './../../../services/test/test.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-oriented-test-result',
@@ -13,7 +14,7 @@ export class OrientedTestResultComponent implements OnInit {
   dataSource !:MatTableDataSource<any>;
   resulTest!:number
 
-  constructor(private TestService:TestService,private ResultSectionService:ResultSectionService,private route:ActivatedRoute) {
+  constructor(private TestService:TestService,private ResultSectionService:ResultSectionService,private route:ActivatedRoute, private Router:Router) {
     this.dataSource = new MatTableDataSource<any>();
 
 
@@ -32,5 +33,11 @@ export class OrientedTestResultComponent implements OnInit {
     })
   }
   
+  GoToJobResults(){
+    console.log(this.resulTest)
+
+    this.Router.navigate(['results-jobs', this.resulTest])
+
+  }
 
 }
