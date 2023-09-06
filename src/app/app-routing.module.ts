@@ -47,15 +47,8 @@ const routes: Routes = [
 {path:'register',component:RegisterComponent,canActivate: [LoginGuard]},
 {path:'forgot-password',component:ForgotPasswordComponent,canActivate: [LoginGuard]},
 {path:'change-password/:code',component:ChangePasswordComponent,canActivate: [LoginGuard]},
-{path:'home-postulant',component:HomePostulantComponent,canActivate: [PostulantGuard]},
-{path:'start-test',component:StartTestComponent},
-{path:'emotional-test',component:EmotionalTestComponent},
-{path:'orientation-test',component:OrientationTestComponent},
-{path:'result-emotional-test/:totalscore',component:ResultEmotionalTestComponent},
-{path:'start-orientation-test',component:StartOrientationTestComponent},
-{path:'orientation-test-result',component:OrientedTestResultComponent},
-{path:'results-jobs',component:ResultsComponent},
-{path:'recommendation-history',component:RecommendationHistoryComponent},
+
+{path:'',loadChildren: ()=>import('../app/routes/postulant-reactive/postulant-reactive.module').then(m=>m.PostulantReactiveModule)},
 
 {path:'home-admin',component:HomeAdminComponent},
 {path:'see-postulants',component:SeePostulantsComponent},
@@ -82,7 +75,6 @@ const routes: Routes = [
 {path:'create-admin',component:CreateAdminComponent},
 {path:'configure-admin',component:ConfigureAdminComponent},
 
-{path:'configure-postulant',component:ConfigurePostulantComponent,canActivate: [PostulantGuard]}
 
 ];
 

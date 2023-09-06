@@ -66,6 +66,7 @@ createTestid!:number
     this.ResultTestService.CreateResultTest( this.CreateResultTest).subscribe((response:any)=>{
             
             this.createTestid=response.id.toString()
+            console.log(this.resultSectionSource)
             this.resultSectionSource = this.resultSectionSource.map((section: CreateResultSection) => {
               return { ...section, resultTest: this.createTestid };
             });
@@ -75,6 +76,8 @@ createTestid!:number
 
                })
             });
+            this.Router.navigate(['orientation-test-result', this.createTestid])
+
            
 
 
@@ -131,9 +134,15 @@ createTestid!:number
   continue(){
     if(this.questionNumber==this.total){
       
-      console.log(this.sectionNumber)
       if(this.sectionNumber+1==this.sectionTotal){
          if(this.testToTAL==this.TestNumber){
+          const newResult: CreateResultSection = {
+            developmentPercentage: Math.round((this.actualScore / this.Section.totalscore) * 100),
+            section: this.Section.id,
+            resultTest: 0
+          };
+          this.resultSectionSource.push(newResult)
+
                 this.goReSULTS()
          }else{
           this.TestNumber=this.TestNumber+1
@@ -144,11 +153,8 @@ createTestid!:number
             section: this.Section.id,
             resultTest: 0
           };
-         
-          
           this.actualScore=0
           this.resultSectionSource.push(newResult)
-          console.log(this.resultSectionSource)
           this.getTest(this.TestNumber)
          }
 
@@ -187,7 +193,6 @@ createTestid!:number
   }
   goReSULTS(){
     this.CreateTest()
-    this.Router.navigate(['orientation-test-result'])
   }
 
 

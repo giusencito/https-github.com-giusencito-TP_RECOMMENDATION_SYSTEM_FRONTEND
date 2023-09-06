@@ -5,7 +5,7 @@
 <div *ngFor="let item of dataSource.data">
       
       <p class="test">{{item.testname}}</p>
-      <app-oriented-section-result [test]="item.id"></app-oriented-section-result>
+      <app-oriented-section-result [test]="item.id" [resulttest]="resulTest"></app-oriented-section-result>
 </div>
 
 

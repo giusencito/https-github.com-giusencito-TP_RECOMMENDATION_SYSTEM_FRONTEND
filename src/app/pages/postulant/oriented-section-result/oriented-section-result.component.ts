@@ -22,7 +22,7 @@ export class OrientedSectionResultComponent implements OnInit {
     this.getbytestandResultTets(this.test)
   }
   getbytestandResultTets(test:number){
-    this.ResultSectionService.getByTestandResulTest(test,13).subscribe((response:any)=>{
+    this.ResultSectionService.getByTestandResulTest(test,this.resulttest).subscribe((response:any)=>{
       this.dataSource.data=response.rows
       
     })

@@ -55,7 +55,6 @@ import { EditOptionCreateComponent } from './pages/admin/test/edit-option-create
 import { DialogEditQuestionCreateComponent } from './pages/admin/test/edit-question-create/dialog-edit-question-create/dialog-edit-question-create.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { AnswerDialogComponent } from './pages/postulant/results/answer-dialog/answer-dialog.component';
-import { RecommendationHistoryComponent } from './pages/postulant/recommendation-history/recommendation-history.component';
 import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat-recommendation-history/postulnat-recommendation-history.component';
 import { TemplateDialogComponent } from './pages/template-dialog/template-dialog.component';
 import { OrientedTestResultComponent } from './pages/postulant/oriented-test-result/oriented-test-result.component';
@@ -70,13 +69,10 @@ import { OrientedSectionResultComponent } from './pages/postulant/oriented-secti
     TermsDialogComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    HomePostulantComponent,
     ErrorDialogComponent,
     RegisterErrorComponent,
     EmailDialogComponent,
     PasswordValidComponent,
-    ConfigurePostulantComponent,
-    NavigaionPostulantComponent,
     HomeAdminComponent,
     NavigationAdminComponent,
     CreateSectionComponent,
@@ -92,13 +88,8 @@ import { OrientedSectionResultComponent } from './pages/postulant/oriented-secti
     ConfigureDialogComponent,
     DeleteDialogComponent,
     ConfigurePostulantDialogComponent,
-    StartTestComponent,
-    EmotionalTestComponent,
-    ResultEmotionalTestComponent,
-    ResultsComponent,
+
     NoContinueComponent,
-    StartOrientationTestComponent,
-    OrientationTestComponent,
     EditTestComponent,
     EditSectionComponent,
     EditQuestionComponent,
@@ -111,12 +102,10 @@ import { OrientedSectionResultComponent } from './pages/postulant/oriented-secti
     EditOptionCreateComponent,
     LandingComponent,
     AnswerDialogComponent,
-    RecommendationHistoryComponent,
     PostulnatRecommendationHistoryComponent,
     TemplateDialogComponent,
-    OrientedTestResultComponent,
-    OrientedSectionResultComponent,
    
+  
    
 
   
