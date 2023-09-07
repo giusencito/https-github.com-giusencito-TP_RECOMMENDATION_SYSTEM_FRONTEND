@@ -12,8 +12,9 @@
     <br>
     <button mat-flat-button color="primary" class="button">Buscar</button>
 </div>
+
 <mat-grid-list cols="3" rowHeight="500px">
-    <mat-grid-tile>
+    <mat-grid-tile *ngFor="let item of dataSource.data">
 <mat-card class="card">
     <img src="../../../../assets/images/image 7.png">
     <div class="center2">
@@ -24,7 +25,7 @@
 
     </div>
     <div class="center2">
-        <p>Fecha: 20/04/2023</p>
+        <p>{{item.obtainDate}}</p>
 
     </div>
     <div class="center2">
@@ -34,46 +35,7 @@
 </mat-grid-tile>
 
 
-<mat-grid-tile>
-    <mat-card class="card">
-        <img src="../../../../assets/images/image 7.png">
-        <div class="center2">
-          <p>Trabajo: Analista programador Frontend</p>
-        </div>
-        <div class="center2">
-            <p>Curso: Cómo realizar entrevistas de trabajo exitosas</p>
-    
-        </div>
-        <div class="center2">
-            <p>Fecha: 20/04/2023</p>
-    
-        </div>
-        <div class="center2">
-             <button mat-raised-button class="see">Ver</button>
-        </div>
-    </mat-card>
-    </mat-grid-tile>
 
-
-    <mat-grid-tile>
-        <mat-card class="card">
-            <img src="../../../../assets/images/image 7.png">
-            <div class="center2">
-              <p>Trabajo: Analista programador Frontend</p>
-            </div>
-            <div class="center2">
-                <p>Curso: Cómo realizar entrevistas de trabajo exitosas</p>
-        
-            </div>
-            <div class="center2">
-                <p>Fecha: 20/04/2023</p>
-        
-            </div>
-            <div class="center2">
-                 <button mat-raised-button class="see">Ver</button>
-            </div>
-        </mat-card>
-        </mat-grid-tile>
 
      
 

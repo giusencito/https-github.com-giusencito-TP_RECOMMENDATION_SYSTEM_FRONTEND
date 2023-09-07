@@ -11,6 +11,7 @@ import { CreateResultTest } from 'src/app/models/result/CreateResultTest';
 export class ResultTestService {
 
   basePath = 'http://127.0.0.1:8000/resultTest/ResultTestViewSets/';
+             
 
  
   httpOptions = {
@@ -36,6 +37,12 @@ export class ResultTestService {
 
   CreateResultTest(item:CreateResultTest){
     return this.http.post<any>(this.basePath, JSON.stringify(item), this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+   }
+   GetByPostulant(id:number){
+    return this.http.get<any>(`${this.basePath}${id}/getResultTestbypostulant/` ,this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));
