@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'result-emotional-test/:totalscore',component:ResultEmotionalTestComponent},
   {path:'start-orientation-test',component:StartOrientationTestComponent},
   {path:'orientation-test-result/:resultTest',component:OrientedTestResultComponent},
-  {path:'results-jobs',component:ResultsComponent},
+  {path:'results-jobs/:resulttest',component:ResultsComponent},
   {path:'recommendation-history',component:RecommendationHistoryComponent},
 
 ];

@@ -10,6 +10,7 @@ import { Interviewquestion } from 'src/app/models/result/interviewquestion';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AnswerDialogComponent } from './answer-dialog/answer-dialog.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -29,9 +30,10 @@ export class ResultsComponent implements OnInit {
   answers: any[] = []
   questionsanswerslist: any[] = []
   cont:number = 0
+  resulTest!:number
 
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
-              private JobService:JobService, private InterviewquestionService:InterviewquestionService) { 
+              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute) { 
               
               this.jobdata = {} as Job;
               this.coursedata = {} as Course;
@@ -41,6 +43,8 @@ export class ResultsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.resulTest=parseInt(this.route.snapshot.paramMap.get('resulttest')!);
+    console.log(this.resulTest)
     this.recommendation()
     
   }
@@ -101,7 +105,10 @@ gotoCourseUrl(url:string){
 
 
   recommendation(){
-    this.RecommendationService.hydridRecommendation().subscribe((response:any)=>{
+    this.JobService.GetLinkedinJobbyResultTestId(this.resulTest).subscribe((responsejobs:any)=>{
+      console.log(responsejobs.rows)
+      if(responsejobs.rows.length == 0){
+        this.RecommendationService.hydridRecommendation().subscribe((response:any)=>{
           
           for(const job of response){       
                 const validCharactersRegex: RegExp = /[\x20-\x7E\u00A0-\u00FF\u0100-\u017F]/g;
@@ -113,14 +120,20 @@ gotoCourseUrl(url:string){
                 this.jobdata.jobCompany = job.Company
                 this.jobdata.jobDate = job.Date
                 this.jobdata.posibilityPercentage = job.similarity_pred
-                this.jobdata.resultTest = 1
+                this.jobdata.resultTest = this.resulTest
                 this.JobService.CreateJobs(this.jobdata).subscribe((response:any)=>{
                     this.jobs.push(response)
                 })
             } 
           console.log(this.jobs);
               
+        })
+      } else {
+        this.jobs = responsejobs.rows
+        console.log(this.jobs)
+      }
     })
+    
   }
 
   openCourses(id:number){
