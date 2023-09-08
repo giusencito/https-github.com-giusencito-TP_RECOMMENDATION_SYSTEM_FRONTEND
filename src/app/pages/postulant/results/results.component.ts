@@ -123,7 +123,11 @@ gotoCourseUrl(url:string){
                 this.jobdata.jobLocation = job.Location
                 this.jobdata.jobCompany = job.Company
                 this.jobdata.jobDate = job.Date
-                this.jobdata.posibilityPercentage = job.similarity_pred
+                if (!isNaN(job.similarity_pred) && job.similarity_pred % 1 !== 0) {
+                  this.jobdata.posibilityPercentage = parseFloat(job.similarity_pred.toFixed(4));
+                } else {
+                  this.jobdata.posibilityPercentage = job.similarity_pred;
+                }
                 this.jobdata.resultTest = this.resulTest
                 this.JobService.CreateJobs(this.jobdata).subscribe((response:any)=>{
                     this.jobs.push(response)
