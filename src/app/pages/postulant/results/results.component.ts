@@ -46,7 +46,10 @@ export class ResultsComponent implements OnInit {
   ngOnInit() {
     this.resulTest=parseInt(this.route.snapshot.paramMap.get('resulttest')!);
     console.log(this.resulTest)
-    this.recommendation()
+    this.RecommendationService.getSectionResults(this.resulTest).subscribe((responsejobs:any)=>{
+      console.log("Se creo correctamente los CSVs sections and ratings_section")
+      this.recommendation()
+    })
     
   }
   isRemote(Jobname:string){

@@ -8,7 +8,7 @@ import {catchError, retry} from "rxjs/operators";
 })
 export class RecommendationService {
 
-  basePath = 'http://127.0.0.1:8000/recomendation/RecomendationViewset/hydridRecommendation/';
+  basePath = 'http://127.0.0.1:8000/recomendation/RecomendationViewset';
               
  
  
@@ -34,7 +34,21 @@ export class RecommendationService {
     return throwError('Something happened with request, please try again later');
   }
   hydridRecommendation(){
-    return this.http.post<any>(`${this.basePath}` ,this.httpOptions)
+    return this.http.post<any>(`${this.basePath}/hydridRecommendation/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
+
+  getAllJobs(){
+    return this.http.get<any>(`${this.basePath}/getAllJobs/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
+
+  getSectionResults(id:number){
+    return this.http.get<any>(`${this.basePath}/${id}/getSectionResults/` ,this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));

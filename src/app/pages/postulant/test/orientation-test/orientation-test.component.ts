@@ -1,7 +1,8 @@
 import { TokenService } from './../../../../services/token/token.service';
 import { ResultSectionService } from './../../../../services/resultSection/result-section.service';
 import { ResultTestService } from './../../../../services/resultTest/result-test.service';
-
+import { RecommendationService } from 'src/app/services/recommendation/recommendation.service';
+import { CourserecomendationService } from 'src/app/services/courserecomendation/courserecomendation.service';
 
 import { TypetestService } from './../../../../services/typetest/typetest.service';
 import { TestService } from './../../../../services/test/test.service';
@@ -46,7 +47,7 @@ actualScore=0
 createTestid!:number
   constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,private TestService:TestService,
     private Router:Router,private TypetestService:TypetestService,private ResultTestService:ResultTestService,private ResultSectionService:ResultSectionService,
-    private TokenService:TokenService
+    private TokenService:TokenService, private RecommendationService:RecommendationService, private CourserecomendationService:CourserecomendationService
     ) { 
    
     
@@ -60,6 +61,12 @@ createTestid!:number
     this.getTest(this.TestNumber)
     this.getTypes()
     this.CreateResultTest.postulant= this.TokenService.getId()
+    this.RecommendationService.getAllJobs().subscribe((response:any)=>{
+      console.log("Generando CSV de Jobs...!!")
+    })
+    this.CourserecomendationService.GetAllCourses().subscribe((response:any)=>{
+      console.log("Generando CSV de Cursos...!!")
+    })
   }
   CreateTest(){
     

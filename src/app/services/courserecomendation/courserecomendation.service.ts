@@ -45,5 +45,12 @@ export class CourserecomendationService {
       catchError(this.handleError));
   }
 
+  GetAllCourses(){
+    return this.http.get<any>(`${this.basePath}/GetAllCourses/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
+
 
 }
