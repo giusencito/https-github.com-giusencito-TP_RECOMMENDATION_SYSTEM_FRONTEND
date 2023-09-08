@@ -48,7 +48,7 @@ export class SeeOnePostulantComponent implements OnInit {
       data: {type:true,number:id}
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([`see-postulants`]);
+      this.router.navigate([`see-postulants`],);
     })
    
   }
@@ -61,7 +61,9 @@ export class SeeOnePostulantComponent implements OnInit {
    
   }
   history(){
-    this.router.navigate([`postulant-recommendation-history`]);
+    let id =parseInt(this.route.snapshot.paramMap.get('postulant')!);
+
+    this.router.navigate([`postulant-recommendation-history`],{queryParams:{postulant:id}});
 
   }
 
