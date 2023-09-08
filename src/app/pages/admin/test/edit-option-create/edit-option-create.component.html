@@ -7,11 +7,10 @@
       <h2 class="title">Crear Opcion</h2>
       <mat-form-field appearance="outline" class="matfield">
            
-        <input matInput placeholder="Nombre de la opción" type="text"  formControlName="nameoption"  #nameoption maxlength="200" [(ngModel)]="CreateOption.optionname"> 
+        <input matInput placeholder="Nombre de la opción" type="text"  formControlName="nameoption"  #nameoption [(ngModel)]="CreateOption.optionname"> 
         <mat-icon matSuffix >label_important</mat-icon>
         <mat-error  align="start" *ngIf="changesoption.controls['nameoption'].dirty && changesoption.hasError('required','nameoption')">Es requerido</mat-error>
       <mat-error  align="end" *ngIf="changesoption.controls['nameoption'].dirty && changesoption.hasError('minlength','nameoption')">Más de tres caracteres</mat-error>
-        <mat-hint align="end">{{nameoption.value.length}} / 200</mat-hint>
        
     </mat-form-field>
     <mat-form-field appearance="outline" class="matfield" >
