@@ -1,22 +1,23 @@
-import { AnswerDialogComponent } from './../../results/answer-dialog/answer-dialog.component';
-import { CourserecomendationService } from 'src/app/services/courserecomendation/courserecomendation.service';
-import { InterviewquestionService } from './../../../../services/interviewquestions/interviewquestion.service';
-import { CourseService } from './../../../../services/course/course.service';
-import { RecommendationService } from './../../../../services/recommendation/recommendation.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { JobService } from './../../../../services/job/job.service';
+import { RecommendationService } from './../../../services/recommendation/recommendation.service';
 import { Component, OnInit } from '@angular/core';
-import { Job } from 'src/app/models/result/job';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Course } from 'src/app/models/result/course';
 import { Interviewquestion } from 'src/app/models/result/interviewquestion';
-import { MatDialog } from '@angular/material/dialog';
+import { Job } from 'src/app/models/result/job';
+import { CourseService } from 'src/app/services/course/course.service';
+import { CourserecomendationService } from 'src/app/services/courserecomendation/courserecomendation.service';
+import { InterviewquestionService } from 'src/app/services/interviewquestions/interviewquestion.service';
+import { JobService } from 'src/app/services/job/job.service';
+import { AnswerDialogComponent } from '../../postulant/results/answer-dialog/answer-dialog.component';
 
 @Component({
-  selector: 'app-resultHistory',
-  templateUrl: './resultHistory.component.html',
-  styleUrls: ['./resultHistory.component.css']
+  selector: 'app-postulant-recommendation-result',
+  templateUrl: './postulant-recommendation-result.component.html',
+  styleUrls: ['./postulant-recommendation-result.component.css']
 })
-export class ResultHistoryComponent implements OnInit {
+export class PostulantRecommendationResultComponent implements OnInit {
+
   jobs:any[] = []
   resultTest!:number
   opencourses:boolean = false
@@ -235,7 +236,4 @@ export class ResultHistoryComponent implements OnInit {
     })
   }
 
-
-
-  
 }

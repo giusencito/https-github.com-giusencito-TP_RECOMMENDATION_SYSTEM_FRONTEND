@@ -34,6 +34,8 @@ import { EditOptionCreateComponent } from './pages/admin/test/edit-option-create
 import { LandingComponent } from './pages/landing/landing.component';
 import { RecommendationHistoryComponent } from './pages/postulant/recommendation-history/recommendation-history.component';
 import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat-recommendation-history/postulnat-recommendation-history.component';
+import { PostulantRecommendationTestComponent } from './pages/admin/postulant-recommendation-test/postulant-recommendation-test.component';
+import { PostulantRecommendationResultComponent } from './pages/admin/postulant-recommendation-result/postulant-recommendation-result.component';
 
 
 const routes: Routes = [
@@ -54,6 +56,8 @@ const routes: Routes = [
 {path:'see-postulants',component:SeePostulantsComponent},
 {path:'see-postulants/:postulant',component:SeeOnePostulantComponent},
 {path:'postulant-recommendation-history',component:PostulnatRecommendationHistoryComponent},
+{path:'postulant-recommendation-test',component:PostulantRecommendationTestComponent},
+{path:'postulant-recommendation-result',component:PostulantRecommendationResultComponent},
 
 {path:'create-test',component:CreateTestComponent},
 {path:'edit-test',component:EditTestComponent},

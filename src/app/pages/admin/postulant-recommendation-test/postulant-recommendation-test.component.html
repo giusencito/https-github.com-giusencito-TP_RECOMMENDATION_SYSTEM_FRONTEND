@@ -1,0 +1,18 @@
+<app-navigation-admin></app-navigation-admin>
+<div class="background">
+    <br>
+<p class="tittle">Resultados de Test de orientación profesional</p>
+<br>
+<p class="tittle">Fecha:{{date}}</p>
+<div *ngFor="let item of dataSource.data">
+      <p class="test">{{item.testname}}</p>
+      <app-oriented-section-result-admin [test]="item.id" [resulttest]="resulTest"></app-oriented-section-result-admin>
+
+</div>
+
+
+<div class="center">
+<button mat-raised-button class="button" (click)="GoToJobResults()">Ver empleos</button>
+</div>
+
+</div>

@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   }
   termsChecked = false;
   ngOnInit() {
-
+    
     this.signupform=this.formBuilder.group({
       username:['',[Validators.required, Validators.minLength(3)]],
       name:['',[Validators.required, Validators.minLength(3)]],
