@@ -4,32 +4,45 @@
 
 <div class="background">
 <br>
-<div class="center">
-    <mat-form-field class="input" appearance="outline">
-        <input placeholder="Buscar" matInput> 
+<mat-radio-group aria-label="Select an option" [(ngModel)]="type" class="group">
+    <mat-radio-button value="name">Buscar por nombre</mat-radio-button>
+    <mat-radio-button value="date">Buscar por fecha</mat-radio-button>
+  </mat-radio-group>
+
+<form class="center" [formGroup]="nameform" *ngIf="type=='name'">
+    <mat-form-field class="input" appearance="outline"  >
+        <input placeholder="Buscar" matInput formControlName="name"> 
         <mat-hint>Buscar recomendacion</mat-hint>
     </mat-form-field>
     <br>
-    <button mat-flat-button color="primary" class="button">Buscar</button>
-</div>
+    <button mat-flat-button color="primary" class="button"  [disabled]="!(nameform.valid)" (click)="findbyMainJob()">Buscar</button>
+</form>
+<form class="center" [formGroup]="dateform" *ngIf="type=='date'">
+    <mat-form-field class="input" appearance="outline">
+        <input matInput [matDatepicker]="picker" formControlName="date"> 
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <button mat-flat-button color="primary" class="button" [disabled]="!(dateform.valid)" (click)="findbyDate()">Buscar</button>
+</form>
+
+
 
 <mat-grid-list cols="3" rowHeight="500px">
     <mat-grid-tile *ngFor="let item of dataSource.data">
 <mat-card class="card">
     <img src="../../../../assets/images/image 7.png">
     <div class="center2">
-      <p>Trabajo: Analista programador Frontend</p>
-    </div>
+        <p>Trabajo: {{item.jobName}}</p>
+      </div>
     <div class="center2">
-        <p>Curso: Cómo realizar entrevistas de trabajo exitosas</p>
+        <p>{{item.ObtainDate}}</p>
 
     </div>
     <div class="center2">
-        <p>{{item.obtainDate}}</p>
-
-    </div>
-    <div class="center2">
-         <button mat-raised-button class="see">Ver</button>
+         <button mat-raised-button class="see" (click)="GoToPast(item.ObtainDate,item.resultTest)">Ver</button>
     </div>
 </mat-card>
 </mat-grid-tile>

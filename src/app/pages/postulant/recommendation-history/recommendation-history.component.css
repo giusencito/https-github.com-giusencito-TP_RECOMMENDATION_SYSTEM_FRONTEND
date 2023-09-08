@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-evenly;
     width: 97%;
-  
    margin-bottom: 50px;
 }
 .center2{
@@ -16,6 +15,7 @@ justify-content: center;
     font-weight: italic;
     font-style: normal;
     font-size: 1rem;
+    background-color: white;
    
   }
   .button{
@@ -67,4 +67,14 @@ color:white;
    
     z-index: -1;
 
+}
+.group{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+color:black;
 }

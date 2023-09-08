@@ -59,6 +59,7 @@ import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat
 import { TemplateDialogComponent } from './pages/template-dialog/template-dialog.component';
 import { OrientedTestResultComponent } from './pages/postulant/oriented-test-result/oriented-test-result.component';
 import { OrientedSectionResultComponent } from './pages/postulant/oriented-section-result/oriented-section-result.component';
+import { OneRecommendationHistoryComponent } from './pages/postulant/one-recommendation-history/one-recommendation-history.component';
 
 
 @NgModule({

@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PostulantGuard } from 'src/app/guards/postulant/postulant.guard';
 import { ConfigurePostulantComponent } from 'src/app/pages/postulant/configure-postulant/configure-postulant.component';
 import { HomePostulantComponent } from 'src/app/pages/postulant/home-postulant/home-postulant.component';
+import { OneRecommendationHistoryComponent } from 'src/app/pages/postulant/one-recommendation-history/one-recommendation-history.component';
+import { ResultHistoryComponent } from 'src/app/pages/postulant/one-recommendation-history/resultHistory/resultHistory.component';
 import { OrientedTestResultComponent } from 'src/app/pages/postulant/oriented-test-result/oriented-test-result.component';
 import { RecommendationHistoryComponent } from 'src/app/pages/postulant/recommendation-history/recommendation-history.component';
 import { ResultsComponent } from 'src/app/pages/postulant/results/results.component';
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path:'orientation-test-result/:resultTest',component:OrientedTestResultComponent},
   {path:'results-jobs/:resulttest',component:ResultsComponent},
   {path:'recommendation-history',component:RecommendationHistoryComponent},
+  {path:'one-recommendation-history',component:OneRecommendationHistoryComponent},
+  {path:'one-recommendation-history-result',component:ResultHistoryComponent},
 
 ];
 

@@ -11,11 +11,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AnswerDialogComponent } from './answer-dialog/answer-dialog.component';
 import { ActivatedRoute } from '@angular/router';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css']
+  styleUrls: ['./results.component.css'],
+  
 })
 export class ResultsComponent implements OnInit {
 

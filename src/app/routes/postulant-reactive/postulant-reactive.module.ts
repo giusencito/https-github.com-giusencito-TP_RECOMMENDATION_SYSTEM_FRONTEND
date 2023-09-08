@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PostulantReactiveRoutingModule } from './postulant-reactive-routing.module';
 import { HomePostulantComponent } from 'src/app/pages/postulant/home-postulant/home-postulant.component';
 import { ConfigurePostulantComponent } from 'src/app/pages/postulant/configure-postulant/configure-postulant.component';
@@ -16,12 +15,14 @@ import { OrientedSectionResultComponent } from 'src/app/pages/postulant/oriented
 import { MaterialModule } from 'src/app/material/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StartTestComponent } from 'src/app/pages/postulant/test/start-test/start-test.component';
+import { OneRecommendationHistoryComponent } from 'src/app/pages/postulant/one-recommendation-history/one-recommendation-history.component';
+import { ResultHistoryComponent } from 'src/app/pages/postulant/one-recommendation-history/resultHistory/resultHistory.component';
 
 
 @NgModule({
   declarations: [HomePostulantComponent,ConfigurePostulantComponent,OrientationTestComponent,OrientedTestResultComponent,
     RecommendationHistoryComponent,ResultsComponent,EmotionalTestComponent,ResultEmotionalTestComponent,StartOrientationTestComponent,
-  NavigaionPostulantComponent, OrientedSectionResultComponent,StartTestComponent],
+  NavigaionPostulantComponent, OrientedSectionResultComponent,StartTestComponent,OneRecommendationHistoryComponent,ResultHistoryComponent],
   imports: [
     CommonModule,
     PostulantReactiveRoutingModule,

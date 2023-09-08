@@ -72,5 +72,25 @@ export class JobService {
       retry(2),
       catchError(this.handleError));
   }
+  GetJustOnebyResultTest(id:number){
+    return this.http.get<any>(`${this.basePath}/${id}/getLinkedinJobbyResultTestJustOne/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
+  GetLinkedinJobbyResultTestIdAndPostulant(resultTest:number,postualnt:number){
+                                               
+    return this.http.get<any>(`${this.basePath}/getLinkedinJobsByResultTestAndPostulant/${resultTest}/${postualnt}/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
+  getLinkedinJobsByPostulantsJustOne(postulnat:number){
+    return this.http.get<any>(`${this.basePath}/getLinkedinJobsByPostulantsJustOne/${postulnat}/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+
+  }
 
 }

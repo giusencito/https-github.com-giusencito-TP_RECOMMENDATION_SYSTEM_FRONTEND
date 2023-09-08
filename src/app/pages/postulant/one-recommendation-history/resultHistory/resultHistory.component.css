@@ -1,0 +1,249 @@
+
+.text-1{
+    padding-top: 10px;
+    padding-left: 10px;
+    font-family: 'Futura';
+    vertical-align: middle;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    font-size: 2.5rem;
+}
+.button{
+border-radius: 4px;
+width: 115%;
+background: #1E88E5;
+color:white;
+font-family: Futura;
+font-size: 1rem;
+font-style: normal;
+
+text-transform: uppercase;
+margin-left: 9%;
+}
+.btn2{
+border-radius: 24px;
+
+background: #1E88E5;
+color:white;
+font-family: Futura;
+font-size: 1rem;
+font-style: normal;
+
+}
+
+.card{
+    width: 95%;
+    border-radius: 25px;
+    background: #FFF;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    margin-top: 20px;
+}
+.imgd{
+    
+    margin-right: 70%;
+    width: 40%;
+}
+.title{
+    color: black;
+    font-family: Futura;
+font-size: 1.5rem;
+font-style: bold;
+font-weight: 700;
+margin-top: 10px;
+white-space: normal;
+text-align: center;
+width: 300px;
+
+}
+
+.extras{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 5%;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.first{
+    display: flex;
+    justify-content: space-between;
+   
+
+}
+.second{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+.location{
+    
+    display: flex;
+}
+.books{
+    display: flex;
+}
+.work{
+    display: flex;
+    justify-content: space-evenly;
+}
+  
+  
+  
+  .progress-number {
+  
+    font-weight: bold;
+    color: #000;
+    
+        position: absolute;
+        top: 23%;
+        left: 6%;
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        font-weight: italic;
+        font-family: 'Futura';
+        color: #000;
+      
+  }
+  .icd{
+    transform: scale(1.5);
+    margin-top: 12px;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+  .iconsec{
+   color: #5686E1;
+  }
+  .textsec{
+    font-family: Futura;
+font-size: 1.2rem;
+font-style: bold;
+  }
+  .coursecard{
+    border-radius: 35px;
+background: #FFF;
+box-shadow: 0px 0px 8px 0px #BCBCBC;
+width: 90%;
+  }
+  .center{
+    display: flex;
+    justify-content:center;
+    
+  }
+  .titlteousemain{
+    font-family: Futura;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: 0.25px;
+color: black;
+margin-bottom: 20px; 
+margin-top: 20px;
+  }
+  .coursesection{
+    border-radius: 25px;
+border: 1px solid rgba(0, 0, 0, 0.50);
+background: #FFF;
+box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+display: flex;
+justify-content:space-between;
+width: 95%;
+margin-top: 20px;
+margin-bottom: 20px;
+
+  }
+  .courseicon{
+    color: black;
+    transform: scale(2);
+   
+  }
+
+  .textforcouse{
+    font-family: Futura;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+width: 50%;
+line-height: 24px;
+color: black;
+  }
+  .buttoncourse{
+    background-color: #1E88E5;
+    border-radius: 24px;
+    color:white;
+font-family: Futura;
+font-size: 1rem;
+font-style: normal;
+  }
+  .group{
+    display: flex;
+  
+  }
+.fromicon{
+  display: flex;
+  align-items: center;
+}
+.background{
+
+  background-image: url('../../../../../assets/images/home-postulant.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+  z-index: -1;
+
+}
+.container {
+  width: 120%; /* Ajusta el ancho según tus necesidades */
+  height: 15%; /* Ajusta la altura según tus necesidades */
+  overflow-y: auto; /* Habilita el scroll vertical cuando el contenido excede la altura */
+  margin-left: 8%;
+}
+
+.container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #C7C8CA;
+  border-radius: 5px;
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+.scrollable-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px; /* Agrega espaciado interno si lo deseas */
+}
+
+.progress-container {
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos */
+  gap: 10px; /* Espaciado entre el spinner y el número */
+}
+
+.containercourse{
+  max-width: 100%; /* Ajusta el valor según tus necesidades */
+  padding: 20px;
+}
+
+.loading-container {
+  width: 400px;
+  margin-top: 360px;
+  margin-left: calc(33vw - 200px);
+  height: 100vh; /* O ajusta el valor según tus necesidades */
+}
