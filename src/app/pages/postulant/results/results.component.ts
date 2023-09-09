@@ -32,6 +32,7 @@ export class ResultsComponent implements OnInit {
   questionsanswerslist: any[] = []
   cont:number = 0
   resulTest!:number
+  ascendingOrder:boolean = false
 
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
               private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute) { 
@@ -238,6 +239,22 @@ gotoCourseUrl(url:string){
     console.log(answer)
     const dialogRef= this.dialog.open(AnswerDialogComponent,{
       data: answer
+    })
+  }
+
+  JobFilter(){
+    this.JobService.GetLinkedinJobbyResultTestId(this.resulTest).subscribe((responsejobs:any)=>{
+      console.log(responsejobs.rows)
+      
+      if (this.ascendingOrder) {
+        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
+      } else {
+        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
+      }
+      this.ascendingOrder = !this.ascendingOrder;
+      
+      console.log(this.jobs)
+
     })
   }
 
