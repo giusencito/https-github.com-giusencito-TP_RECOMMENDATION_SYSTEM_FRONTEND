@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
 import { SelectedJob } from 'src/app/models/result/selectedjob';
+import { PostulateDialogComponent } from './postulate-dialog/postulate-dialog.component';
 
 @Component({
   selector: 'app-results',
@@ -270,16 +271,21 @@ gotoCourseUrl(url:string){
       console.log(responseselected.rows)
       if(responseselected.rows.length == 0){
         this.selectedjob.job = id
+        this.isPostulate[id] = false
         
         this.SelectedjobService.CreateSelectedJobs(this.selectedjob).subscribe((response:any)=>{
-          //Dialog open
+          const dialogRef2 = this.dialog.open(PostulateDialogComponent,{
+            data: this.isPostulate[id]
+          });
           this.isPostulate[id] = true;
           console.log(this.isPostulate[id])
         })  
       }else{
-        //Dialog open
-        this.isPostulate[id] = true
-        console.log(this.isPostulate[id])
+          this.isPostulate[id] = true;
+          console.log(this.isPostulate[id])
+          const dialogRef2 = this.dialog.open(PostulateDialogComponent,{
+            data: this.isPostulate[id]
+          });
       }
     })
   }

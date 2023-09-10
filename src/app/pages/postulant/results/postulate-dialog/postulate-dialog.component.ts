@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA,MatDialogRef,MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-postulate-dialog',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostulateDialogComponent implements OnInit {
 
-  constructor() { }
+  isPostulate!:boolean
+
+  constructor(@Inject(MAT_DIALOG_DATA) public isPostulatedata:any) { }
 
   ngOnInit() {
+    this.isPostulate = this.isPostulatedata
+    console.log(this.isPostulate)
   }
 
 }
