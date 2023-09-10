@@ -64,6 +64,7 @@ import { PostulantRecommendationTestComponent } from './pages/admin/postulant-re
 import { OrientedSectionResultAdminComponent } from './pages/admin/postulant-recommendation-test/oriented-section-result-admin/oriented-section-result-admin.component';
 import { PostulantRecommendationResultComponent } from './pages/admin/postulant-recommendation-result/postulant-recommendation-result.component';
 import { PostulateDialogComponent } from './pages/postulant/results/postulate-dialog/postulate-dialog.component';
+import { EntreprenaurDialogComponent } from './pages/postulant/results/entreprenaur-dialog/entreprenaur-dialog.component';
 
 
 @NgModule({
@@ -112,7 +113,8 @@ import { PostulateDialogComponent } from './pages/postulant/results/postulate-di
     PostulantRecommendationTestComponent,
     OrientedSectionResultAdminComponent,
     PostulantRecommendationResultComponent,
-    PostulateDialogComponent
+    PostulateDialogComponent,
+    EntreprenaurDialogComponent
    
   
    

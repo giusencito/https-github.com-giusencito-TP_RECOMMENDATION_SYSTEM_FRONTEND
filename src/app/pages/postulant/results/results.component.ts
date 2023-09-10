@@ -15,6 +15,8 @@ import { DatePipe } from '@angular/common';
 import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
 import { SelectedJob } from 'src/app/models/result/selectedjob';
 import { PostulateDialogComponent } from './postulate-dialog/postulate-dialog.component';
+import { ResultSectionService } from 'src/app/services/resultSection/result-section.service';
+import { EntreprenaurDialogComponent } from './entreprenaur-dialog/entreprenaur-dialog.component';
 
 @Component({
   selector: 'app-results',
@@ -41,7 +43,7 @@ export class ResultsComponent implements OnInit {
   isPostulate: { [key: number]: boolean } = {};
 
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
-              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService) { 
+              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService, private ResultSectionService:ResultSectionService) { 
               
               this.jobdata = {} as Job;
               this.coursedata = {} as Course;
@@ -59,6 +61,21 @@ export class ResultsComponent implements OnInit {
       this.recommendation()
     })
     
+    this.ResultSectionService.getByTestandResulTest(7,this.resulTest).subscribe((responsesections:any)=>{
+      console.log(responsesections.rows)
+      
+      const todosCumplenCondicion = responsesections.rows.every((item: any) => {
+        return item.developmentPercentage >= 70;
+      });
+
+      if (todosCumplenCondicion) {
+        console.log("Todos los elementos cumplen con la condición");
+        const dialogRef3 = this.dialog.open(EntreprenaurDialogComponent);
+      } else {
+        console.log("No todos los elementos cumplen con la condición");
+      }
+
+    })
   }
   isRemote(Jobname:string){
     const remotePatterns = [
@@ -272,7 +289,7 @@ gotoCourseUrl(url:string){
       if(responseselected.rows.length == 0){
         this.selectedjob.job = id
         this.isPostulate[id] = false
-        
+
         this.SelectedjobService.CreateSelectedJobs(this.selectedjob).subscribe((response:any)=>{
           const dialogRef2 = this.dialog.open(PostulateDialogComponent,{
             data: this.isPostulate[id]

@@ -1,0 +1,17 @@
+.center{
+    display: flex;
+    justify-content:center;
+    
+}
+
+.titlteousemain{
+    font-family: Futura;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: 0.25px;
+color: black;
+margin-bottom: 20px; 
+margin-top: 20px;
+  }
