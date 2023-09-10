@@ -12,6 +12,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { AnswerDialogComponent } from './answer-dialog/answer-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
+import { SelectedJob } from 'src/app/models/result/selectedjob';
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -33,14 +36,17 @@ export class ResultsComponent implements OnInit {
   cont:number = 0
   resulTest!:number
   ascendingOrder:boolean = false
+  selectedjob!:SelectedJob
+  isPostulate: { [key: number]: boolean } = {};
 
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
-              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute) { 
+              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService) { 
               
               this.jobdata = {} as Job;
               this.coursedata = {} as Course;
               this.jobdataselected = {} as Job;
               this.interviewquestiondata = {} as Interviewquestion;
+              this.selectedjob = {} as SelectedJob;
 
   }
 
@@ -255,6 +261,26 @@ gotoCourseUrl(url:string){
       
       console.log(this.jobs)
 
+    })
+  }
+
+  Postulate(id:number){
+    console.log(id)
+    this.SelectedjobService.GetSelectedJobsByLinkedinJobsId(id).subscribe((responseselected:any)=>{
+      console.log(responseselected.rows)
+      if(responseselected.rows.length == 0){
+        this.selectedjob.job = id
+        
+        this.SelectedjobService.CreateSelectedJobs(this.selectedjob).subscribe((response:any)=>{
+          //Dialog open
+          this.isPostulate[id] = true;
+          console.log(this.isPostulate[id])
+        })  
+      }else{
+        //Dialog open
+        this.isPostulate[id] = true
+        console.log(this.isPostulate[id])
+      }
     })
   }
 
