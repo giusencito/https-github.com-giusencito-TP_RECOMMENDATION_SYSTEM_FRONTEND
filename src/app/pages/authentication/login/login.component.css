@@ -87,8 +87,8 @@
     font-size: 14px;
   }
   .img{
-    width: 50%;
-    padding-top: 10px;
+    width: 30%;
+    margin-bottom: 30px;
   }
   @media (max-width: 767px) {
     form {

@@ -3,7 +3,9 @@
     justify-content: space-between;
     background-color:skyblue;
 }
-
+.left-content{
+  width:20%;
+}
 .slogan{
   font-family: 'Futura';
 font-style: normal;
@@ -32,9 +34,10 @@ a{
         
         }
 
-.img{
-  width: 80%;
-}
+        .img{
+          margin-top: 10px;
+        width: 38%;
+        }
 .buttons-container {
  
 
