@@ -15,7 +15,7 @@
   
   <div class="group">
   <div class="section1">
-  <button mat-flat-button class="button">Ordenar Trabajos</button>
+  <button mat-flat-button class="button" (click)="JobFilter()">Ordenar Trabajos</button>
   <br>
   <br>
   <br>
@@ -70,7 +70,7 @@
         <span>Cursos</span>
         <img src="../../../../assets/images/Next page.png" class="imgd">
         </button>
-      <button mat-raised-button class="btn2">Postulado</button>
+      <button mat-raised-button class="btn2" (click)="Postulate(job.id)" [disabled]="isPostulate[job.id]">Postulado</button>
       </div>
       
       

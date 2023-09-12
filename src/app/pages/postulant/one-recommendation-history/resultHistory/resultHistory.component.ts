@@ -10,7 +10,9 @@ import { Job } from 'src/app/models/result/job';
 import { Course } from 'src/app/models/result/course';
 import { Interviewquestion } from 'src/app/models/result/interviewquestion';
 import { MatDialog } from '@angular/material/dialog';
-
+import { SelectedJob } from 'src/app/models/result/selectedjob';
+import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
+import { PostulateDialogComponent } from '../../results/postulate-dialog/postulate-dialog.component';
 @Component({
   selector: 'app-resultHistory',
   templateUrl: './resultHistory.component.html',
@@ -29,10 +31,13 @@ export class ResultHistoryComponent implements OnInit {
   answers: any[] = []
   questionsanswerslist: any[] = []
   cont:number = 0
+  ascendingOrder:boolean = false
+  selectedjob!:SelectedJob
+  isPostulate: { [key: number]: boolean } = {};
   
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
-    public dialog:MatDialog) { 
+    public dialog:MatDialog, private SelectedjobService:SelectedjobService) { 
     this.jobdata = {} as Job;
     this.coursedata = {} as Course;
     this.jobdataselected = {} as Job;
@@ -236,6 +241,45 @@ export class ResultHistoryComponent implements OnInit {
   }
 
 
+  JobFilter(){
+    this.JobService.GetLinkedinJobbyResultTestId(this.resultTest).subscribe((responsejobs:any)=>{
+      console.log(responsejobs.rows)
+      
+      if (this.ascendingOrder) {
+        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
+      } else {
+        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
+      }
+      this.ascendingOrder = !this.ascendingOrder;
+      
+      console.log(this.jobs)
 
+    })
+  }
+
+  Postulate(id:number){
+    console.log(id)
+    this.SelectedjobService.GetSelectedJobsByLinkedinJobsId(id).subscribe((responseselected:any)=>{
+      console.log(responseselected.rows)
+      if(responseselected.rows.length == 0){
+        this.selectedjob.job = id
+        this.isPostulate[id] = false
+
+        this.SelectedjobService.CreateSelectedJobs(this.selectedjob).subscribe((response:any)=>{
+          const dialogRef2 = this.dialog.open(PostulateDialogComponent,{
+            data: this.isPostulate[id]
+          });
+          this.isPostulate[id] = true;
+          console.log(this.isPostulate[id])
+        })  
+      }else{
+          this.isPostulate[id] = true;
+          console.log(this.isPostulate[id])
+          const dialogRef2 = this.dialog.open(PostulateDialogComponent,{
+            data: this.isPostulate[id]
+          });
+      }
+    })
+  }
   
 }

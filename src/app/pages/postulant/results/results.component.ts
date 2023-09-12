@@ -12,6 +12,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { AnswerDialogComponent } from './answer-dialog/answer-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
+import { SelectedJob } from 'src/app/models/result/selectedjob';
+import { PostulateDialogComponent } from './postulate-dialog/postulate-dialog.component';
+import { ResultSectionService } from 'src/app/services/resultSection/result-section.service';
+import { EntreprenaurDialogComponent } from './entreprenaur-dialog/entreprenaur-dialog.component';
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -32,14 +38,18 @@ export class ResultsComponent implements OnInit {
   questionsanswerslist: any[] = []
   cont:number = 0
   resulTest!:number
+  ascendingOrder:boolean = false
+  selectedjob!:SelectedJob
+  isPostulate: { [key: number]: boolean } = {};
 
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
-              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute) { 
+              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService, private ResultSectionService:ResultSectionService) { 
               
               this.jobdata = {} as Job;
               this.coursedata = {} as Course;
               this.jobdataselected = {} as Job;
               this.interviewquestiondata = {} as Interviewquestion;
+              this.selectedjob = {} as SelectedJob;
 
   }
 
@@ -51,6 +61,21 @@ export class ResultsComponent implements OnInit {
       this.recommendation()
     })
     
+    this.ResultSectionService.getByTestandResulTest(7,this.resulTest).subscribe((responsesections:any)=>{
+      console.log(responsesections.rows)
+      
+      const todosCumplenCondicion = responsesections.rows.every((item: any) => {
+        return item.developmentPercentage >= 70;
+      });
+
+      if (todosCumplenCondicion) {
+        console.log("Todos los elementos cumplen con la condición");
+        const dialogRef3 = this.dialog.open(EntreprenaurDialogComponent);
+      } else {
+        console.log("No todos los elementos cumplen con la condición");
+      }
+
+    })
   }
   isRemote(Jobname:string){
     const remotePatterns = [
@@ -123,7 +148,11 @@ gotoCourseUrl(url:string){
                 this.jobdata.jobLocation = job.Location
                 this.jobdata.jobCompany = job.Company
                 this.jobdata.jobDate = job.Date
-                this.jobdata.posibilityPercentage = job.similarity_pred
+                if (!isNaN(job.similarity_pred) && job.similarity_pred % 1 !== 0) {
+                  this.jobdata.posibilityPercentage = parseFloat(job.similarity_pred.toFixed(4));
+                } else {
+                  this.jobdata.posibilityPercentage = job.similarity_pred;
+                }
                 this.jobdata.resultTest = this.resulTest
                 this.JobService.CreateJobs(this.jobdata).subscribe((response:any)=>{
                     this.jobs.push(response)
@@ -234,6 +263,47 @@ gotoCourseUrl(url:string){
     console.log(answer)
     const dialogRef= this.dialog.open(AnswerDialogComponent,{
       data: answer
+    })
+  }
+
+  JobFilter(){
+    this.JobService.GetLinkedinJobbyResultTestId(this.resulTest).subscribe((responsejobs:any)=>{
+      console.log(responsejobs.rows)
+      
+      if (this.ascendingOrder) {
+        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
+      } else {
+        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
+      }
+      this.ascendingOrder = !this.ascendingOrder;
+      
+      console.log(this.jobs)
+
+    })
+  }
+
+  Postulate(id:number){
+    console.log(id)
+    this.SelectedjobService.GetSelectedJobsByLinkedinJobsId(id).subscribe((responseselected:any)=>{
+      console.log(responseselected.rows)
+      if(responseselected.rows.length == 0){
+        this.selectedjob.job = id
+        this.isPostulate[id] = false
+
+        this.SelectedjobService.CreateSelectedJobs(this.selectedjob).subscribe((response:any)=>{
+          const dialogRef2 = this.dialog.open(PostulateDialogComponent,{
+            data: this.isPostulate[id]
+          });
+          this.isPostulate[id] = true;
+          console.log(this.isPostulate[id])
+        })  
+      }else{
+          this.isPostulate[id] = true;
+          console.log(this.isPostulate[id])
+          const dialogRef2 = this.dialog.open(PostulateDialogComponent,{
+            data: this.isPostulate[id]
+          });
+      }
     })
   }
 
