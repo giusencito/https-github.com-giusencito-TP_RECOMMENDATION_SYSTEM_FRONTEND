@@ -46,12 +46,8 @@
             </div>
             <div class="center3">
                  <button mat-raised-button class="see"  (click)="GoToPast(item.ObtainDate,item.resultTest)">Ver</button>
-                 <button mat-flat-button *ngIf="true">
-                    <img src="../../../../assets/images/Send Email.png">
-                 </button>
-                 <button mat-flat-button disabled="true" *ngIf="false">
-                    <img src="../../../../assets/images/Secured Mail.png">
-                 </button>
+                 <app-email-Button [resultest]="item.resultTest"></app-email-Button>
+
             </div>
         </mat-card>
         </mat-grid-tile>

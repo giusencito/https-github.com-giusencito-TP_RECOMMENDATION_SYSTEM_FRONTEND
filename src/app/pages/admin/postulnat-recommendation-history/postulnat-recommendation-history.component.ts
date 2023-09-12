@@ -1,3 +1,4 @@
+import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { JobService } from 'src/app/services/job/job.service';
 import { TokenService } from './../../../services/token/token.service';
@@ -20,7 +21,7 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   names!:string
   type!:string
-  constructor(private formBuilder:FormBuilder,private datePipe: DatePipe,private TokenService:TokenService,private JobService:JobService,private ActivatedRoute:ActivatedRoute,private Router:Router) {
+  constructor(private formBuilder:FormBuilder,private datePipe: DatePipe,private SelectedjobService:SelectedjobService,private JobService:JobService,private ActivatedRoute:ActivatedRoute,private Router:Router) {
     this.dataSourceoriginal = new MatTableDataSource<any>();
     this.dataSource = new MatTableDataSource<any>();
    }
@@ -75,4 +76,14 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
    GoToPast(date:Date,resultTest:number){
     this.Router.navigate(['postulant-recommendation-test'],{queryParams:{'Date':date,'ResultTest':resultTest}})
  }
+ checkEmail(id:number){
+  this.SelectedjobService.GetSelectedJobsByResultTest(id).subscribe((response:any)=>{
+       if(response.total==0){
+            return false
+       }else{
+          return true
+       }
+  })
+ }
+ 
 }

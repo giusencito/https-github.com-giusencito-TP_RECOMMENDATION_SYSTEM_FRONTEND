@@ -1,3 +1,4 @@
+import { EmailButtonComponent } from './pages/admin/postulnat-recommendation-history/email-Button/email-Button.component';
 import { EditScoreComponent } from './pages/admin/test/edit-score/edit-score.component';
 import { EditQuestionComponent } from './pages/admin/test/edit-question/edit-question.component';
 import { NoContinueComponent } from './pages/postulant/test/result-emotional-test/no-continue/no-continue.component';
@@ -65,6 +66,7 @@ import { OrientedSectionResultAdminComponent } from './pages/admin/postulant-rec
 import { PostulantRecommendationResultComponent } from './pages/admin/postulant-recommendation-result/postulant-recommendation-result.component';
 import { PostulateDialogComponent } from './pages/postulant/results/postulate-dialog/postulate-dialog.component';
 import { EntreprenaurDialogComponent } from './pages/postulant/results/entreprenaur-dialog/entreprenaur-dialog.component';
+import { SendTestEmailComponent } from './pages/admin/postulnat-recommendation-history/send-test-email/send-test-email.component';
 
 
 @NgModule({
@@ -114,8 +116,9 @@ import { EntreprenaurDialogComponent } from './pages/postulant/results/entrepren
     OrientedSectionResultAdminComponent,
     PostulantRecommendationResultComponent,
     PostulateDialogComponent,
-    EntreprenaurDialogComponent
-   
+    EntreprenaurDialogComponent,
+   EmailButtonComponent,
+   SendTestEmailComponent
   
    
 

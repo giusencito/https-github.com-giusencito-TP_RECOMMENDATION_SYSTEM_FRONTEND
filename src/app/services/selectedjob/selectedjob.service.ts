@@ -72,5 +72,11 @@ export class SelectedjobService {
       retry(2),
       catchError(this.handleError));
   }
+  GetSelectedJobsByResultTest(id:number){
+    return this.http.get<any>(`${this.basePath}/getSelectedJobsbyResultTest/${id}/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
 
 }

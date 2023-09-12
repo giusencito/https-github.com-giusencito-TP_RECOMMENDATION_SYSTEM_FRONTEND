@@ -20,6 +20,7 @@ import { PostulateDialogComponent } from '../../results/postulate-dialog/postula
 })
 export class ResultHistoryComponent implements OnInit {
   jobs:any[] = []
+  jobsorder:Job[]=[]
   resultTest!:number
   opencourses:boolean = false
   jobdata!:Job
@@ -39,6 +40,7 @@ export class ResultHistoryComponent implements OnInit {
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
     public dialog:MatDialog, private SelectedjobService:SelectedjobService) { 
     this.jobdata = {} as Job;
+    this.selectedjob= {} as SelectedJob
     this.coursedata = {} as Course;
     this.jobdataselected = {} as Job;
     this.interviewquestiondata = {} as Interviewquestion;
@@ -54,6 +56,8 @@ export class ResultHistoryComponent implements OnInit {
   GetJoBbs(){
     this.JobService.GetLinkedinJobbyResultTestId(this.resultTest).subscribe((response:any)=>{
           this.jobs=response.rows
+          this.jobsorder=this.jobs
+          console.log(this.jobsorder)
     })
   }
 
@@ -242,26 +246,25 @@ export class ResultHistoryComponent implements OnInit {
 
 
   JobFilter(){
-    this.JobService.GetLinkedinJobbyResultTestId(this.resultTest).subscribe((responsejobs:any)=>{
-      console.log(responsejobs.rows)
+   
       
       if (this.ascendingOrder) {
-        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
+        this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
       } else {
-        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
+        this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
       }
       this.ascendingOrder = !this.ascendingOrder;
       
-      console.log(this.jobs)
+   
 
-    })
+   
   }
 
   Postulate(id:number){
     console.log(id)
     this.SelectedjobService.GetSelectedJobsByLinkedinJobsId(id).subscribe((responseselected:any)=>{
       console.log(responseselected.rows)
-      if(responseselected.rows.length == 0){
+      if(responseselected.total == 0){
         this.selectedjob.job = id
         this.isPostulate[id] = false
 
@@ -272,7 +275,8 @@ export class ResultHistoryComponent implements OnInit {
           this.isPostulate[id] = true;
           console.log(this.isPostulate[id])
         })  
-      }else{
+      }
+      else{
           this.isPostulate[id] = true;
           console.log(this.isPostulate[id])
           const dialogRef2 = this.dialog.open(PostulateDialogComponent,{
@@ -280,6 +284,12 @@ export class ResultHistoryComponent implements OnInit {
           });
       }
     })
+
+
+
+
+
+
   }
   
 }

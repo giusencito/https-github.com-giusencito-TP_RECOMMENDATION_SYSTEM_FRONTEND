@@ -19,6 +19,7 @@ import { AnswerDialogComponent } from '../../postulant/results/answer-dialog/ans
 export class PostulantRecommendationResultComponent implements OnInit {
 
   jobs:any[] = []
+  jobsorder:Job[] = []
   resultTest!:number
   opencourses:boolean = false
   jobdata!:Job
@@ -30,7 +31,7 @@ export class PostulantRecommendationResultComponent implements OnInit {
   answers: any[] = []
   questionsanswerslist: any[] = []
   cont:number = 0
-  
+  ascendingOrder:boolean = false
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
     public dialog:MatDialog) { 
@@ -50,10 +51,24 @@ export class PostulantRecommendationResultComponent implements OnInit {
   GetJoBbs(){
     this.JobService.GetLinkedinJobbyResultTestId(this.resultTest).subscribe((response:any)=>{
           this.jobs=response.rows
+          this.jobsorder=this.jobs
     })
   }
 
+  JobFilter(){
+   
+      
+    if (this.ascendingOrder) {
+      this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
+    } else {
+      this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
+    }
+    this.ascendingOrder = !this.ascendingOrder;
+    
+ 
 
+ 
+}
 
   isRemote(Jobname:string){
     const remotePatterns = [
