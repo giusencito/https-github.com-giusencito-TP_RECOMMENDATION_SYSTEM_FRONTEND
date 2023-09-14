@@ -5,12 +5,12 @@
       <h2 class="title">Crear una  nueva Seccion</h2>
       <mat-form-field appearance="outline" class="matfield">
            
-        <input matInput placeholder="Nombre de la seccion" type="text" formControlName="namesection" [(ngModel)]="CreateSection.sectionname" #namesection maxlength="30">
+        <input matInput placeholder="Nombre de la seccion" type="text" formControlName="namesection" [(ngModel)]="CreateSection.sectionname" #namesection maxlength="50">
         <mat-icon matSuffix >format_align_justify</mat-icon>
         <mat-error  align="start" *ngIf="changesection.controls['namesection'].dirty && changesection.hasError('required','namesection')">Es requerido</mat-error>
         <mat-error  align="start" *ngIf="changesection.controls['namesection'].dirty && changesection.hasError('minlength','namesection')">Más de tres caracteres</mat-error>
   
-        <mat-hint align="end">{{namesection.value.length}} / 30</mat-hint>
+        <mat-hint align="end">{{namesection.value.length}} / 50</mat-hint>
        
     </mat-form-field>
     <mat-form-field appearance="outline" class="matfield">

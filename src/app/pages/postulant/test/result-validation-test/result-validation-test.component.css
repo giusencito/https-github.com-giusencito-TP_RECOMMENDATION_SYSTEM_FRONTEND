@@ -1,0 +1,94 @@
+.tittle{
+
+    font-family: Futura;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+line-height: 24px;
+margin-right: 20px;
+margin-left: 20px;
+margin-top: 20px;
+}
+.test{
+    font-family: Futura;
+font-size: 1.6rem;
+font-style: normal;
+font-weight: 300;
+line-height: 24px; 
+margin-right: 20px;
+margin-left: 20px;
+margin-top: 20px;
+}
+.cardexp{
+    background: #87CEEB;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 48px;
+
+}
+.sub{
+    font-size: 1.3rem;
+    font-weight: italic; 
+    font-family: 'Futura';
+    
+    line-height: 1;
+    text-align: center;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+  }
+  .center{
+    display: flex;
+    justify-content: center;
+  }
+  .progress-number {
+    
+    font-weight: bold;
+    color: #000;
+    
+        position: absolute;
+        top: 35%;
+        left: 52%;
+        transform: translate(-50%, -50%);
+        font-size: 1.3rem;
+        font-weight: italic;
+        font-family: 'Futura';
+        color: #000;
+      
+  }
+  .button{
+    border-radius: 4px;
+background: #1E88E5;
+font-family: Futura;
+color: whitesmoke;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 700;
+line-height: 36px;
+letter-spacing: 1.25px;
+text-transform: uppercase;
+margin-top: 20px;
+margin-bottom: 20px;
+  }
+  @media (max-width: 767px) {
+    
+    .sub{
+        width: 100%;
+    }
+    .cardexp{
+        width: 10%;
+    }
+  }
+  .background{
+    background-image: url('../../../../../assets/images/home-postulant.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+  
+    z-index: -1;
+  
+  }

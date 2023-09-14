@@ -17,12 +17,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StartTestComponent } from 'src/app/pages/postulant/test/start-test/start-test.component';
 import { OneRecommendationHistoryComponent } from 'src/app/pages/postulant/one-recommendation-history/one-recommendation-history.component';
 import { ResultHistoryComponent } from 'src/app/pages/postulant/one-recommendation-history/resultHistory/resultHistory.component';
+import { ValidationTestComponent } from 'src/app/pages/postulant/test/validation-test/validation-test.component';
+import { ResultValidationTestComponent } from 'src/app/pages/postulant/test/result-validation-test/result-validation-test.component';
+import { ValidationSectionResultComponent } from 'src/app/pages/postulant/test/validation-section-result/validation-section-result.component';
+import { StartValidationTestComponent } from 'src/app/pages/postulant/test/start-validation-test/start-validation-test.component';
 
 
 @NgModule({
   declarations: [HomePostulantComponent,ConfigurePostulantComponent,OrientationTestComponent,OrientedTestResultComponent,
     RecommendationHistoryComponent,ResultsComponent,EmotionalTestComponent,ResultEmotionalTestComponent,StartOrientationTestComponent,
-  NavigaionPostulantComponent, OrientedSectionResultComponent,StartTestComponent,OneRecommendationHistoryComponent,ResultHistoryComponent],
+  NavigaionPostulantComponent, OrientedSectionResultComponent,StartTestComponent,OneRecommendationHistoryComponent,ResultHistoryComponent, ValidationTestComponent, 
+  ResultValidationTestComponent,ValidationSectionResultComponent,StartValidationTestComponent],
   imports: [
     CommonModule,
     PostulantReactiveRoutingModule,
