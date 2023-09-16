@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-start-validation-test',
@@ -8,13 +8,14 @@ import { Router } from '@angular/router';
 })
 export class StartValidationTestComponent implements OnInit {
 
-  constructor(private Router:Router) { }
-
+  constructor(private Router:Router,private ActivatedRoute:ActivatedRoute) { }
+  user!:string
   ngOnInit() {
+    this.user=this.ActivatedRoute.snapshot.paramMap.get('user')!;
   }
 
   continue(){
     
-    this.Router.navigate(['validation-test'])
+    this.Router.navigate(['validation-test'],{queryParams:{user:this.user}})
   }
 }

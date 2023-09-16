@@ -21,6 +21,8 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   names!:string
   type!:string
+  email!:string
+  postulantid!:string
   constructor(private formBuilder:FormBuilder,private datePipe: DatePipe,private SelectedjobService:SelectedjobService,private JobService:JobService,private ActivatedRoute:ActivatedRoute,private Router:Router) {
     this.dataSourceoriginal = new MatTableDataSource<any>();
     this.dataSource = new MatTableDataSource<any>();
@@ -28,8 +30,9 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
-      const id =params['postulant']
-      this.getall(id)
+      this.postulantid  =params['postulant']
+      this.email=params['email']
+      this.getall(Number(this.postulantid))
     
      
     })

@@ -63,7 +63,7 @@ export class SeeOnePostulantComponent implements OnInit {
   history(){
     let id =parseInt(this.route.snapshot.paramMap.get('postulant')!);
 
-    this.router.navigate([`postulant-recommendation-history`],{queryParams:{postulant:id}});
+    this.router.navigate([`postulant-recommendation-history`],{queryParams:{postulant:id,email:this.email}});
 
   }
 

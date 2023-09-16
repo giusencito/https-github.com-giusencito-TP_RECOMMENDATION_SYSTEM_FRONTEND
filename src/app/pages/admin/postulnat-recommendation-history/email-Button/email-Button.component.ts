@@ -12,6 +12,10 @@ import { SelectedEmail } from 'src/app/models/history/SelectedEmail';
 export class EmailButtonComponent implements OnInit {
   @Input()
   resultest!:number
+  @Input()
+  email!:string
+  @Input()
+  postulant!:string
   change!:boolean
  selectedjobs:SelectedEmail[]=[]
 
@@ -36,7 +40,7 @@ export class EmailButtonComponent implements OnInit {
 
     const dialogRef = this.dialog.open(SendTestEmailComponent, {
       width: '500px',
-      data: {jobs:this.selectedjobs}
+      data: {jobs:this.selectedjobs,email:this.email,postulant:this.postulant}
     });
     dialogRef.afterClosed().subscribe(result => {
 

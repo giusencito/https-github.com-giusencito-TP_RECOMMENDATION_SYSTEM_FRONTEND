@@ -2,30 +2,30 @@
   <p class="tittle">Trabajos Postulados</p>
 </div>
 <br>
-<div *ngFor="let item of data.jobs">
-<mat-card>
-  <div class="center">
-    <p>{{item.jobName}}</p>
-
-  </div>
-  <div class="center">
-    <p>{{item.register}}</p>
-
-  </div>
-
-  <div class="center">
-    <button mat-flat-button *ngIf="setChange(item.register)" (click)="open()">
-      <img src="../../../../assets/images/Send Email.png">
-    </button>
-    <button mat-flat-button disabled="true" *ngIf="!setChange(item.register)">
-      <img src="../../../../assets/images/Secured Mail.png">
-    </button>
-  </div>
-
- 
-</mat-card>
-<br>
-
-
-
+<div class="jobs">
+  <div *ngFor="let item of data.jobs" >
+    <mat-card>
+      <div class="center">
+        <p>{{item.jobName}}</p>
+    
+      </div>
+      <div class="center">
+        <p>{{item.register}}</p>
+    
+      </div>
+    
+      <div class="center">
+        <button mat-flat-button *ngIf="setChange(item.register)" (click)="open()">
+          <img src="../../../../assets/images/Send Email.png">
+        </button>
+        <button mat-flat-button disabled="true" *ngIf="!setChange(item.register)">
+          <img src="../../../../assets/images/Secured Mail.png">
+        </button>
+      </div>
+    
+     
+    </mat-card>
+    <br>
+    </div>
+    
 </div>

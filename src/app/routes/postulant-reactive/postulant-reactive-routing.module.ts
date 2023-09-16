@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'home-postulant',component:HomePostulantComponent,canActivate: [PostulantGuard]},
   {path:'configure-postulant',component:ConfigurePostulantComponent,canActivate: [PostulantGuard]},
   {path:'start-test',component:StartTestComponent},
-  {path:'start-validation-test',component:StartValidationTestComponent},
+  {path:'start-validation-test/:token/:user',component:StartValidationTestComponent},
   {path:'emotional-test',component:EmotionalTestComponent},
   {path:'orientation-test',component:OrientationTestComponent},
   {path:'validation-test',component:ValidationTestComponent},

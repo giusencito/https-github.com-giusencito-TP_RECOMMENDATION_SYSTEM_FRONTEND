@@ -46,7 +46,7 @@
             </div>
             <div class="center3">
                  <button mat-raised-button class="see"  (click)="GoToPast(item.ObtainDate,item.resultTest)">Ver</button>
-                 <app-email-Button [resultest]="item.resultTest"></app-email-Button>
+                 <app-email-Button [resultest]="item.resultTest" [email]="email" [postulant]="postulantid"></app-email-Button>
 
             </div>
         </mat-card>

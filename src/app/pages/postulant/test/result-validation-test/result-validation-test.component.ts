@@ -1,3 +1,4 @@
+import { TokenService } from './../../../../services/token/token.service';
 import { ResultSectionService } from 'src/app/services/resultSection/result-section.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { TestService } from 'src/app/services/test/test.service';
@@ -16,7 +17,7 @@ export class ResultValidationTestComponent implements OnInit {
   resulTest!:number
   test!:Test
   testidvar!:number
-  constructor(private TestService:TestService,private ResultSectionService:ResultSectionService,private route:ActivatedRoute, private Router:Router) { 
+  constructor(private TestService:TestService,private TokenService:TokenService,private route:ActivatedRoute, private Router:Router) { 
     this.dataSource = new MatTableDataSource<any>();
     this.test = {} as Test 
   }
@@ -36,6 +37,7 @@ export class ResultValidationTestComponent implements OnInit {
   }
 
   GoToHome(){
-    this.Router.navigate(['/home-postulant'])
+    this.TokenService.logOut()
+    this.Router.navigate(['/login'])
   }
 }

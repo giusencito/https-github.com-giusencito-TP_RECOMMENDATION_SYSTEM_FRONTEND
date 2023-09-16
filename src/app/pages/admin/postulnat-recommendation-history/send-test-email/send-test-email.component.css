@@ -19,3 +19,7 @@ p{
     line-height: 20px; 
     letter-spacing: 0.25px;
 }
+.jobs{
+    max-height: 300px;
+    overflow-y: scroll;
+}

@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
-import { ResetPassword } from 'src/app/models/authentication/ResetPassword';
-
+import { Feedback } from 'src/app/models/history/Feedback';
 @Injectable({
   providedIn: 'root'
 })
-export class SelectedjobService {
+export class FeedbackService {
 
-  basePath = 'http://127.0.0.1:8000/selectedJob/SelectedJobViewSets';
+  basePath = 'http://127.0.0.1:8000/feedback/FeedbackViewSets';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -31,56 +30,36 @@ export class SelectedjobService {
   
     return throwError('Something happened with request, please try again later');
   }
-
-  GetAllSelectedJobs(){
+  GetAllFeedbacks(){
     return this.http.get<any>(`${this.basePath}/` ,this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));
   }
   
-  GetSelectedJobById(id:number){
+  GetIFeedbacksById(id:number){
     return this.http.get<any>(`${this.basePath}/${id}/` ,this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));
   }
 
-  CreateSelectedJobs(item:any){
+  CreateIFeedbacks(item:Feedback){
     return this.http.post<any>(`${this.basePath}/` ,JSON.stringify(item),this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));
   }
-  SendTestEmail(item:ResetPassword){
-    return this.http.post<any>(`${this.basePath}/SendTestEmail/send_email/` ,JSON.stringify(item),this.httpOptions)
-    .pipe(
-      retry(2),
-      catchError(this.handleError));
-  }
 
-  UpdateSelectedJobs(id:number,item:any){
+  UpdateFeedbacksn(id:number,item:any){
     return this.http.put<any>(`${this.basePath}/${id}/` ,JSON.stringify(item),this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));
   }
 
-  DeleteSelectedJob(id:number){
+  DeleteIFeedbacks(id:number){
     return this.http.delete<any>(`${this.basePath}/${id}/` ,this.httpOptions)
-    .pipe(
-      retry(2),
-      catchError(this.handleError));
-  }
-
-  GetSelectedJobsByLinkedinJobsId(id:number){
-    return this.http.get<any>(`${this.basePath}/${id}/getSelectedJobbyLinkedinJobId/` ,this.httpOptions)
-    .pipe(
-      retry(2),
-      catchError(this.handleError));
-  }
-  GetSelectedJobsByResultTest(id:number){
-    return this.http.get<any>(`${this.basePath}/getSelectedJobsbyResultTest/${id}/` ,this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));

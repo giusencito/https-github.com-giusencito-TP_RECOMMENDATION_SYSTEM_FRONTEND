@@ -4,7 +4,7 @@ import { QuestionService } from './../../../../services/question/question.servic
 import { SectionService } from './../../../../services/section/section.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CreateResultSection } from 'src/app/models/result/CreateResultSection';
 import { CreateResultTest } from 'src/app/models/result/CreateResultTest';
 import { Section } from 'src/app/models/test/Section';
@@ -42,7 +42,7 @@ export class ValidationTestComponent implements OnInit {
   createTestid!:number
 
   constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,private TestService:TestService,private Router:Router, 
-    private ResultTestService:ResultTestService, private ResultSectionService:ResultSectionService, private TokenService:TokenService) {
+    private ResultTestService:ResultTestService, private ResultSectionService:ResultSectionService, private ActivatedRoute:ActivatedRoute) {
 
     this.dataSource = new MatTableDataSource<any>();
     this.dataSource2 = new MatTableDataSource<any>();
@@ -53,7 +53,13 @@ export class ValidationTestComponent implements OnInit {
 
   ngOnInit() {
     this.getActualSituation()
-    this.CreateResultTest.postulant= this.TokenService.getId()
+    this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
+      this.CreateResultTest.postulant =params['user']
+      
+    
+     
+    })
+
     
   }
 
@@ -132,7 +138,7 @@ export class ValidationTestComponent implements OnInit {
   }
 
   CreateTest(){
-    
+    console.log(this.CreateResultTest)
     this.ResultTestService.CreateResultTest( this.CreateResultTest).subscribe((response:any)=>{
             
             this.createTestid=response.id.toString()
