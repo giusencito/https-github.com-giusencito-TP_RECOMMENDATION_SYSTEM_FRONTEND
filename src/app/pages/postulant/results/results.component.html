@@ -12,8 +12,8 @@
   <br>
   
   
-  
-  <div class="group">
+
+  <div class="group" *ngIf="isLoading;else loadingSpinner">
   <div class="section1">
   <button mat-flat-button class="button" (click)="JobFilter()">Ordenar Trabajos</button>
   <br>
@@ -133,7 +133,12 @@
   </ng-template>
 
   </div>
-
+  <ng-template #loadingSpinner>
+    <div class="loading-container">
+      <mat-spinner diameter="120"></mat-spinner>
+    
+    </div>
+  </ng-template>
 
 
 

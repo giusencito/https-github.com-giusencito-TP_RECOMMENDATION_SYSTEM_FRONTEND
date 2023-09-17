@@ -1,7 +1,9 @@
+import { FeedbackService } from './../../../services/feedback/feedback.service';
+import { SelectedjobService } from './../../../services/selectedjob/selectedjob.service';
 import { RecommendationService } from './../../../services/recommendation/recommendation.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Course } from 'src/app/models/result/course';
 import { Interviewquestion } from 'src/app/models/result/interviewquestion';
 import { Job } from 'src/app/models/result/job';
@@ -10,6 +12,7 @@ import { CourserecomendationService } from 'src/app/services/courserecomendation
 import { InterviewquestionService } from 'src/app/services/interviewquestions/interviewquestion.service';
 import { JobService } from 'src/app/services/job/job.service';
 import { AnswerDialogComponent } from '../../postulant/results/answer-dialog/answer-dialog.component';
+import { SendTestEmailComponent } from '../postulnat-recommendation-history/send-test-email/send-test-email.component';
 
 @Component({
   selector: 'app-postulant-recommendation-result',
@@ -21,6 +24,8 @@ export class PostulantRecommendationResultComponent implements OnInit {
   jobs:any[] = []
   jobsorder:Job[] = []
   resultTest!:number
+  postulantid!:string
+  email!:string
   opencourses:boolean = false
   jobdata!:Job
   jobdataselected!:Job
@@ -34,7 +39,7 @@ export class PostulantRecommendationResultComponent implements OnInit {
   ascendingOrder:boolean = false
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
-    public dialog:MatDialog) { 
+    public dialog:MatDialog,private Router:Router,private SelectedjobService:SelectedjobService,private FeedbackService:FeedbackService ) { 
     this.jobdata = {} as Job;
     this.coursedata = {} as Course;
     this.jobdataselected = {} as Job;
@@ -44,6 +49,8 @@ export class PostulantRecommendationResultComponent implements OnInit {
   ngOnInit() {
     this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
       this.resultTest=params['ResultTest']
+      this.postulantid=params['postulant']
+      this.email=params['email']
       this.GetJoBbs()
      
     })
@@ -243,12 +250,29 @@ export class PostulantRecommendationResultComponent implements OnInit {
     })
     
   }
+  return(){
+    this.Router.navigate(['postulant-recommendation-history'],{queryParams:{'postulant':this.postulantid,'email':this.email}})
 
+  }
   openAnswer(answer:string){
     console.log(answer)
     const dialogRef= this.dialog.open(AnswerDialogComponent,{
       data: answer
     })
+  }
+  getselectedjobs(){
+  this.FeedbackService.GetIFeedbacksByResultTestFROMJOBS(this.resultTest).subscribe((response:any)=>{
+    const dialogRef = this.dialog.open(SendTestEmailComponent, {
+      width: '500px',
+      data: {jobs:response.rows,email:this.email,postulant:this.postulantid,type:'true'}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+    })
+
+
+  })
+    
   }
 
 }

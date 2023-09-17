@@ -40,7 +40,7 @@ export class ValidationTestComponent implements OnInit {
   TestNumber=7
   CreateResultTest!:CreateResultTest
   createTestid!:number
-
+  resultTest!:number
   constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,private TestService:TestService,private Router:Router, 
     private ResultTestService:ResultTestService, private ResultSectionService:ResultSectionService, private ActivatedRoute:ActivatedRoute) {
 
@@ -54,7 +54,7 @@ export class ValidationTestComponent implements OnInit {
   ngOnInit() {
     this.getActualSituation()
     this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
-      this.CreateResultTest.postulant =params['user']
+      this.resultTest=params['resultTest']
       
     
      
@@ -138,13 +138,13 @@ export class ValidationTestComponent implements OnInit {
   }
 
   CreateTest(){
-    console.log(this.CreateResultTest)
-    this.ResultTestService.CreateResultTest( this.CreateResultTest).subscribe((response:any)=>{
+    
+   
             
-            this.createTestid=response.id.toString()
-            console.log(this.resultSectionSource)
+      
+           
             this.resultSectionSource = this.resultSectionSource.map((section: CreateResultSection) => {
-              return { ...section, resultTest: this.createTestid };
+              return { ...section, resultTest: this.resultTest };
             });
             this.resultSectionSource.forEach((section) => {
               console.log(section)
@@ -152,14 +152,14 @@ export class ValidationTestComponent implements OnInit {
 
                })
             });
-            this.Router.navigate(['validation-test-result', this.createTestid])
+            this.Router.navigate(['validation-test-result', this.resultTest])
 
            
 
 
 
 
-    })
+  
 
     
   }

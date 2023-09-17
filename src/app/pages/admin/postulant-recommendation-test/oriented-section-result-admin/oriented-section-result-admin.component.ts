@@ -27,6 +27,6 @@ export class OrientedSectionResultAdminComponent implements OnInit {
       this.dataSource.data=response.rows
       
     })
-}
+ }
 
 }

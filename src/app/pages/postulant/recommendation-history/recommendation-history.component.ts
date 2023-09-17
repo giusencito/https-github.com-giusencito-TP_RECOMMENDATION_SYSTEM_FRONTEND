@@ -18,16 +18,17 @@ export class RecommendationHistoryComponent implements OnInit {
   dateform!:FormGroup
   dataSourceoriginal !:MatTableDataSource<any>;
   dataSource!: MatTableDataSource<any>;
+  data: any[] =[]
   names!:string
   type!:string
   constructor(private ResultTestService:ResultTestService,private TokenService:TokenService,private Router:Router,private JobService:JobService,private formBuilder:FormBuilder,private datePipe: DatePipe) {
     this.dataSourceoriginal = new MatTableDataSource<any>();
     this.dataSource = new MatTableDataSource<any>();
-
    }
 
   ngOnInit(): void {
     this.getall()
+  
     this.nameform=this.formBuilder.group({
       name:['',[Validators.required]],
      })
@@ -38,6 +39,7 @@ export class RecommendationHistoryComponent implements OnInit {
 
 
   }
+  
  getall(){
   this.JobService.getLinkedinJobsByPostulantsJustOne(this.TokenService.getId()).subscribe((response:any)=>{
     this.dataSourceoriginal.data=response.rows

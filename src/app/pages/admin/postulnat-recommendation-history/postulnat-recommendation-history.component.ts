@@ -32,6 +32,7 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
     this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
       this.postulantid  =params['postulant']
       this.email=params['email']
+     
       this.getall(Number(this.postulantid))
     
      
@@ -46,7 +47,7 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
      })
   }
   getall(id:number){
-  
+    
     this.JobService.getLinkedinJobsByPostulantsJustOne(id).subscribe((response:any)=>{
       this.dataSourceoriginal.data=response.rows
       this.dataSource.data=this.dataSourceoriginal.data
@@ -77,9 +78,9 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
     this.dataSource.data=dates
    }
    GoToPast(date:Date,resultTest:number){
-    this.Router.navigate(['postulant-recommendation-test'],{queryParams:{'Date':date,'ResultTest':resultTest}})
+    this.Router.navigate(['postulant-recommendation-test'],{queryParams:{'Date':date,'ResultTest':resultTest,'postulant':this.postulantid,'email':this.email}})
  }
- checkEmail(id:number){
+ checkEmailp(id:number){
   this.SelectedjobService.GetSelectedJobsByResultTest(id).subscribe((response:any)=>{
        if(response.total==0){
             return false

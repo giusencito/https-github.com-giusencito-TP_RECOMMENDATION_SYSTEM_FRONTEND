@@ -36,6 +36,7 @@ import { RecommendationHistoryComponent } from './pages/postulant/recommendation
 import { PostulnatRecommendationHistoryComponent } from './pages/admin/postulnat-recommendation-history/postulnat-recommendation-history.component';
 import { PostulantRecommendationTestComponent } from './pages/admin/postulant-recommendation-test/postulant-recommendation-test.component';
 import { PostulantRecommendationResultComponent } from './pages/admin/postulant-recommendation-result/postulant-recommendation-result.component';
+import { SeeValidationResultsComponent } from './pages/admin/see-validation-results/see-validation-results.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,7 @@ const routes: Routes = [
 {path:'postulant-recommendation-history',component:PostulnatRecommendationHistoryComponent},
 {path:'postulant-recommendation-test',component:PostulantRecommendationTestComponent},
 {path:'postulant-recommendation-result',component:PostulantRecommendationResultComponent},
+{path:'see-validation-results',component:SeeValidationResultsComponent},
 
 {path:'create-test',component:CreateTestComponent},
 {path:'edit-test',component:EditTestComponent},

@@ -9,7 +9,7 @@ import {catchError, retry} from "rxjs/operators";
 export class JobService {
 
   basePath = 'http://127.0.0.1:8000/linkedinJob/LinkedinJobsViewSets';
-
+  basePath2='https://restcountries.com/v3.1/all'
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -33,6 +33,12 @@ export class JobService {
 
   GetAllJobs(){
     return this.http.get<any>(`${this.basePath}/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
+  GetContries(){
+    return this.http.get<any>(`${this.basePath2}/` ,this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError));

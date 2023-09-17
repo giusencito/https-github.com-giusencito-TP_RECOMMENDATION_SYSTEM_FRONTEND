@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { CreateResultTest } from './../../../../models/result/CreateResultTest';
+import { ResultTestService } from './../../../../services/resultTest/result-test.service';
 import { SendEmail } from './../../../../models/history/SendEmail';
 import { TokenService } from './../../../../services/token/token.service';
 import { FeedbackService } from './../../../../services/feedback/feedback.service';
@@ -16,10 +19,13 @@ export class SendTestEmailComponent implements OnInit {
   change!:boolean
   SendEmail!:SendEmail
   Feedback!:Feedback
+  CreateResultTest!:CreateResultTest
   constructor( public dialogRef: MatDialogRef<SendTestEmailComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,private SelectedjobService:SelectedjobService,private FeedbackService:FeedbackService,private TokenService:TokenService) { 
+    @Inject(MAT_DIALOG_DATA) public data: any,private SelectedjobService:SelectedjobService,private FeedbackService:FeedbackService,private TokenService:TokenService,
+    private ResultTestService:ResultTestService,private Router:Router) { 
       this.SendEmail= {} as SendEmail
       this.Feedback= {} as Feedback
+      this.CreateResultTest={} as CreateResultTest
     }
 
   ngOnInit() {
@@ -51,23 +57,47 @@ export class SendTestEmailComponent implements OnInit {
   
     return palabra;
   }
-  open(){
+  open(selectedJob:number){
    this.Feedback.admin=this.TokenService.getId()
    this.Feedback.token_link=this.generatetoken()
-   this.Feedback.postulant=this.data.postulant
+   this.Feedback.selectedjob=selectedJob
    console.log('this.Feedback')
    console.log(this.Feedback)
-   this.FeedbackService.CreateIFeedbacks(this.Feedback).subscribe((response:any)=>{
+   console.log(this.data)
+   console.log(this.data.postulant)
+   this.CreateResultTest.postulant=this.data.postulant
 
-    this.SendEmail.email= this.data.email
-    this.SendEmail.token=this.Feedback.token_link
-    this.SelectedjobService.SendTestEmail(this.SendEmail).subscribe((response:any)=>{
-      
-    })
+   this.ResultTestService.CreateResultTest(this.CreateResultTest).subscribe((response:any)=>{
+    this.Feedback.resultTest=response.id;
+    this.FeedbackService.CreateIFeedbacks(this.Feedback).subscribe((response:any)=>{
+
+      this.SendEmail.email= this.data.email
+      this.SendEmail.token=this.Feedback.token_link
+      this.SelectedjobService.SendTestEmail(this.SendEmail).subscribe((response:any)=>{
+        
+      })
+  
+     },err=>{})
+
 
    },err=>{})
 
 
+
     
   }
+  seeresults(resultTest:number){
+    this.Router.navigate(['see-validation-results'],{queryParams:{resultTest:resultTest}})
+  }
+
+
+
+
+
+
+
+
+
+
+
 }

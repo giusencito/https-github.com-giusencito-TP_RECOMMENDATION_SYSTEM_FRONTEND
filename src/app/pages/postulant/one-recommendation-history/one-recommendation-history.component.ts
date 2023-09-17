@@ -29,6 +29,8 @@ export class OneRecommendationHistoryComponent implements OnInit {
     this.TestService.getAllTest().subscribe((response:any)=>{
           this.dataSource.data=response.rows
           this.dataSource.data.shift()
+          this.dataSource.data.pop()
+
     })
   }
   GoToJobResults(){

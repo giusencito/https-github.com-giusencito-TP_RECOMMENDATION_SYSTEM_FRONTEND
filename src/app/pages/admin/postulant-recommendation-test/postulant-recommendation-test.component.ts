@@ -9,7 +9,8 @@ import { TestService } from 'src/app/services/test/test.service';
   styleUrls: ['./postulant-recommendation-test.component.css']
 })
 export class PostulantRecommendationTestComponent implements OnInit {
-
+  postulantid!:string;
+  email!:string
   dataSource !:MatTableDataSource<any>;
   resulTest!:number
   date!:Date
@@ -23,6 +24,8 @@ export class PostulantRecommendationTestComponent implements OnInit {
   this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
       this.date=params['Date']
       this.resulTest=params['ResultTest']
+      this.postulantid=params['postulant']
+      this.email=params['email']
      
     })
   }
@@ -30,10 +33,11 @@ export class PostulantRecommendationTestComponent implements OnInit {
     this.TestService.getAllTest().subscribe((response:any)=>{
           this.dataSource.data=response.rows
           this.dataSource.data.shift()
+          this.dataSource.data.pop()
     })
   }
   GoToJobResults(){
-    this.Router.navigate(['postulant-recommendation-result'],{queryParams:{'ResultTest': this.resulTest}})
+    this.Router.navigate(['postulant-recommendation-result'],{queryParams:{'ResultTest': this.resulTest,'postulant':this.postulantid,'email':this.email}})
   }
 
 }

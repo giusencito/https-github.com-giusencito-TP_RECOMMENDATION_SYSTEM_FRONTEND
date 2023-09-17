@@ -1,3 +1,4 @@
+import { SpinnerComponent } from './../../pages/postulant/spinner/spinner.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostulantReactiveRoutingModule } from './postulant-reactive-routing.module';
@@ -21,6 +22,9 @@ import { ValidationTestComponent } from 'src/app/pages/postulant/test/validation
 import { ResultValidationTestComponent } from 'src/app/pages/postulant/test/result-validation-test/result-validation-test.component';
 import { ValidationSectionResultComponent } from 'src/app/pages/postulant/test/validation-section-result/validation-section-result.component';
 import { StartValidationTestComponent } from 'src/app/pages/postulant/test/start-validation-test/start-validation-test.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SpinnerInterceptor } from 'src/app/interceptors/spinner.interceptor';
+import { SpinnerModule } from 'src/app/pages/postulant/spinner/spinner.module';
 
 
 @NgModule({
@@ -33,7 +37,12 @@ import { StartValidationTestComponent } from 'src/app/pages/postulant/test/start
     PostulantReactiveRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SpinnerModule
+  ],
+  providers:[
+    
   ]
+  
 })
 export class PostulantReactiveModule { }

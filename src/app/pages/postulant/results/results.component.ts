@@ -41,7 +41,7 @@ export class ResultsComponent implements OnInit {
   ascendingOrder:boolean = false
   selectedjob!:SelectedJob
   isPostulate: { [key: number]: boolean } = {};
-
+  isLoading=false
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
               private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService, private ResultSectionService:ResultSectionService) { 
               
@@ -159,6 +159,7 @@ gotoCourseUrl(url:string){
                 })
             } 
           console.log(this.jobs);
+          this.isLoading=true
               
         })
       } else {

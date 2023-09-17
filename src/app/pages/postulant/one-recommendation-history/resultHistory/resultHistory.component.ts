@@ -3,7 +3,7 @@ import { CourserecomendationService } from 'src/app/services/courserecomendation
 import { InterviewquestionService } from './../../../../services/interviewquestions/interviewquestion.service';
 import { CourseService } from './../../../../services/course/course.service';
 import { RecommendationService } from './../../../../services/recommendation/recommendation.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { JobService } from './../../../../services/job/job.service';
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/result/job';
@@ -35,7 +35,7 @@ export class ResultHistoryComponent implements OnInit {
   ascendingOrder:boolean = false
   selectedjob!:SelectedJob
   isPostulate: { [key: number]: boolean } = {};
-  
+  isLoading=false
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
     public dialog:MatDialog, private SelectedjobService:SelectedjobService) { 
@@ -58,6 +58,7 @@ export class ResultHistoryComponent implements OnInit {
           this.jobs=response.rows
           this.jobsorder=this.jobs
           console.log(this.jobsorder)
+          this.isLoading=true
     })
   }
 

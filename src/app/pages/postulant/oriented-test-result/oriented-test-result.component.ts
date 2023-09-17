@@ -29,6 +29,7 @@ export class OrientedTestResultComponent implements OnInit {
     this.TestService.getAllTest().subscribe((response:any)=>{
           this.dataSource.data=response.rows
           this.dataSource.data.shift()
+          this.dataSource.data.pop()
           console.log(this.dataSource.data)
     })
   }

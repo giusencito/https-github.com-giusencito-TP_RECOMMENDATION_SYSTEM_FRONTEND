@@ -23,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/authentication/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './pages/authentication/change-password/change-password.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HomePostulantComponent } from './pages/postulant/home-postulant/home-postulant.component';
 
 import { ErrorDialogComponent } from './pages/authentication/login/error-dialog/error-dialog.component';
@@ -67,6 +67,10 @@ import { PostulantRecommendationResultComponent } from './pages/admin/postulant-
 import { PostulateDialogComponent } from './pages/postulant/results/postulate-dialog/postulate-dialog.component';
 import { EntreprenaurDialogComponent } from './pages/postulant/results/entreprenaur-dialog/entreprenaur-dialog.component';
 import { SendTestEmailComponent } from './pages/admin/postulnat-recommendation-history/send-test-email/send-test-email.component';
+import { SpinnerComponent } from './pages/postulant/spinner/spinner.component';
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { SpinnerModule } from './pages/postulant/spinner/spinner.module';
+import { SeeValidationResultsComponent } from './pages/admin/see-validation-results/see-validation-results.component';
 
 
 @NgModule({
@@ -118,7 +122,9 @@ import { SendTestEmailComponent } from './pages/admin/postulnat-recommendation-h
     PostulateDialogComponent,
     EntreprenaurDialogComponent,
    EmailButtonComponent,
-   SendTestEmailComponent
+   SendTestEmailComponent,
+   SeeValidationResultsComponent,
+   
   
    
 
@@ -132,9 +138,13 @@ import { SendTestEmailComponent } from './pages/admin/postulnat-recommendation-h
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    SpinnerModule
+    
   ],
-  providers: [],
+  providers:[
+    {provide:HTTP_INTERCEPTORS,useClass:SpinnerInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

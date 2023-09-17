@@ -2,7 +2,7 @@
   <p class="tittle">Trabajos Postulados</p>
 </div>
 <br>
-<div class="jobs">
+<div class="jobs" *ngIf="!data.type">
   <div *ngFor="let item of data.jobs" >
     <mat-card>
       <div class="center">
@@ -14,12 +14,35 @@
     
       </div>
     
-      <div class="center">
-        <button mat-flat-button *ngIf="setChange(item.register)" (click)="open()">
+      <div class="center" *ngIf="!data.type">
+        <button mat-flat-button *ngIf="setChange(item.register)" (click)="open(item.id)">
           <img src="../../../../assets/images/Send Email.png">
         </button>
         <button mat-flat-button disabled="true" *ngIf="!setChange(item.register)">
           <img src="../../../../assets/images/Secured Mail.png">
+        </button>
+        
+      </div>
+    </mat-card>
+    <br>
+    </div>
+    
+</div>
+<div class="jobs" *ngIf="data.type">
+  <div *ngFor="let item of data.jobs" >
+    <mat-card class="card">
+      <div class="center">
+        <p>{{item.selectedjob}}</p>
+    
+      </div>
+      <div class="center">
+        <p>{{item.emailsend}}</p>
+    
+      </div>
+    
+      <div class="center">
+        <button mat-flat-button class="see" (click)="seeresults(item.resultTest)">
+        Ver Resultados
         </button>
       </div>
     

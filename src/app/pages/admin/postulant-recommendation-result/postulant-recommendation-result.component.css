@@ -204,9 +204,9 @@ font-style: normal;
 
 }
 .container {
-  width: 120%; /* Ajusta el ancho según tus necesidades */
-  height: 15%; /* Ajusta la altura según tus necesidades */
-  overflow-y: auto; /* Habilita el scroll vertical cuando el contenido excede la altura */
+  width: 120%; 
+  height: 600px; 
+  overflow-y: scroll; 
   margin-left: 8%;
 }
 
@@ -245,4 +245,11 @@ font-style: normal;
   margin-top: 360px;
   margin-left: calc(33vw - 200px);
   height: 100vh; /* O ajusta el valor según tus necesidades */
+}
+.buttons{
+  margin-right: 100px;
+  margin-top: 70px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: space-between;
 }

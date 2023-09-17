@@ -43,6 +43,12 @@ export class FeedbackService {
       retry(2),
       catchError(this.handleError));
   }
+  GetIFeedbacksByResultTestFROMJOBS(id:number){
+    return this.http.get<any>(`${this.basePath}/get_feedback_by_result_test/${id}/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
 
   CreateIFeedbacks(item:Feedback){
     return this.http.post<any>(`${this.basePath}/` ,JSON.stringify(item),this.httpOptions)

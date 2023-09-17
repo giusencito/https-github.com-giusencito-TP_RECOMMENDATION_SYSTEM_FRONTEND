@@ -9,13 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class StartValidationTestComponent implements OnInit {
 
   constructor(private Router:Router,private ActivatedRoute:ActivatedRoute) { }
-  user!:string
+  resultTest!:number
   ngOnInit() {
-    this.user=this.ActivatedRoute.snapshot.paramMap.get('user')!;
+    this.resultTest=parseInt(this.ActivatedRoute.snapshot.paramMap.get('user')!);
   }
 
   continue(){
     
-    this.Router.navigate(['validation-test'],{queryParams:{user:this.user}})
+    this.Router.navigate(['validation-test'],{queryParams:{resultTest:this.resultTest}})
   }
 }
