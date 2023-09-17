@@ -77,7 +77,7 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
     this.dataSource.data=dates
    }
    GoToPast(date:Date,resultTest:number){
-    this.Router.navigate(['postulant-recommendation-test'],{queryParams:{'Date':date,'ResultTest':resultTest}})
+    this.Router.navigate(['postulant-recommendation-test'],{queryParams:{'Date':date,'ResultTest':resultTest,'postulant':this.postulantid}})
  }
  checkEmail(id:number){
   this.SelectedjobService.GetSelectedJobsByResultTest(id).subscribe((response:any)=>{

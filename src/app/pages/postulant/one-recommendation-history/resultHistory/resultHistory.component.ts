@@ -13,6 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { SelectedJob } from 'src/app/models/result/selectedjob';
 import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
 import { PostulateDialogComponent } from '../../results/postulate-dialog/postulate-dialog.component';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-resultHistory',
   templateUrl: './resultHistory.component.html',
@@ -41,7 +43,7 @@ export class ResultHistoryComponent implements OnInit {
   
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
-    public dialog:MatDialog, private SelectedjobService:SelectedjobService) { 
+    public dialog:MatDialog, private SelectedjobService:SelectedjobService, private Router:Router) { 
     this.jobdata = {} as Job;
     this.selectedjob= {} as SelectedJob
     this.coursedata = {} as Course;
@@ -312,6 +314,10 @@ export class ResultHistoryComponent implements OnInit {
 
 
 
+  }
+
+  GoToHistory(){
+    this.Router.navigate(['/recommendation-history'])
   }
   
 }

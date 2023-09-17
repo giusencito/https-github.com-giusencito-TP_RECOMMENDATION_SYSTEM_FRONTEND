@@ -17,6 +17,7 @@ import { SelectedJob } from 'src/app/models/result/selectedjob';
 import { PostulateDialogComponent } from './postulate-dialog/postulate-dialog.component';
 import { ResultSectionService } from 'src/app/services/resultSection/result-section.service';
 import { EntreprenaurDialogComponent } from './entreprenaur-dialog/entreprenaur-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -47,7 +48,8 @@ export class ResultsComponent implements OnInit {
   isPostulate: { [key: number]: boolean } = {};
 
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
-              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService, private ResultSectionService:ResultSectionService) { 
+              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService, private ResultSectionService:ResultSectionService,
+              private Router:Router) { 
               
               this.jobdata = {} as Job;
               this.coursedata = {} as Course;
@@ -326,6 +328,10 @@ gotoCourseUrl(url:string){
           });
       }
     })
+  }
+
+  GoToHome(){
+    this.Router.navigate(['/home-postulant'])
   }
 
 }

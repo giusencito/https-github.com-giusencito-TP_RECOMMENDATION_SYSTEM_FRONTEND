@@ -10,6 +10,8 @@ import { CourserecomendationService } from 'src/app/services/courserecomendation
 import { InterviewquestionService } from 'src/app/services/interviewquestions/interviewquestion.service';
 import { JobService } from 'src/app/services/job/job.service';
 import { AnswerDialogComponent } from '../../postulant/results/answer-dialog/answer-dialog.component';
+import { Router } from '@angular/router';
+import { PostulantService } from 'src/app/services/postulant/postulant.service';
 
 @Component({
   selector: 'app-postulant-recommendation-result',
@@ -35,9 +37,13 @@ export class PostulantRecommendationResultComponent implements OnInit {
   Posibilitypercentageint!:number
   GetPosibilitypercentageint!:number
   GetFilterPosibilitypercentageint!:number
+  postulantid!:string
+  name!:string
+  last_name!:string
+  email!:string
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
-    public dialog:MatDialog) { 
+    public dialog:MatDialog, private Router:Router, private PostulantService:PostulantService) { 
     this.jobdata = {} as Job;
     this.coursedata = {} as Course;
     this.jobdataselected = {} as Job;
@@ -47,6 +53,12 @@ export class PostulantRecommendationResultComponent implements OnInit {
   ngOnInit() {
     this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
       this.resultTest=params['ResultTest']
+      this.postulantid=params['postulant']
+      this.PostulantService.getPostulant(this.postulantid).subscribe((response: any)=>{
+        this.name = response.name
+        this.last_name = response.last_name
+        this.email = response.email
+      })
       this.GetJoBbs()
      
     })
@@ -273,6 +285,10 @@ export class PostulantRecommendationResultComponent implements OnInit {
     const dialogRef= this.dialog.open(AnswerDialogComponent,{
       data: answer
     })
+  }
+
+  GoToHistory(){
+    this.Router.navigate([`postulant-recommendation-history`],{queryParams:{postulant:Number(this.postulantid),email:this.email}});
   }
 
 }
