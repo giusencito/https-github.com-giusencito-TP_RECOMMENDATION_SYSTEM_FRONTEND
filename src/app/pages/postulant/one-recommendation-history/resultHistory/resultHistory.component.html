@@ -26,8 +26,8 @@
       
         <div class="first">
         <div class="progress-container">
-          <mat-progress-spinner [diameter]="50" mode="determinate" [value]="job.posibilityPercentage*100"  color="#ff0000"></mat-progress-spinner>
-          <span class="progress-number">{{job.posibilityPercentage*100}}%</span>
+          <mat-progress-spinner [diameter]="50" mode="determinate" [value]="job.posibilityPercentage"  color="#ff0000"></mat-progress-spinner>
+          <span class="progress-number">{{job.posibilityPercentage}}%</span>
         </div>
        
         <br>
@@ -144,7 +144,11 @@
     </div>
   </ng-template>
 
-
+  <br>
+  <br>
+  <div class="center">
+    <button mat-raised-button class="buttonreturn" (click)="GoToHistory()">Volver a Historial</button>
+  </div>
 
 
 

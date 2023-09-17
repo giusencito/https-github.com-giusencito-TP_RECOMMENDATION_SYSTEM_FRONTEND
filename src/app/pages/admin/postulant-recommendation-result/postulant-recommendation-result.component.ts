@@ -14,6 +14,8 @@ import { JobService } from 'src/app/services/job/job.service';
 import { AnswerDialogComponent } from '../../postulant/results/answer-dialog/answer-dialog.component';
 import { SendTestEmailComponent } from '../postulnat-recommendation-history/send-test-email/send-test-email.component';
 
+
+
 @Component({
   selector: 'app-postulant-recommendation-result',
   templateUrl: './postulant-recommendation-result.component.html',
@@ -37,9 +39,17 @@ export class PostulantRecommendationResultComponent implements OnInit {
   questionsanswerslist: any[] = []
   cont:number = 0
   ascendingOrder:boolean = false
+  Posibilitypercentageint!:number
+  GetPosibilitypercentageint!:number
+  GetFilterPosibilitypercentageint!:number
+  name!:string
+  last_name!:string
+ 
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
+
     public dialog:MatDialog,private Router:Router,private SelectedjobService:SelectedjobService,private FeedbackService:FeedbackService ) { 
+
     this.jobdata = {} as Job;
     this.coursedata = {} as Course;
     this.jobdataselected = {} as Job;
@@ -50,31 +60,44 @@ export class PostulantRecommendationResultComponent implements OnInit {
     this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
       this.resultTest=params['ResultTest']
       this.postulantid=params['postulant']
+
       this.email=params['email']
+
       this.GetJoBbs()
      
     })
   }
   GetJoBbs(){
     this.JobService.GetLinkedinJobbyResultTestId(this.resultTest).subscribe((response:any)=>{
-          this.jobs=response.rows
-          this.jobsorder=this.jobs
+      for(const jobsreturned of response.rows){
+        this.GetPosibilitypercentageint = jobsreturned.posibilityPercentage * 100
+        jobsreturned.posibilityPercentage = Math.round(this.GetPosibilitypercentageint)
+      }
+      this.jobs = response.rows
+      console.log(this.jobs)
+      this.jobsorder=this.jobs
+      console.log(this.jobsorder)
     })
   }
 
   JobFilter(){
    
-      
     if (this.ascendingOrder) {
       this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
     } else {
       this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
     }
+
+    
+    for(const onejob of this.jobsorder){
+      if(onejob.posibilityPercentage % 1 !== 0){
+        this.GetFilterPosibilitypercentageint = onejob.posibilityPercentage * 100
+        onejob.posibilityPercentage = Math.round(this.GetFilterPosibilitypercentageint) 
+      }
+    }
+    this.jobs = this.jobsorder
     this.ascendingOrder = !this.ascendingOrder;
     
- 
-
- 
 }
 
   isRemote(Jobname:string){
@@ -144,16 +167,26 @@ export class PostulantRecommendationResultComponent implements OnInit {
                 this.jobdata.jobLocation = job.Location
                 this.jobdata.jobCompany = job.Company
                 this.jobdata.jobDate = job.Date
-                this.jobdata.posibilityPercentage = job.similarity_pred
+                if (!isNaN(job.similarity_pred) && job.similarity_pred % 1 !== 0) {
+                  this.jobdata.posibilityPercentage = parseFloat(job.similarity_pred.toFixed(4));
+                } else {
+                  this.jobdata.posibilityPercentage = job.similarity_pred;
+                }
                 this.jobdata.resultTest = this.resultTest
                 this.JobService.CreateJobs(this.jobdata).subscribe((response:any)=>{
-                    this.jobs.push(response)
+                  this.Posibilitypercentageint = response.posibilityPercentage * 100
+                  response.posibilityPercentage = Math.round(this.Posibilitypercentageint)
+                  this.jobs.push(response)
                 })
             } 
           console.log(this.jobs);
               
         })
       } else {
+        for(const jobsreturned of responsejobs.rows){
+          this.GetPosibilitypercentageint = jobsreturned.posibilityPercentage * 100
+          jobsreturned.posibilityPercentage = Math.round(this.GetPosibilitypercentageint)
+        }
         this.jobs = responsejobs.rows
         console.log(this.jobs)
       }
@@ -273,6 +306,10 @@ export class PostulantRecommendationResultComponent implements OnInit {
 
   })
     
+  }
+
+  GoToHistory(){
+    this.Router.navigate([`postulant-recommendation-history`],{queryParams:{postulant:Number(this.postulantid),email:this.email}});
   }
 
 }

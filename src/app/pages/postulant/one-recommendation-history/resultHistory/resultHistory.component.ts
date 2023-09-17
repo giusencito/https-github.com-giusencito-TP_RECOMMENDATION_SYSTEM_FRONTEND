@@ -13,6 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { SelectedJob } from 'src/app/models/result/selectedjob';
 import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
 import { PostulateDialogComponent } from '../../results/postulate-dialog/postulate-dialog.component';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-resultHistory',
   templateUrl: './resultHistory.component.html',
@@ -34,11 +36,14 @@ export class ResultHistoryComponent implements OnInit {
   cont:number = 0
   ascendingOrder:boolean = false
   selectedjob!:SelectedJob
+  Posibilitypercentageint!:number
+  GetPosibilitypercentageint!:number
+  GetFilterPosibilitypercentageint!:number
   isPostulate: { [key: number]: boolean } = {};
   isLoading=false
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
-    public dialog:MatDialog, private SelectedjobService:SelectedjobService) { 
+    public dialog:MatDialog, private SelectedjobService:SelectedjobService, private Router:Router) { 
     this.jobdata = {} as Job;
     this.selectedjob= {} as SelectedJob
     this.coursedata = {} as Course;
@@ -55,7 +60,13 @@ export class ResultHistoryComponent implements OnInit {
   }
   GetJoBbs(){
     this.JobService.GetLinkedinJobbyResultTestId(this.resultTest).subscribe((response:any)=>{
-          this.jobs=response.rows
+
+          for(const jobsreturned of response.rows){
+            this.GetPosibilitypercentageint = jobsreturned.posibilityPercentage * 100
+            jobsreturned.posibilityPercentage = Math.round(this.GetPosibilitypercentageint)
+          }
+          this.jobs = response.rows
+          console.log(this.jobs)
           this.jobsorder=this.jobs
           console.log(this.jobsorder)
           this.isLoading=true
@@ -131,16 +142,26 @@ export class ResultHistoryComponent implements OnInit {
                 this.jobdata.jobLocation = job.Location
                 this.jobdata.jobCompany = job.Company
                 this.jobdata.jobDate = job.Date
-                this.jobdata.posibilityPercentage = job.similarity_pred
+                if (!isNaN(job.similarity_pred) && job.similarity_pred % 1 !== 0) {
+                  this.jobdata.posibilityPercentage = parseFloat(job.similarity_pred.toFixed(4));
+                } else {
+                  this.jobdata.posibilityPercentage = job.similarity_pred;
+                }
                 this.jobdata.resultTest = this.resultTest
                 this.JobService.CreateJobs(this.jobdata).subscribe((response:any)=>{
-                    this.jobs.push(response)
+                  this.Posibilitypercentageint = response.posibilityPercentage * 100
+                  response.posibilityPercentage = Math.round(this.Posibilitypercentageint)
+                  this.jobs.push(response)
                 })
             } 
           console.log(this.jobs);
               
         })
       } else {
+        for(const jobsreturned of responsejobs.rows){
+          this.GetPosibilitypercentageint = jobsreturned.posibilityPercentage * 100
+          jobsreturned.posibilityPercentage = Math.round(this.GetPosibilitypercentageint)
+        }
         this.jobs = responsejobs.rows
         console.log(this.jobs)
       }
@@ -247,18 +268,21 @@ export class ResultHistoryComponent implements OnInit {
 
 
   JobFilter(){
-   
-      
       if (this.ascendingOrder) {
         this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
       } else {
         this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
       }
+      
+      for(const onejob of this.jobsorder){
+        if(onejob.posibilityPercentage % 1 !== 0){
+          this.GetFilterPosibilitypercentageint = onejob.posibilityPercentage * 100
+          onejob.posibilityPercentage = Math.round(this.GetFilterPosibilitypercentageint) 
+        }
+      }
+      this.jobs = this.jobsorder
       this.ascendingOrder = !this.ascendingOrder;
       
-   
-
-   
   }
 
   Postulate(id:number){
@@ -291,6 +315,10 @@ export class ResultHistoryComponent implements OnInit {
 
 
 
+  }
+
+  GoToHistory(){
+    this.Router.navigate(['/recommendation-history'])
   }
   
 }

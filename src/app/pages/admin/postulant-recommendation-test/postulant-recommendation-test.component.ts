@@ -14,6 +14,7 @@ export class PostulantRecommendationTestComponent implements OnInit {
   dataSource !:MatTableDataSource<any>;
   resulTest!:number
   date!:Date
+  postulantid!:string
   constructor(private ActivatedRoute:ActivatedRoute,private TestService:TestService,private Router:Router) {
     this.dataSource = new MatTableDataSource<any>();
 
@@ -27,6 +28,7 @@ export class PostulantRecommendationTestComponent implements OnInit {
       this.postulantid=params['postulant']
       this.email=params['email']
      
+
     })
   }
   getTest(){
@@ -38,6 +40,7 @@ export class PostulantRecommendationTestComponent implements OnInit {
   }
   GoToJobResults(){
     this.Router.navigate(['postulant-recommendation-result'],{queryParams:{'ResultTest': this.resulTest,'postulant':this.postulantid,'email':this.email}})
+
   }
 
 }

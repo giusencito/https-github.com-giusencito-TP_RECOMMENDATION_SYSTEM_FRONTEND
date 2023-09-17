@@ -17,6 +17,7 @@ import { SelectedJob } from 'src/app/models/result/selectedjob';
 import { PostulateDialogComponent } from './postulate-dialog/postulate-dialog.component';
 import { ResultSectionService } from 'src/app/services/resultSection/result-section.service';
 import { EntreprenaurDialogComponent } from './entreprenaur-dialog/entreprenaur-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -27,6 +28,7 @@ import { EntreprenaurDialogComponent } from './entreprenaur-dialog/entreprenaur-
 export class ResultsComponent implements OnInit {
 
   jobs:any[] = []
+  jobsorder:Job[]=[]
   opencourses:boolean = false
   jobdata!:Job
   jobdataselected!:Job
@@ -40,10 +42,14 @@ export class ResultsComponent implements OnInit {
   resulTest!:number
   ascendingOrder:boolean = false
   selectedjob!:SelectedJob
+  Posibilitypercentageint!:number
+  GetPosibilitypercentageint!:number
+  GetFilterPosibilitypercentageint!:number
   isPostulate: { [key: number]: boolean } = {};
   isLoading=false
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
-              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService, private ResultSectionService:ResultSectionService) { 
+              private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService, private ResultSectionService:ResultSectionService,
+              private Router:Router) { 
               
               this.jobdata = {} as Job;
               this.coursedata = {} as Course;
@@ -59,6 +65,7 @@ export class ResultsComponent implements OnInit {
     this.RecommendationService.getSectionResults(this.resulTest).subscribe((responsejobs:any)=>{
       console.log("Se creo correctamente los CSVs sections and ratings_section")
       this.recommendation()
+      this.GetJoBbs()
     })
     
     this.ResultSectionService.getByTestandResulTest(7,this.resulTest).subscribe((responsesections:any)=>{
@@ -77,6 +84,14 @@ export class ResultsComponent implements OnInit {
 
     })
   }
+
+  GetJoBbs(){
+    this.JobService.GetLinkedinJobbyResultTestId(this.resulTest).subscribe((response:any)=>{
+          this.jobsorder=response.rows
+          console.log(this.jobsorder)
+    })
+  }
+
   isRemote(Jobname:string){
     const remotePatterns = [
       'Developer - Remote - Latin America',
@@ -155,6 +170,8 @@ gotoCourseUrl(url:string){
                 }
                 this.jobdata.resultTest = this.resulTest
                 this.JobService.CreateJobs(this.jobdata).subscribe((response:any)=>{
+                    this.Posibilitypercentageint = response.posibilityPercentage * 100
+                    response.posibilityPercentage = Math.round(this.Posibilitypercentageint)
                     this.jobs.push(response)
                 })
             } 
@@ -163,6 +180,10 @@ gotoCourseUrl(url:string){
               
         })
       } else {
+        for(const jobsreturned of responsejobs.rows){
+          this.GetPosibilitypercentageint = jobsreturned.posibilityPercentage * 100
+          jobsreturned.posibilityPercentage = Math.round(this.GetPosibilitypercentageint)
+        }
         this.jobs = responsejobs.rows
         console.log(this.jobs)
       }
@@ -268,19 +289,21 @@ gotoCourseUrl(url:string){
   }
 
   JobFilter(){
-    this.JobService.GetLinkedinJobbyResultTestId(this.resulTest).subscribe((responsejobs:any)=>{
-      console.log(responsejobs.rows)
-      
-      if (this.ascendingOrder) {
-        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
-      } else {
-        this.jobs = responsejobs.rows.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
+    if (this.ascendingOrder) {
+      this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => a.posibilityPercentage - b.posibilityPercentage);
+    } else {
+      this.jobsorder = this.jobsorder.sort((a:Job, b:Job) => b.posibilityPercentage - a.posibilityPercentage);
+    }
+    
+    for(const onejob of this.jobsorder){
+      if(onejob.posibilityPercentage % 1 !== 0){
+        this.GetFilterPosibilitypercentageint = onejob.posibilityPercentage * 100
+        onejob.posibilityPercentage = Math.round(this.GetFilterPosibilitypercentageint) 
       }
-      this.ascendingOrder = !this.ascendingOrder;
-      
-      console.log(this.jobs)
-
-    })
+    }
+    this.jobs = this.jobsorder
+    this.ascendingOrder = !this.ascendingOrder;
+    
   }
 
   Postulate(id:number){
@@ -306,6 +329,10 @@ gotoCourseUrl(url:string){
           });
       }
     })
+  }
+
+  GoToHome(){
+    this.Router.navigate(['/home-postulant'])
   }
 
 }
