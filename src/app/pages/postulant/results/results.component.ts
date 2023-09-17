@@ -186,6 +186,7 @@ gotoCourseUrl(url:string){
         }
         this.jobs = responsejobs.rows
         console.log(this.jobs)
+        this.isLoading=true
       }
     })
     

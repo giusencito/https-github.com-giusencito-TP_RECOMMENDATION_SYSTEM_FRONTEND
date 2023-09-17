@@ -14,7 +14,6 @@ export class PostulantRecommendationTestComponent implements OnInit {
   dataSource !:MatTableDataSource<any>;
   resulTest!:number
   date!:Date
-  postulantid!:string
   constructor(private ActivatedRoute:ActivatedRoute,private TestService:TestService,private Router:Router) {
     this.dataSource = new MatTableDataSource<any>();
 

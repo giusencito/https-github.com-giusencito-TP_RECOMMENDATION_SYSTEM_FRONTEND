@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SelectedJob } from 'src/app/models/result/selectedjob';
 import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
 import { PostulateDialogComponent } from '../../results/postulate-dialog/postulate-dialog.component';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-resultHistory',
