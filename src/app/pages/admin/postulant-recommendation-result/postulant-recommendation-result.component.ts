@@ -13,7 +13,7 @@ import { InterviewquestionService } from 'src/app/services/interviewquestions/in
 import { JobService } from 'src/app/services/job/job.service';
 import { AnswerDialogComponent } from '../../postulant/results/answer-dialog/answer-dialog.component';
 import { SendTestEmailComponent } from '../postulnat-recommendation-history/send-test-email/send-test-email.component';
-
+import { PostulantService } from 'src/app/services/postulant/postulant.service';
 
 
 @Component({
@@ -48,7 +48,7 @@ export class PostulantRecommendationResultComponent implements OnInit {
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
 
-    public dialog:MatDialog,private Router:Router,private SelectedjobService:SelectedjobService,private FeedbackService:FeedbackService ) { 
+    public dialog:MatDialog,private Router:Router,private SelectedjobService:SelectedjobService,private FeedbackService:FeedbackService, private PostulantService:PostulantService ) { 
 
     this.jobdata = {} as Job;
     this.coursedata = {} as Course;
@@ -62,6 +62,11 @@ export class PostulantRecommendationResultComponent implements OnInit {
       this.postulantid=params['postulant']
 
       this.email=params['email']
+
+      this.PostulantService.getPostulant(this.postulantid).subscribe((response:any)=>{
+        this.name = response.name
+        this.last_name = response.last_name
+      })
 
       this.GetJoBbs()
      
