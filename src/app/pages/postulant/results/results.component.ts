@@ -47,6 +47,7 @@ export class ResultsComponent implements OnInit {
   GetFilterPosibilitypercentageint!:number
   isPostulate: { [key: number]: boolean } = {};
   isLoading=false
+  tenfirstjobs:any[] = []
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
               private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService, private ResultSectionService:ResultSectionService,
               private Router:Router) { 
@@ -153,8 +154,11 @@ gotoCourseUrl(url:string){
       console.log(responsejobs.rows)
       if(responsejobs.rows.length == 0){
         this.RecommendationService.hydridRecommendation().subscribe((response:any)=>{
-          
-          for(const job of response){       
+          console.log(response)
+          response = response.sort((a:any, b:any) => b.similarity_pred - a.similarity_pred);
+          this.tenfirstjobs = response.slice(0, 10);
+          console.log(this.tenfirstjobs) 
+          for(const job of this.tenfirstjobs){       
                 const validCharactersRegex: RegExp = /[\x20-\x7E\u00A0-\u00FF\u0100-\u017F]/g;
                 const cleanedText: string = job.Description.match(validCharactersRegex)?.join('') || '';
                 this.jobdata.jobName = job.Jobname
