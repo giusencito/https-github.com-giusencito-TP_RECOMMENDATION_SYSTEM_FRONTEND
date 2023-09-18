@@ -2,7 +2,7 @@
   <mat-grid-tile *ngFor="let item of dataSource.data">
       <mat-card class="cardexp">
           <div class="container">
-          <mat-progress-spinner mode="determinate" [value]="50"  color="#ff0000"></mat-progress-spinner>
+          <mat-progress-spinner mode="determinate" [value]="50"  [ngClass]="spinnerStyle(item.developmentPercentage)"></mat-progress-spinner>
           <span class="progress-number">{{item.developmentPercentage}}%</span>
         </div>
         <br>

@@ -9,7 +9,7 @@
 <div class="center">
 <mat-card class="cardexp">
   <div class="container">
-    <mat-progress-spinner mode="determinate" [value]="score"  color="#ff0000"></mat-progress-spinner>
+    <mat-progress-spinner mode="determinate" [value]="score"  color="#ff0000" [ngClass]="spinnerStyle(score)"></mat-progress-spinner>
     <span class="progress-number">{{score}}%</span>
   </div>
   <br>

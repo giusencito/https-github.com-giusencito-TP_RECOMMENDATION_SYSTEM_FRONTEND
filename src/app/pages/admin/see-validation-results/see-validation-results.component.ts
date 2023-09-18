@@ -41,5 +41,21 @@ export class SeeValidationResultsComponent implements OnInit {
  return(){
   this.Router.navigate(['home-admin'])
  }
+ spinnerStyle(percetaje:number) {
+  if(percetaje<=29){
+    return 'spinnerbad'
+  }
+  if(percetaje>=30 && percetaje<=69){
+   return 'spinnermed'
+ 
+  }
+  else{
+   return 'spinnergood'
+ 
+  }
+ 
+  
+ 
+ }
 
 }

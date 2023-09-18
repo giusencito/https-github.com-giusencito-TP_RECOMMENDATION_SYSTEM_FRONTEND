@@ -28,5 +28,21 @@ export class OrientedSectionResultAdminComponent implements OnInit {
       
     })
  }
+ spinnerStyle(percetaje:number) {
+  if(percetaje<=29){
+    return 'spinnerbad'
+  }
+  if(percetaje>=30 && percetaje<=69){
+   return 'spinnermed'
+ 
+  }
+  else{
+   return 'spinnergood'
+ 
+  }
+ 
+  
+ 
+ }
 
 }

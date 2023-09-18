@@ -19,7 +19,7 @@ export class HomePostulantComponent implements OnInit {
     this.width=window.innerWidth;
     
     this.height=window.innerHeight.toString()+'px';
-    console.log(this.height)
+    console.log(this.width)
     });
   }
 
