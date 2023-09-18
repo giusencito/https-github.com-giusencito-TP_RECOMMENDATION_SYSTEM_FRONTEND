@@ -107,7 +107,7 @@ createTestid!:number
   }
   getTypes(){
     this.TypetestService.getAll().subscribe((response:any)=>{
-     this.testToTAL=response.total
+     this.testToTAL=response.total-1
     })
   }
   getsections(id:number){

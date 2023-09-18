@@ -66,7 +66,6 @@ export class ResultsComponent implements OnInit {
     this.RecommendationService.getSectionResults(this.resulTest).subscribe((responsejobs:any)=>{
       console.log("Se creo correctamente los CSVs sections and ratings_section")
       this.recommendation()
-      this.GetJoBbs()
     })
     
     this.ResultSectionService.getByTestandResulTest(7,this.resulTest).subscribe((responsesections:any)=>{
@@ -181,6 +180,7 @@ gotoCourseUrl(url:string){
             } 
           console.log(this.jobs);
           this.isLoading=true
+          this.GetJoBbs()
               
         })
       } else {
@@ -191,6 +191,7 @@ gotoCourseUrl(url:string){
         this.jobs = responsejobs.rows
         console.log(this.jobs)
         this.isLoading=true
+        this.GetJoBbs()
       }
     })
     
