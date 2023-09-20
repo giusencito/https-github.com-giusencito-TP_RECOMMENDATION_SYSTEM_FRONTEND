@@ -25,7 +25,7 @@ flex-direction: row;
     background: #87CEEB;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 48px;
-min-width: 200px;
+width: 50%;
 }
 .container {
     display: flex;
@@ -76,4 +76,25 @@ min-width: 200px;
     }
     ::ng-deep .spinnerbad circle, mat-spinner circle{
       stroke: #8b0000;
+    }
+
+    @media (max-width: 767px) {
+      .justify {
+       flex-direction: column;
+      }
+      img{
+        width:100%
+      }
+      .cardexp{
+        min-width: auto;
+        width: 50%;
+      }
+      .button{
+        
+        width: 80%;
+      }
+      .sub{
+        font-size: 1.2rem;
+
+      }
     }

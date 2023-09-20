@@ -43,7 +43,9 @@ export class RecommendationHistoryComponent implements OnInit {
  getall(){
   this.JobService.getLinkedinJobsByPostulantsJustOne(this.TokenService.getId()).subscribe((response:any)=>{
     this.dataSourceoriginal.data=response.rows
+    console.log( this.dataSource.data)
     this.dataSource.data=this.dataSourceoriginal.data
+    console.log( this.dataSource.data)
    
   })
  }

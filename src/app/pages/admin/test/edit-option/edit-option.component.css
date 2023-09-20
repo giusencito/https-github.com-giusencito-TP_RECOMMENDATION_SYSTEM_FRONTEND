@@ -92,3 +92,10 @@ form{
   font-weight: bold; 
   font-family: 'Futura';
 }
+.loading-container {
+    
+   
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+}

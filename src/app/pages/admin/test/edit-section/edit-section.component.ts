@@ -20,7 +20,16 @@ export class EditSectionComponent implements OnInit {
     this.Test = {} as Test
 
   }
+  checklenght(length:number){
+     if(length<=5){
+      return 'spaceformunique'
+     }else{
+      return 'spaceform'
+     }
 
+
+
+  }
   ngOnInit() {
     let id =parseInt(this.ActivatedRoute.snapshot.paramMap.get('test')!);
     this.testNumber =parseInt(this.ActivatedRoute.snapshot.paramMap.get('test')!);
@@ -32,6 +41,7 @@ export class EditSectionComponent implements OnInit {
   getsections(id:number){
         this.SectionService.getsectionbyTest(id).subscribe((response:any)=>{
                       this.dataSource.data = response.rows
+                      
         }
         )
   }

@@ -54,10 +54,24 @@ align-items: center;
     display: flex;
     justify-content: space-between;
   }
+  .loading-container {
+    
+   
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 @media (max-width: 767px) {
     
     .card{
         width: 100%;
+    }
+    .section{
+      flex-direction: column;
+    }
+    button{
+      width: 100%;
     }
 
 }

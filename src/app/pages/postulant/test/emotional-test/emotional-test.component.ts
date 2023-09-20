@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../../services/spinner/spinner.service';
 import { TestService } from './../../../../services/test/test.service';
 import { OptionService } from 'src/app/services/option/option.service';
 import { QuestionService } from './../../../../services/question/question.service';
@@ -20,18 +21,22 @@ export class EmotionalTestComponent implements OnInit {
   questionNumber=1
   questionName!:string
   actualScore=0
-  constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,private TestService:TestService,private Router:Router) { 
+  start=false
+  constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,
+    private TestService:TestService,private Router:Router,private SpinnerService:SpinnerService) { 
     this.dataSource = new MatTableDataSource<any>();
     this.dataSource2 = new MatTableDataSource<any>();
     console.log(this.optionSelected)
   }
 
   ngOnInit() {
+    this.SpinnerService.show()
     this.getEmotional()
   }
   getEmotional(){
     this.TestService.getTestbyTypeTest(1).subscribe((response:any)=>{
       this.testEmotional=response.rows[0].testname
+      this.SpinnerService.show()
       this.getsections(response.rows[0].id)
     })
   }
@@ -53,6 +58,7 @@ export class EmotionalTestComponent implements OnInit {
   getoptions(id:number){
     this.OptionService.getoptionbyquestion(id).subscribe((response)=>{
       this.dataSource2.data=response.rows
+      this.start=true
     })
   }
   continue(){

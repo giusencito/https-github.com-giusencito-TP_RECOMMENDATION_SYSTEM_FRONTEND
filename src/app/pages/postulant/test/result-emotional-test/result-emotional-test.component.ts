@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../../services/spinner/spinner.service';
 import { NoContinueComponent } from './no-continue/no-continue.component';
 import { TestService } from './../../../../services/test/test.service';
 import { SectionService } from './../../../../services/section/section.service';
@@ -17,14 +18,18 @@ export class ResultEmotionalTestComponent implements OnInit {
   TestSection!:string
   sectionMaximun!:number
   score!:number
-  constructor(private SectionService:SectionService,private TestService:TestService,private route:ActivatedRoute,private Router:Router,public dialog:MatDialog) {
+  start=false;
+  constructor(private SectionService:SectionService,private TestService:TestService,private route:ActivatedRoute,private Router:Router,public dialog:MatDialog,private SpinnerService:SpinnerService) {
     this.dataSource = new MatTableDataSource<any>();
 
    }
 
   ngOnInit() {
+    this.SpinnerService.show()
     this.score=parseInt(this.route.snapshot.paramMap.get('totalscore')!);
-    this.sections()
+    
+      this.sections();
+   
   }
   sections(){
       this.TestService.getTestbyTypeTest(1).subscribe((response:any)=>{
@@ -38,6 +43,7 @@ export class ResultEmotionalTestComponent implements OnInit {
                    this.score=(this.score / this.sectionMaximun) * 100
                    this.score= Math.round(this.score)
                    console.log(this.score)
+                   this.start=true
                })
       })
   }

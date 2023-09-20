@@ -1,27 +1,38 @@
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
   <br>
+  <div *ngIf="dataSource.data.length; else loadingSpinner">
   <h2 class="title">Preguntas de {{Section.sectionname}}</h2>
-  <div *ngFor="let question of dataSource.data" class="formut">
+  <div [ngClass]="checklenght(this.dataSource.data.length)">
+    <div *ngFor="let question of dataSource.data" class="formut">
 
-    <mat-card class="item">
-   
+      <mat-card class="item">
      
-      <p>{{question.questionname}} </p>
-   
-    
-    <br>
-    <button mat-flat-button  class="button2" (click)="goToQuestion(question.id)">
-      <mat-icon>navigate_next</mat-icon>
-    </button>
+       
+        <p>{{question.questionname}} </p>
+     
+      
+      <br>
+      <button mat-flat-button  class="button2" (click)="goToQuestion(question.id)">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+  
+  
+     
+    </mat-card>
+  
+  </div>
 
+  </div>
+  
 
-   
-  </mat-card>
-
-</div>
 <div class="space">
   <button mat-raised-button class="button" color="primary" (click)="goToCreate()">Crear Nueva Pregunta</button>
 </div>
-
+</div>
+<ng-template #loadingSpinner>
+  <div class="loading-container">
+    <mat-spinner diameter="500"></mat-spinner>
+  </div>
+</ng-template>
 </div>

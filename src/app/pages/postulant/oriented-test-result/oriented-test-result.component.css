@@ -92,3 +92,10 @@ margin-bottom: 20px;
     z-index: -1;
   
   }
+  .loading-container {
+    
+   
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+  }

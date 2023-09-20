@@ -90,3 +90,11 @@ color:black;
 ::ng-deep .spinnerbad circle, mat-spinner circle{
   stroke: #8b0000;
 }
+.loading-container {
+    
+   
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

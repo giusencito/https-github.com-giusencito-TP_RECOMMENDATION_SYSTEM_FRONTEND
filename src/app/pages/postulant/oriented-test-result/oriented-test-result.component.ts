@@ -22,6 +22,7 @@ export class OrientedTestResultComponent implements OnInit {
    }
   ngOnInit(): void {
     this.getTest()
+    this.dataSource.data.length=0
     this.resulTest=parseInt(this.route.snapshot.paramMap.get('resultTest')!);
 
   }

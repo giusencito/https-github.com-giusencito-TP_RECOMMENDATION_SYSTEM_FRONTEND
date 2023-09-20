@@ -41,7 +41,7 @@ import { SpinnerModule } from 'src/app/pages/postulant/spinner/spinner.module';
     SpinnerModule
   ],
   providers:[
-    
+    {provide:HTTP_INTERCEPTORS,useClass:SpinnerInterceptor,multi:true}
   ]
   
 })

@@ -14,8 +14,20 @@ export class OrientedSectionResultAdminComponent implements OnInit {
   test !: number;
   @Input()
   resulttest !: number;
+  cols:number =4
   constructor(private ResultSectionService:ResultSectionService) { 
     this.dataSource = new MatTableDataSource<any>();
+    window.addEventListener('resize', () => {
+     
+      if (window.innerWidth <= 767) {
+        this.cols = 2; 
+      } else if (window.innerWidth >= 1600) {
+        this.cols = 6; 
+      } else {
+        this.cols = 4; 
+      }
+  
+      });
 
   }
 

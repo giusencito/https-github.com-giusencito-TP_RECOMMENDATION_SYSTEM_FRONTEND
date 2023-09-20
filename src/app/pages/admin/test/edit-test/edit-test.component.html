@@ -6,7 +6,7 @@
   
 
  
-    <div *ngIf="dataSource.data.length;else loadingSpinner">
+    <div *ngIf="dataSource.data.length;else loadingSpinner" [ngClass]="checklenght(this.dataSource.data.length)">
       
       <div *ngFor="let test of dataSource.data" class="formut">
 
@@ -32,6 +32,7 @@
 
 
     </div>
+    <br>
       
 
 

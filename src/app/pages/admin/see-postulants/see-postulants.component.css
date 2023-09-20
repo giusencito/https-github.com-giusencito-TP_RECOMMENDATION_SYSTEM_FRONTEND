@@ -4,8 +4,7 @@
     background-position: center;
    
     
-    z-index: -1;
-    ;
+    z-index: -1;;
     
 
 
@@ -34,8 +33,8 @@
 .formut{
     display: flex;
     justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 500px;
  
   
 }
@@ -70,4 +69,10 @@ p{
     font-style: normal;
     font-size: 1.5rem;
 }
- 
+.loading-container {
+    
+   
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+  }

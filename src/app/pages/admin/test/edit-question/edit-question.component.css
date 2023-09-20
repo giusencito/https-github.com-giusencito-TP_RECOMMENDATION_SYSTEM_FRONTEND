@@ -4,7 +4,7 @@
     background-size: cover;
     
     background-repeat: no-repeat;
-    
+    height: auto;
     z-index: -1;
     ;
     
@@ -64,6 +64,8 @@ p{
 .space{
     display: flex;
     justify-content: center;
+    margin-top: 40px;
+
     
   }
   .button{
@@ -72,4 +74,18 @@ p{
     font-family: 'Futura';
     margin-bottom: 20px;
     width: 80%;
+  }
+  .spaceform{
+   
+  }
+  .spaceformunique{
+    height: 500px;
+
+  }
+  .loading-container {
+    
+   
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
   }

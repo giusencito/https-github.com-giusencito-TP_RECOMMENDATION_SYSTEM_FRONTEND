@@ -72,3 +72,13 @@ a{
 
 
 }
+@media  (min-width: 1600px) {
+
+  .img{
+     width: 25%;
+  }
+
+
+
+
+}

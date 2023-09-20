@@ -1,7 +1,8 @@
+
 <app-navigaion-postulant></app-navigaion-postulant>
 
 
-<div class="background">
+<div class="background" *ngIf="start">
   <br>
 <div class="card">
 <p class="tittle">Resultados de {{TestName}}</p>
@@ -20,4 +21,7 @@
 <button  mat-raised-button class="button" (click)="continue()">Continuar</button>
 <br>
 </div>
+</div>
+<div class="overlay" *ngIf="!start">
+  <mat-spinner diameter="120"></mat-spinner>
 </div>

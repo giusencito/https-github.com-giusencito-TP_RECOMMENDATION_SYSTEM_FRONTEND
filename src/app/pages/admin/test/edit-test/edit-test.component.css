@@ -2,11 +2,9 @@
     background-image: url('../../../../../assets/images/adminimage.png');
     background-position: center;
     background-size: cover;
-    
     background-repeat: no-repeat;
-    
     z-index: -1;
-
+   height: 95%;
 
 }
 .title {
@@ -63,3 +61,17 @@ p{
     justify-content: center;
     height: 100vh;
 }
+.space{
+
+}
+.space2{
+    height: 500px;
+}
+@media (max-width: 1600px) {
+
+    .background{
+      height: auto;
+    }
+
+
+  }

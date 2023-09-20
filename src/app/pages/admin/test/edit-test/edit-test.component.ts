@@ -24,5 +24,15 @@ export class EditTestComponent implements OnInit {
   goSection(id:number){
     this.Router.navigate(['edit-test',id,'edit-section']);
   }
+  checklenght(length:number){
+    if(length<=5){
+     return 'spaceformunique'
+    }else{
+     return 'spaceform'
+    }
+
+
+
+ }
 
 }

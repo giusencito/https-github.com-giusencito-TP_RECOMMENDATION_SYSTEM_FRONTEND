@@ -1,6 +1,9 @@
+
+<app-spinner></app-spinner>
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
   <br>
+  <div  *ngIf="dataSource.data.length; else loadingSpinner">
   <h2 class="title">Opciones de {{Question.questionname}}</h2>
 
 <form [formGroup]="changesquestion"> 
@@ -49,5 +52,10 @@
 <div class="space">
   <button mat-raised-button class="button" color="primary" (click)="goToCreate()">Crear Nueva Opción</button>
 </div>
-
+</div>
+<ng-template #loadingSpinner>
+  <div class="loading-container">
+    <mat-spinner diameter="500"></mat-spinner>
+  </div>
+</ng-template>
 </div>

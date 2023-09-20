@@ -1,8 +1,11 @@
+
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
   <br>
+  <div *ngIf="dataSource.data.length; else loadingSpinner">
   <h2 class="title">Secciones del {{Test.testname}}</h2>
-  <div *ngFor="let section of dataSource.data" class="formut">
+  <div [ngClass]="checklenght(this.dataSource.data.length)">
+  <div *ngFor="let section of dataSource.data" class="spaceform2">
 
     <mat-card class="item">
    
@@ -19,9 +22,15 @@
    
   </mat-card>
 
-</div>
-<div class="space">
+  </div>
+  </div>
+  <div class="space">
   <button mat-raised-button class="button" color="primary" (click)="goTocreate()">Crear Nueva Sección</button>
+  </div>
 </div>
-
+<ng-template #loadingSpinner>
+  <div class="loading-container">
+    <mat-spinner diameter="500"></mat-spinner>
+  </div>
+</ng-template>
 </div>

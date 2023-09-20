@@ -58,6 +58,15 @@ this.QuestionService.getquestionbySection(id).subscribe((response:any)=>{
 
   }
   
+  checklenght(length:number){
+    if(length<=5){
+     return 'spaceformunique'
+    }else{
+     return 'spaceform'
+    }
 
+
+
+ }
 
 }

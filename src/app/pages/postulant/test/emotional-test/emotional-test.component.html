@@ -1,7 +1,14 @@
+
+<app-spinner></app-spinner>
+
 <app-navigaion-postulant></app-navigaion-postulant>
-<div class="background">
+<div class="overlay" *ngIf="!start">
+  <mat-spinner diameter="120"></mat-spinner>
+</div>
+<div class="background" *ngIf="start">
+  
   <br>
-<div class="card">
+<div class="card" *ngIf="start">
 <p class="tittle">{{testEmotional}}</p>
 <br>
 <p class="sub">{{sectionEmotionalName}}</p>
@@ -26,5 +33,10 @@
 <button  mat-raised-button class="button" [disabled]="optionSelected<0" (click)="continue()">Continuar</button>
 <br>
 </div>
+
+
+
+
+
 </div>
 
