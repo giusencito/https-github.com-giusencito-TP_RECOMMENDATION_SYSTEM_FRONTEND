@@ -1,7 +1,7 @@
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
   <br>
-  <div *ngIf="dataSource.data.length; else loadingSpinner">
+  <div *ngIf="start; else loadingSpinner">
   <h2 class="title">Preguntas de {{Section.sectionname}}</h2>
   <div [ngClass]="checklenght(this.dataSource.data.length)">
     <div *ngFor="let question of dataSource.data" class="formut">

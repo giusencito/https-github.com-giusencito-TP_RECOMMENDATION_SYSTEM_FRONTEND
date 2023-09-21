@@ -19,7 +19,7 @@ export class EditOptionComponent implements OnInit {
   Question!:Question
   CreateQuestion!:CreateQuestion;
   public changesquestion!: FormGroup;
-
+ start=false
   constructor(private formBuilder:FormBuilder,private QuestionService:QuestionService,private optionService:OptionService,private ActivatedRoute:ActivatedRoute,private Router:Router,public dialog:MatDialog) { 
     this.dataSource = new MatTableDataSource<any>();
     this.Question = {} as Question
@@ -44,6 +44,7 @@ export class EditOptionComponent implements OnInit {
     this.optionService.getoptionbyquestion(id).subscribe((response:any)=>{
             console.log(response)
             this.dataSource.data=response.rows
+            this.start=true
 
     })
   }

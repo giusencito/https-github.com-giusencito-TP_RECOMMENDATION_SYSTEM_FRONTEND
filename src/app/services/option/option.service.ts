@@ -58,4 +58,10 @@ export class OptionService {
       retry(2),
       catchError(this.handleError));
   }
+  QuestionsWithOptions(section:number){
+    return this.http.get<any>(`${this.basePath}get_questions_with_options/${section}/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
 }

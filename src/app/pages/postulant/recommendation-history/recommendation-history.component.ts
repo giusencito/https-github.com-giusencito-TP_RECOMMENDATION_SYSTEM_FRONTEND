@@ -21,6 +21,7 @@ export class RecommendationHistoryComponent implements OnInit {
   data: any[] =[]
   names!:string
   type!:string
+  start=false
   constructor(private ResultTestService:ResultTestService,private TokenService:TokenService,private Router:Router,private JobService:JobService,private formBuilder:FormBuilder,private datePipe: DatePipe) {
     this.dataSourceoriginal = new MatTableDataSource<any>();
     this.dataSource = new MatTableDataSource<any>();
@@ -46,6 +47,7 @@ export class RecommendationHistoryComponent implements OnInit {
     console.log( this.dataSource.data)
     this.dataSource.data=this.dataSourceoriginal.data
     console.log( this.dataSource.data)
+    this.start=true
    
   })
  }

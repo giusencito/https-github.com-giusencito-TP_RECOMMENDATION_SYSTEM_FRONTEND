@@ -20,6 +20,7 @@ export class SeePostulantsComponent implements OnInit {
   }
   username!:string;
   searchform!:FormGroup
+  start=false
   dataSource !:MatTableDataSource<any>;
   ngOnInit() {
     this.getpostulant()
@@ -34,7 +35,7 @@ export class SeePostulantsComponent implements OnInit {
   getpostulant(){
        this.PostulantService.getpostulants().subscribe((response:any)=>{
         this.dataSource.data= response
-             console.log(this.dataSource.data)
+             this.start=true
              
        })
 

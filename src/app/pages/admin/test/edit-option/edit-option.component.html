@@ -3,7 +3,7 @@
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
   <br>
-  <div  *ngIf="dataSource.data.length; else loadingSpinner">
+  <div  *ngIf="start; else loadingSpinner">
   <h2 class="title">Opciones de {{Question.questionname}}</h2>
 
 <form [formGroup]="changesquestion"> 

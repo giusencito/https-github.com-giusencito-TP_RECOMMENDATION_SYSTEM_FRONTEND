@@ -24,7 +24,7 @@
 
 
 <mat-radio-group [(ngModel)]="optionSelected">
-  <div *ngFor="let option of dataSource2.data" class="radio-button-container">
+  <div *ngFor="let option of options" class="radio-button-container">
     <mat-radio-button [value]="option.optionscore" class="radio-button">{{ option.optionname }}</mat-radio-button>
   </div>
 </mat-radio-group>

@@ -9,6 +9,7 @@ import { RouteReuseStrategy, Router } from '@angular/router';
 })
 export class EditTestComponent implements OnInit {
   dataSource !:MatTableDataSource<any>;
+  start=false
   constructor(private TestService:TestService,private Router:Router) { 
     this.dataSource = new MatTableDataSource<any>();
   }
@@ -19,6 +20,7 @@ export class EditTestComponent implements OnInit {
   getTest(){
     this.TestService.getAllTest().subscribe((response:any)=>{
       this.dataSource.data=response.rows
+      this.start=true
     })
   }
   goSection(id:number){

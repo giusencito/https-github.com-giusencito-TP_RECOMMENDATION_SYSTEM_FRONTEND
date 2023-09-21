@@ -4,7 +4,7 @@ import { TestService } from './../../../../services/test/test.service';
 import { SectionService } from './../../../../services/section/section.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -27,25 +27,29 @@ export class ResultEmotionalTestComponent implements OnInit {
   ngOnInit() {
     this.SpinnerService.show()
     this.score=parseInt(this.route.snapshot.paramMap.get('totalscore')!);
+    this.route.queryParams.subscribe((params: Params)=>{
+      this.TestName  =params['Testname']
+      this.TestSection  =params['sectionname']
+      this.sectionMaximun  =params['totalscore']
+
+
+    })
     
       this.sections();
    
   }
   sections(){
-      this.TestService.getTestbyTypeTest(1).subscribe((response:any)=>{
+    
               
-               this.SectionService.getsectionbyTest( response.rows[0].id).subscribe((response:any)=>{
-                   this.dataSource.data= response.rows
-                   console.log(this.dataSource.data[0])
-                   this.TestName=this.dataSource.data[0].test
-                   this.TestSection=this.dataSource.data[0].sectionname
-                   this.sectionMaximun=this.dataSource.data[0].totalscore
+              
+                 
+                  
                    this.score=(this.score / this.sectionMaximun) * 100
                    this.score= Math.round(this.score)
                    console.log(this.score)
                    this.start=true
-               })
-      })
+              
+     
   }
   continue(){
     if(this.score>=70){

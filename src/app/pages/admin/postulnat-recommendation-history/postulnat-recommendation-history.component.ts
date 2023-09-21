@@ -23,6 +23,7 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
   type!:string
   email!:string
   postulantid!:string
+  start=false
   constructor(private formBuilder:FormBuilder,private datePipe: DatePipe,private SelectedjobService:SelectedjobService,private JobService:JobService,private ActivatedRoute:ActivatedRoute,private Router:Router) {
     this.dataSourceoriginal = new MatTableDataSource<any>();
     this.dataSource = new MatTableDataSource<any>();
@@ -51,6 +52,7 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
     this.JobService.getLinkedinJobsByPostulantsJustOne(id).subscribe((response:any)=>{
       this.dataSourceoriginal.data=response.rows
       this.dataSource.data=this.dataSourceoriginal.data
+      this.start=true
      
     })
    }

@@ -31,8 +31,8 @@
 
 
 
-<mat-grid-list cols="3" rowHeight="500px">
-    <mat-grid-tile *ngFor="let item of dataSource.data">
+<mat-grid-list cols="3" rowHeight="500px" *ngIf="start; else loadingSpinner">
+    <mat-grid-tile *ngFor="let item of dataSource.data" >
 <mat-card class="card">
     <img src="../../../../assets/images/image 7.png">
     <div class="center2">
@@ -55,4 +55,9 @@
 
 
 </mat-grid-list>
+<ng-template #loadingSpinner>
+    <div class="loading-container">
+      <mat-spinner diameter="500"></mat-spinner>
+    </div>
+  </ng-template>
 </div>

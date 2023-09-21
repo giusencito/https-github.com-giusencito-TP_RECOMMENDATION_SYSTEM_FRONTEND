@@ -14,6 +14,7 @@ export class EditSectionComponent implements OnInit {
   dataSource !:MatTableDataSource<any>;
   Test!:Test
   testNumber!:number
+  start=false
   constructor(private SectionService:SectionService,private ActivatedRoute:ActivatedRoute,private Router:Router,
     private TestService:TestService) { 
     this.dataSource = new MatTableDataSource<any>();
@@ -41,6 +42,7 @@ export class EditSectionComponent implements OnInit {
   getsections(id:number){
         this.SectionService.getsectionbyTest(id).subscribe((response:any)=>{
                       this.dataSource.data = response.rows
+                      this.start=true
                       
         }
         )

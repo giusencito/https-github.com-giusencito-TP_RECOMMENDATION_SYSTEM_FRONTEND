@@ -6,6 +6,8 @@ import { SectionService } from './../../../../services/section/section.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { QuestionOrientation } from 'src/app/models/test/QuestionOrientation';
+import { OptionOrientaion } from 'src/app/models/test/OptionOrientaion';
 @Component({
   selector: 'app-emotional-test',
   templateUrl: './emotional-test.component.html',
@@ -22,8 +24,11 @@ export class EmotionalTestComponent implements OnInit {
   questionName!:string
   actualScore=0
   start=false
-  constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,
-    private TestService:TestService,private Router:Router,private SpinnerService:SpinnerService) { 
+  totalscore!:number
+  questions:QuestionOrientation[]=[]
+  options:OptionOrientaion[]=[]
+  constructor(private OptionService:OptionService,
+    private Router:Router,private SpinnerService:SpinnerService) { 
     this.dataSource = new MatTableDataSource<any>();
     this.dataSource2 = new MatTableDataSource<any>();
     console.log(this.optionSelected)
@@ -31,36 +36,21 @@ export class EmotionalTestComponent implements OnInit {
 
   ngOnInit() {
     this.SpinnerService.show()
-    this.getEmotional()
+   this.getEmotionalAdvance()
   }
-  getEmotional(){
-    this.TestService.getTestbyTypeTest(1).subscribe((response:any)=>{
-      this.testEmotional=response.rows[0].testname
-      this.SpinnerService.show()
-      this.getsections(response.rows[0].id)
+  getEmotionalAdvance(){
+    this.OptionService.QuestionsWithOptions(1).subscribe((response:any)=>{
+              this.testEmotional=response.testname
+              this.totalscore=response.total
+              this.sectionEmotionalName=  response.sectionname
+              this.total=response.questions.length
+              this.questions=response.questions
+              this.questionName=this.questions[0].questionname
+              this.options=this.questions[0].options
+              this.start=true
     })
   }
-  getsections(id:number){
-    this.SectionService.getsectionbyTest(id).subscribe((response:any)=>{
-         this.sectionEmotionalName=  response.rows[0].sectionname
-         this.getquestions( response.rows[0].id)
-    })
-  }
-  getquestions(id:number){
-    this.QuestionService.getquestionbySection(id).subscribe((response:any)=>{
-         this.total = response.total
-         this.dataSource.data=response.rows
-         this.questionName=this.dataSource.data[this.questionNumber-1].questionname
-         this.getoptions(this.questionNumber)
-        
-    })
-  }
-  getoptions(id:number){
-    this.OptionService.getoptionbyquestion(id).subscribe((response)=>{
-      this.dataSource2.data=response.rows
-      this.start=true
-    })
-  }
+
   continue(){
     if(this.questionNumber==this.total){
       console.log(this.actualScore)
@@ -69,13 +59,13 @@ export class EmotionalTestComponent implements OnInit {
       this.actualScore=this.optionSelected+this.actualScore
       this.optionSelected= -1
       this.questionNumber=this.questionNumber+1
-      this.questionName=this.dataSource.data[this.questionNumber-1].questionname
-         this.getoptions(this.questionNumber)
+      this.questionName=this.questions[this.questionNumber-1].questionname
+      this.options=this.questions[this.questionNumber-1].options
     }
     
   }
   seeResults(){
-    this.Router.navigate([`result-emotional-test`,this.actualScore]);
+    this.Router.navigate([`result-emotional-test`,this.actualScore],{queryParams:{Testname:this.testEmotional,sectionname:this.sectionEmotionalName,totalscore:this.totalscore}});
   }
 
 }

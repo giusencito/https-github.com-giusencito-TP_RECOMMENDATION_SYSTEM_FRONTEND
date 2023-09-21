@@ -16,6 +16,7 @@ import { TemplateDialogComponent } from 'src/app/pages/template-dialog/template-
 export class EditQuestionComponent implements OnInit {
   dataSource !:MatTableDataSource<any>;
   Section!:Section
+  start=false
   constructor(private QuestionService:QuestionService,private SectionService:SectionService,private ActivatedRoute:ActivatedRoute,private Router:Router,public dialog:MatDialog) {
     this.Section = {} as Section
     this.dataSource = new MatTableDataSource<any>();
@@ -32,6 +33,7 @@ export class EditQuestionComponent implements OnInit {
 this.QuestionService.getquestionbySection(id).subscribe((response:any)=>{
   console.log(response.rows)
   this.dataSource.data=response.rows
+  this.start=true
 })
   }
   getSectionByid(id:number){

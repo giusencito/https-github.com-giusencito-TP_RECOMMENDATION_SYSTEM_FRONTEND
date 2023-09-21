@@ -2,7 +2,7 @@
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
   <br>
-  <div *ngIf="dataSource.data.length; else loadingSpinner">
+  <div *ngIf="start; else loadingSpinner">
   <h2 class="title">Secciones del {{Test.testname}}</h2>
   <div [ngClass]="checklenght(this.dataSource.data.length)">
   <div *ngFor="let section of dataSource.data" class="spaceform2">
