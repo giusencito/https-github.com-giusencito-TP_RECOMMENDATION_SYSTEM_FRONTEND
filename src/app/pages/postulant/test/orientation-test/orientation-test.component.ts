@@ -17,6 +17,9 @@ import { Section } from 'src/app/models/test/Section';
 import { ResultSection } from 'src/app/models/result/ResultSection';
 import { CreateResultSection } from 'src/app/models/result/CreateResultSection';
 import { CreateResultTest } from 'src/app/models/result/CreateResultTest';
+import { SectionOrientation } from 'src/app/models/test/SectionOrientation';
+import { QuestionOrientation } from 'src/app/models/test/QuestionOrientation';
+import { OptionOrientaion } from 'src/app/models/test/OptionOrientaion';
 
 
 @Component({
@@ -34,7 +37,7 @@ testToTAL!:Number
 testOriented!:string
 Test!:Test;
 Result!:CreateResultSection
-TestNumber=2
+TestNumber=0
 CreateResultTest!:CreateResultTest
 sectionNumber!:number
 Section!:Section
@@ -45,6 +48,13 @@ questionName!:string
 optionSelected=-1;
 actualScore=0
 createTestid!:number
+sectionName!:string
+
+sectionArray:SectionOrientation[]=[]
+questionArray:QuestionOrientation[]=[]
+optionArray:OptionOrientaion[]=[]
+sectionid!:number
+sectionmaxnum!:number
   constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,private TestService:TestService,
     private Router:Router,private TypetestService:TypetestService,private ResultTestService:ResultTestService,private ResultSectionService:ResultSectionService,
     private TokenService:TokenService, private RecommendationService:RecommendationService, private CourserecomendationService:CourserecomendationService
@@ -58,15 +68,22 @@ createTestid!:number
   }
 
   ngOnInit(): void {
-    this.getTest(this.TestNumber)
-    this.getTypes()
+    //this.getTest(this.TestNumber)
+    //this.getTypes()
+    this.excludes()
     this.CreateResultTest.postulant= this.TokenService.getId()
     this.RecommendationService.getAllJobs().subscribe((response:any)=>{
       console.log("Generando CSV de Jobs...!!")
+    },err=>{
+      alert('no se pudo hacer una conexión con Linkedin intente más tarde')
     })
     this.CourserecomendationService.GetAllCourses().subscribe((response:any)=>{
       console.log("Generando CSV de Cursos...!!")
     })
+
+
+
+
   }
   CreateTest(){
     
@@ -95,7 +112,22 @@ createTestid!:number
     
   }
 
-
+  completeTest(id:number){
+    this.TestService.getAllTheTest(id).subscribe((response:any)=>{
+      this.testOriented=response.testname
+      this.sectionArray=response.sections
+      this.sectionNumber=0
+      this.sectionName=  this.sectionArray[this.sectionNumber].section
+      this.total=this.sectionArray[this.sectionNumber].questions.length
+      this.questionArray=this.sectionArray[this.sectionNumber].questions
+      this.sectionTotal= this.sectionArray[this.sectionNumber].totalscore
+      this.sectionmaxnum=this.sectionArray.length
+      this.sectionid= this.sectionArray[this.sectionNumber].id
+      this.questionName=this.questionArray[this.questionNumber-1].questionname
+      this.optionArray=this.questionArray[this.questionNumber-1].options
+        
+    })
+  }
 
 
   getTest(id:number){
@@ -138,49 +170,73 @@ createTestid!:number
       this.optionSource=response.rows
     })
   }
+
+excludes(){
+  this.TestService.excludeTests(1,7).subscribe((response:any)=>{
+        this.testSource=response.rows
+        this.testToTAL=this.testSource.length-1
+        this.completeTest(this.testSource[this.TestNumber].id)
+  })
+}
+
+
+
+
+
+
   continue(){
     if(this.questionNumber==this.total){
       
-      if(this.sectionNumber+1==this.sectionTotal){
+      if(this.sectionNumber+1==this.sectionmaxnum){
          if(this.testToTAL==this.TestNumber){
           const newResult: CreateResultSection = {
-            developmentPercentage: Math.round((this.actualScore / this.Section.totalscore) * 100),
-            section: this.Section.id,
+            developmentPercentage: Math.round((this.actualScore / this.sectionTotal) * 100),
+            section:this.sectionid,
             resultTest: 0
           };
           this.resultSectionSource.push(newResult)
-
+          console.log(this.resultSectionSource)
                 this.goReSULTS()
          }else{
+          //continuar dentro de un diferente  test
+          console.log('nuevo test')
           this.TestNumber=this.TestNumber+1
           this.optionSelected= -1
           this.questionNumber=1
           const newResult: CreateResultSection = {
-            developmentPercentage: Math.round((this.actualScore / this.Section.totalscore) * 100),
-            section: this.Section.id,
+            developmentPercentage: Math.round((this.actualScore /  this.sectionTotal) * 100),
+            section: this.sectionid,
             resultTest: 0
           };
           this.actualScore=0
           this.resultSectionSource.push(newResult)
-          this.getTest(this.TestNumber)
+          console.log(this.resultSectionSource)
+          this.completeTest(this.testSource[this.TestNumber].id)
          }
 
 
            
          
       }else{
+        //continuar dentro de un mismo de test y diferente seccion
         const newResult: CreateResultSection = {
-          developmentPercentage: Math.round((this.actualScore / this.Section.totalscore) * 100),
-          section: this.Section.id,
+          developmentPercentage: Math.round((this.actualScore /  this.sectionTotal) * 100),
+          section:this.sectionid,
           resultTest: 0
         }
         this.resultSectionSource.push(newResult)
         this.actualScore=0
         this.sectionNumber= this.sectionNumber+1
-        this.Section = this.sectionSource[this.sectionNumber]
         this.questionNumber=1
+        this.sectionName=  this.sectionArray[this.sectionNumber].section
+        this.total=this.sectionArray[this.sectionNumber].questions.length
+        this.questionArray=this.sectionArray[this.sectionNumber].questions
+        this.sectionTotal= this.sectionArray[this.sectionNumber].totalscore
+        this.sectionmaxnum=this.sectionArray.length
+        this.sectionid= this.sectionArray[this.sectionNumber].id
+        this.questionName=this.questionArray[this.questionNumber-1].questionname
+        this.optionArray=this.questionArray[this.questionNumber-1].options
         this.optionSelected= -1
-        this.getquestions(this.Section.id)
         
       }
 
@@ -189,16 +245,18 @@ createTestid!:number
 
 
     }else{
+      //continuar dentro de un mismo de test y misma seccion
       this.actualScore=this.optionSelected+this.actualScore
       this.optionSelected= -1
       this.questionNumber=this.questionNumber+1
-      this.questionName=this.questionSource[this.questionNumber-1].questionname
-         this.getoptions(this.questionSource[this.questionNumber-1].id)
+      this.questionName=this.questionArray[this.questionNumber-1].questionname
+      this.optionArray=this.questionArray[this.questionNumber-1].options
          
     }
 
   }
   goReSULTS(){
+    console.log('acabo')
     this.CreateTest()
   }
 

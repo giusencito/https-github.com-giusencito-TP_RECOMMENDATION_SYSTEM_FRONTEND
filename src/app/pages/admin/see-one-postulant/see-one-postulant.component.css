@@ -2,7 +2,7 @@
     background-image: url('../../../../assets/images/adminimage.png');
     background-size: cover;
     background-position: center;
-  
+    height: 95%;
     
     z-index: -1;
    display: flex;
@@ -72,6 +72,9 @@ align-items: center;
     }
     button{
       width: 100%;
+    }
+    .background{
+      height: auto;
     }
 
 }

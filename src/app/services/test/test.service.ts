@@ -56,5 +56,22 @@ export class TestService {
       retry(2),
       catchError(this.handleError));
    }
+   getAllTheTest(test:number){
+
+    return this.http.get<any>(`${this.basePath}${test}/get_test_with_sections_and_questions/` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+
+   }
+   excludeTests(pk1:number,pk2:number){
+
+    return this.http.get<any>(`${this.basePath}excludeTestbyTypeTest/${pk1}/${pk2}` ,this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+
+
+   }
 
 }

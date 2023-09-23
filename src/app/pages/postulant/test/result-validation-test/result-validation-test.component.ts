@@ -17,6 +17,7 @@ export class ResultValidationTestComponent implements OnInit {
   resulTest!:number
   test!:Test
   testidvar!:number
+  start=false
   constructor(private TestService:TestService,private TokenService:TokenService,private route:ActivatedRoute, private Router:Router) { 
     this.dataSource = new MatTableDataSource<any>();
     this.test = {} as Test 
@@ -33,6 +34,7 @@ export class ResultValidationTestComponent implements OnInit {
           this.testidvar = this.test.id
           console.log(this.testidvar) 
           console.log(this.test)
+          this.start=true
     })
   }
 

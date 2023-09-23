@@ -4,7 +4,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
- 
+  
   
     z-index: -1;
 
@@ -57,13 +57,18 @@
 .radio-button-container {
     display: block;
     margin-bottom: 20px; 
+  
   }
   
   .radio-button {
     display: inline-block;
     font-size: 1.5rem;
     font-weight: italic; 
+    margin-top: 10px;
     font-family: 'Futura';
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    
   }
 
 
@@ -84,4 +89,13 @@
         width: 80%;
     }
     
+  }
+  @media (min-width: 1600px) {
+
+    .background{
+        height: 100%;
+    }
+
+
+
   }

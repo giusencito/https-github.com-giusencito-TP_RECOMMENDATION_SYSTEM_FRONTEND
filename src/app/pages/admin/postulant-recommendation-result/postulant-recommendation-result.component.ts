@@ -44,7 +44,7 @@ export class PostulantRecommendationResultComponent implements OnInit {
   GetFilterPosibilitypercentageint!:number
   name!:string
   last_name!:string
- 
+  isLoading=false
   constructor(private JobService:JobService,private ActivatedRoute:ActivatedRoute,private RecommendationService:RecommendationService,
     private CourseService:CourseService,private InterviewquestionService:InterviewquestionService,private CourserecomendationService:CourserecomendationService,
 
@@ -82,6 +82,7 @@ export class PostulantRecommendationResultComponent implements OnInit {
       console.log(this.jobs)
       this.jobsorder=this.jobs
       console.log(this.jobsorder)
+      this.isLoading=true
     })
   }
 

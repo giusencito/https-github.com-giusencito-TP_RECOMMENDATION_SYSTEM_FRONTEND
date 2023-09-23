@@ -11,6 +11,9 @@ import { Section } from 'src/app/models/test/Section';
 import { ResultTestService } from './../../../../services/resultTest/result-test.service';
 import { ResultSectionService } from 'src/app/services/resultSection/result-section.service';
 import { TokenService } from 'src/app/services/token/token.service';
+import { SectionOrientation } from 'src/app/models/test/SectionOrientation';
+import { QuestionOrientation } from 'src/app/models/test/QuestionOrientation';
+import { OptionOrientaion } from 'src/app/models/test/OptionOrientaion';
 
 @Component({
   selector: 'app-validation-test',
@@ -41,6 +44,13 @@ export class ValidationTestComponent implements OnInit {
   CreateResultTest!:CreateResultTest
   createTestid!:number
   resultTest!:number
+  sectionName!:string
+  sectionmaxnum!:number
+  sectionid!:number
+  sectionArray:SectionOrientation[]=[]
+questionArray:QuestionOrientation[]=[]
+optionArray:OptionOrientaion[]=[]
+start=false;
   constructor(private SectionService:SectionService,private QuestionService:QuestionService,private OptionService:OptionService,private TestService:TestService,private Router:Router, 
     private ResultTestService:ResultTestService, private ResultSectionService:ResultSectionService, private ActivatedRoute:ActivatedRoute) {
 
@@ -52,7 +62,7 @@ export class ValidationTestComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getActualSituation()
+    this.getCompleteTest()
     this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
       this.resultTest=params['resultTest']
       
@@ -62,6 +72,26 @@ export class ValidationTestComponent implements OnInit {
 
     
   }
+  getCompleteTest(){
+    this.TestService.getAllTheTest(8).subscribe((response:any)=>{
+      this.testActualSituation=response.testname
+      this.sectionArray=response.sections
+      this.sectionNumber=0
+      this.sectionName=  this.sectionArray[this.sectionNumber].section
+      this.total=this.sectionArray[this.sectionNumber].questions.length
+      this.questionArray=this.sectionArray[this.sectionNumber].questions
+      this.sectionTotal= this.sectionArray[this.sectionNumber].totalscore
+      this.sectionmaxnum=this.sectionArray.length
+      this.sectionid= this.sectionArray[this.sectionNumber].id
+      this.questionName=this.questionArray[this.questionNumber-1].questionname
+      this.optionArray=this.questionArray[this.questionNumber-1].options
+      this.start=true
+
+    })
+  }
+
+
+
 
   getActualSituation(){
     this.TestService.getTestbyTypeTest(this.TestNumber).subscribe((response:any)=>{
@@ -98,28 +128,33 @@ export class ValidationTestComponent implements OnInit {
   continue(){
     if(this.questionNumber==this.total){
       
-      if(this.sectionNumber+1==this.sectionTotal){
-          const newResult: CreateResultSection = {
-            developmentPercentage: Math.round((this.actualScore / this.Section.totalscore) * 100),
-            section: this.Section.id,
-            resultTest: 0
-          };
+      if(this.sectionNumber+1==this.sectionmaxnum){
+        const newResult: CreateResultSection = {
+          developmentPercentage: Math.round((this.actualScore /  this.sectionTotal) * 100),
+          section:this.sectionid,
+          resultTest: 0
+        }
           this.resultSectionSource.push(newResult)
-
           this.goReSULTS()
       }else{
         const newResult: CreateResultSection = {
-          developmentPercentage: Math.round((this.actualScore / this.Section.totalscore) * 100),
-          section: this.Section.id,
+          developmentPercentage: Math.round((this.actualScore /  this.sectionTotal) * 100),
+          section:this.sectionid,
           resultTest: 0
         }
         this.resultSectionSource.push(newResult)
         this.actualScore=0
         this.sectionNumber= this.sectionNumber+1
-        this.Section = this.sectionSource[this.sectionNumber]
         this.questionNumber=1
+        this.sectionName=  this.sectionArray[this.sectionNumber].section
+        this.total=this.sectionArray[this.sectionNumber].questions.length
+        this.questionArray=this.sectionArray[this.sectionNumber].questions
+        this.sectionTotal= this.sectionArray[this.sectionNumber].totalscore
+        this.sectionmaxnum=this.sectionArray.length
+        this.sectionid= this.sectionArray[this.sectionNumber].id
+        this.questionName=this.questionArray[this.questionNumber-1].questionname
+        this.optionArray=this.questionArray[this.questionNumber-1].options
         this.optionSelected= -1
-        this.getquestions(this.Section.id)
         
       }
 
@@ -127,9 +162,8 @@ export class ValidationTestComponent implements OnInit {
       this.actualScore=this.optionSelected+this.actualScore
       this.optionSelected= -1
       this.questionNumber=this.questionNumber+1
-      this.questionName=this.questionSource[this.questionNumber-1].questionname
-         this.getoptions(this.questionSource[this.questionNumber-1].id)
-         
+      this.questionName=this.questionArray[this.questionNumber-1].questionname
+      this.optionArray=this.questionArray[this.questionNumber-1].options         
     }
 
   }

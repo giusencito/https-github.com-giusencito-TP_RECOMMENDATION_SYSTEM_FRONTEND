@@ -22,9 +22,21 @@ export class RecommendationHistoryComponent implements OnInit {
   names!:string
   type!:string
   start=false
+  cols=3
   constructor(private ResultTestService:ResultTestService,private TokenService:TokenService,private Router:Router,private JobService:JobService,private formBuilder:FormBuilder,private datePipe: DatePipe) {
     this.dataSourceoriginal = new MatTableDataSource<any>();
     this.dataSource = new MatTableDataSource<any>();
+    window.addEventListener('resize', () => {
+     
+      if (window.innerWidth <= 767) {
+        this.cols = 2; 
+      } else if (window.innerWidth >= 1600) {
+        this.cols = 3; 
+      } else {
+        this.cols = 3; 
+      }
+  
+      });
    }
 
   ngOnInit(): void {
@@ -49,6 +61,8 @@ export class RecommendationHistoryComponent implements OnInit {
     console.log( this.dataSource.data)
     this.start=true
    
+  },err=>{
+    this.start=true
   })
  }
  GoToPast(date:Date,resultTest:number){
@@ -77,4 +91,5 @@ export class RecommendationHistoryComponent implements OnInit {
   })
   this.dataSource.data=dates
  }
+ 
 }

@@ -8,7 +8,8 @@ import { Feedback } from './../../../../models/history/Feedback';
 import { ResetPassword } from './../../../../models/authentication/ResetPassword';
 import { SelectedjobService } from 'src/app/services/selectedjob/selectedjob.service';
 import { Component, OnInit,Inject } from '@angular/core';
-import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef,MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { TemplateDialogComponent } from 'src/app/pages/template-dialog/template-dialog.component';
 
 @Component({
   selector: 'app-send-test-email',
@@ -22,7 +23,7 @@ export class SendTestEmailComponent implements OnInit {
   CreateResultTest!:CreateResultTest
   constructor( public dialogRef: MatDialogRef<SendTestEmailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,private SelectedjobService:SelectedjobService,private FeedbackService:FeedbackService,private TokenService:TokenService,
-    private ResultTestService:ResultTestService,private Router:Router) { 
+    private ResultTestService:ResultTestService,private Router:Router,public dialog:MatDialog) { 
       this.SendEmail= {} as SendEmail
       this.Feedback= {} as Feedback
       this.CreateResultTest={} as CreateResultTest
@@ -74,6 +75,14 @@ export class SendTestEmailComponent implements OnInit {
       this.SendEmail.email= this.data.email
       this.SendEmail.token=this.Feedback.token_link
       this.SelectedjobService.SendTestEmail(this.SendEmail).subscribe((response:any)=>{
+        const dialogRef = this.dialog.open(TemplateDialogComponent, {
+          width: '500px',
+          data: {type:'email'}
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+         
+        });
         
       })
   
@@ -88,6 +97,8 @@ export class SendTestEmailComponent implements OnInit {
   }
   seeresults(resultTest:number){
     this.Router.navigate(['see-validation-results'],{queryParams:{resultTest:resultTest}})
+    this.dialogRef.close()
+
   }
 
 

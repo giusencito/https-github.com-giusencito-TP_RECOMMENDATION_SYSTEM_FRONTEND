@@ -95,3 +95,12 @@
     align-items: center;
     justify-content: center;
 }
+@media (min-width: 1600px) {
+
+    .background{
+        height: 100%;
+    }
+
+
+
+  }

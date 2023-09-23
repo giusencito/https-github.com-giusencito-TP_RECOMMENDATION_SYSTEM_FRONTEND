@@ -1,10 +1,9 @@
 
 
-<app-spinner></app-spinner>
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
     <br>
-    <mat-radio-group aria-label="Select an option" [(ngModel)]="type" class="group">
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="type" class="group" *ngIf="dataSourceoriginal.data.length">
         <mat-radio-button value="name">Buscar por nombre</mat-radio-button>
         <mat-radio-button value="date">Buscar por fecha</mat-radio-button>
       </mat-radio-group>
@@ -32,7 +31,7 @@
 
 
 
-    <mat-grid-list cols="3" rowHeight="500px" *ngIf="start; else loadingSpinner">
+    <mat-grid-list [cols]="cols" rowHeight="500px" *ngIf="start; else loadingSpinner">
    
     
     
@@ -62,7 +61,9 @@
     
     
     </mat-grid-list>
-
+    <div class="centermax" *ngIf="dataSource.data.length==0 && start">
+        <p class="norecommendation">No hay Recomendaciones</p>
+    </div>
     <ng-template #loadingSpinner>
         <div class="loading-container">
           <mat-spinner diameter="500"></mat-spinner>

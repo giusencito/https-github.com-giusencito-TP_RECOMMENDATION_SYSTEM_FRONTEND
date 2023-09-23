@@ -1,10 +1,13 @@
 <app-navigaion-postulant></app-navigaion-postulant>
+<div class="overlay" *ngIf="!start">
+  <mat-spinner diameter="120"></mat-spinner>
+</div>
 <div class="background">
   <br>
 <div class="card">
 <p class="tittle">{{testActualSituation}}</p>
 <br>
-<p class="sub">{{Section.sectionname}}</p>
+<p class="sub">{{sectionName}}</p>
   <br>
 <p class="subquestion"> 
   Pregunta {{questionNumber}} de {{total}}
@@ -17,7 +20,7 @@
 
 
 <mat-radio-group [(ngModel)]="optionSelected">
-  <div *ngFor="let option of optionSource" class="radio-button-container">
+  <div *ngFor="let option of optionArray" class="radio-button-container">
     <mat-radio-button [value]="option.optionscore" class="radio-button">{{ option.optionname }}</mat-radio-button>
   </div>
 </mat-radio-group>

@@ -2,8 +2,8 @@
 
 <app-navigation-admin></app-navigation-admin>
 <div class="background">
-<div class="center">
-  <mat-card>
+<div class="center" >
+  <mat-card *ngIf="dataSourceOriginal.data.length">
     <form [formGroup]="searchform">
     <mat-form-field class="input" appearance="outline" >
    
@@ -26,9 +26,9 @@
 
 
 <div class="formut" *ngIf="start; else loadingSpinner">
-<mat-card>
+<mat-card *ngIf="dataSource.data.length">
 
-  <mat-list>
+  <mat-list >
     <div mat-subheader class="text">Postulantes</div>
     
     <mat-list-item  *ngFor="let postulant of dataSource.data" >
@@ -51,7 +51,9 @@
     <mat-spinner diameter="500"></mat-spinner>
   </div>
 </ng-template>
-
+<div class="centermax" *ngIf="dataSource.data.length==0 && start">
+  <p class="norecommendation">No Hay Postulantes</p>
+</div>
 
 
 

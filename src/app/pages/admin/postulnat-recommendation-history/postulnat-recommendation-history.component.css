@@ -98,3 +98,17 @@ color:black;
   justify-content: center;
   align-items: center;
 }
+.centermax{
+  display: flex;
+  justify-content:center;
+}
+.norecommendation{
+color: #080808;
+  font-family: 'Futura';
+  font-weight: italic;
+  font-style: normal;
+  font-size: 5.5rem;
+ margin-bottom: 500px;
+
+
+}

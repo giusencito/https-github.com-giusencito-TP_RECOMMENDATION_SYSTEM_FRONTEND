@@ -17,11 +17,15 @@ export class SeePostulantsComponent implements OnInit {
 
   constructor(private PostulantService:PostulantService,private formBuilder:FormBuilder,private router:Router) { 
     this.dataSource = new MatTableDataSource<any>();
+    this.dataSourceOriginal = new MatTableDataSource<any>();
+
   }
   username!:string;
   searchform!:FormGroup
   start=false
   dataSource !:MatTableDataSource<any>;
+  dataSourceOriginal !:MatTableDataSource<any>;
+
   ngOnInit() {
     this.getpostulant()
     this.searchform = this.formBuilder.group({
@@ -34,15 +38,18 @@ export class SeePostulantsComponent implements OnInit {
   }
   getpostulant(){
        this.PostulantService.getpostulants().subscribe((response:any)=>{
-        this.dataSource.data= response
+        this.dataSourceOriginal.data= response
+        this.dataSource.data=this.dataSourceOriginal.data
              this.start=true
              
+       },err=>{
+        this.start=true
        })
 
   }
   finbyusername(username: string): any[] {
    
-    return this.dataSource.data.filter(elemento => elemento.username.startsWith(username));
+    return this.dataSourceOriginal.data.filter(elemento => elemento.username.startsWith(username));
   }
   setusers(username: string){
 

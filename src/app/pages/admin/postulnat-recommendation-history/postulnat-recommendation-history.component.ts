@@ -24,12 +24,26 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
   email!:string
   postulantid!:string
   start=false
+  cols=3
   constructor(private formBuilder:FormBuilder,private datePipe: DatePipe,private SelectedjobService:SelectedjobService,private JobService:JobService,private ActivatedRoute:ActivatedRoute,private Router:Router) {
     this.dataSourceoriginal = new MatTableDataSource<any>();
     this.dataSource = new MatTableDataSource<any>();
+    window.addEventListener('resize', () => {
+     
+      if (window.innerWidth <= 767) {
+        this.cols = 2; 
+      } else if (window.innerWidth >= 1600) {
+        this.cols = 3; 
+      } else {
+        this.cols = 3; 
+      }
+  
+      });
    }
 
   ngOnInit(): void {
+    console.log(this.dataSource.data)
+    
     this.ActivatedRoute.queryParams.subscribe((params: Params)=>{
       this.postulantid  =params['postulant']
       this.email=params['email']
@@ -54,7 +68,7 @@ export class PostulnatRecommendationHistoryComponent implements OnInit {
       this.dataSource.data=this.dataSourceoriginal.data
       this.start=true
      
-    })
+    },err=>{this.start=true})
    }
   findbyMainJob(){
     const names=this.dataSourceoriginal.data.filter((element:HistoryRecommendation)=>{
