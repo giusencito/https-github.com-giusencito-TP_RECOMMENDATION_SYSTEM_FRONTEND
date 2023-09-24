@@ -179,8 +179,9 @@ gotoCourseUrl(url:string){
                 })
             } 
           console.log(this.jobs);
+          this.jobsorder=this.jobs
           this.isLoading=true
-          this.GetJoBbs()
+          
               
         })
       } else {
@@ -190,8 +191,9 @@ gotoCourseUrl(url:string){
         }
         this.jobs = responsejobs.rows
         console.log(this.jobs)
+        this.jobsorder=this.jobs
         this.isLoading=true
-        this.GetJoBbs()
+        
       }
     })
     
@@ -307,7 +309,7 @@ gotoCourseUrl(url:string){
         onejob.posibilityPercentage = Math.round(this.GetFilterPosibilitypercentageint) 
       }
     }
-    this.jobs = this.jobsorder
+   
     this.ascendingOrder = !this.ascendingOrder;
     
   }
