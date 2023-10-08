@@ -33,3 +33,12 @@ min-width: 200px;
         color: #000;
       
   }
+  ::ng-deep .spinnergood circle, mat-spinner circle{
+    stroke: #17a689;
+}
+::ng-deep .spinnermed circle, mat-spinner circle{
+    stroke: #9a9a00;
+}
+::ng-deep .spinnerbad circle, mat-spinner circle{
+    stroke: #8b0000;
+}

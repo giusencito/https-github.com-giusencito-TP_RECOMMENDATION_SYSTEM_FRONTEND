@@ -10,7 +10,7 @@ import { CreateSection } from 'src/app/models/test/CreateSection';
 })
 export class SectionService {
 
-  basePath = 'http://127.0.0.1:8000/section/SectionViewSet/';
+  basePath = 'http://107.20.6.100:8000/section/SectionViewSet/';
  
  
    

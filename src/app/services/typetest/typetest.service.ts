@@ -7,8 +7,8 @@ import {catchError, retry} from "rxjs/operators";
 })
 export class TypetestService {
 
-  basePath='http://127.0.0.1:8000/typetest/TypeTestViewSet/'
-  basePath2='http://127.0.0.1:8000/typetest'
+  basePath='http://107.20.6.100:8000/typetest/TypeTestViewSet/'
+  basePath2='http://107.20.6.100:8000/typetest'
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

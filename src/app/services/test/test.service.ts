@@ -8,7 +8,7 @@ import { CreateTest } from 'src/app/models/test/CreateTest';
 })
 export class TestService {
 
-  basePath = 'http://127.0.0.1:8000/tests/TestViewSet/';
+  basePath = 'http://107.20.6.100:8000/tests/TestViewSet/';
  
  
    

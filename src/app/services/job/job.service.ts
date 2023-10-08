@@ -8,7 +8,7 @@ import {catchError, retry} from "rxjs/operators";
 })
 export class JobService {
 
-  basePath = 'http://127.0.0.1:8000/linkedinJob/LinkedinJobsViewSets';
+  basePath = 'http://107.20.6.100:8000/linkedinJob/LinkedinJobsViewSets';
   basePath2='https://restcountries.com/v3.1/all'
   httpOptions = {
     headers: new HttpHeaders({

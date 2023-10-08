@@ -10,7 +10,7 @@ import { CreateResultTest } from 'src/app/models/result/CreateResultTest';
 })
 export class ResultTestService {
 
-  basePath = 'http://127.0.0.1:8000/resultTest/ResultTestViewSets/';
+  basePath = 'http://107.20.6.100:8000/resultTest/ResultTestViewSets/';
              
 
  

@@ -12,8 +12,8 @@ import { Name } from 'src/app/models/authentication/Name';
 })
 export class AdminService {
 
-  basePath='http://127.0.0.1:8000/adminsite/AdminViewSet/'
-  basePath2='http://127.0.0.1:8000/adminsite'
+  basePath='http://107.20.6.100:8000/adminsite/AdminViewSet/'
+  basePath2='http://107.20.6.100:8000/adminsite'
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

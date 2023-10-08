@@ -9,8 +9,8 @@ import { CreateSection } from 'src/app/models/test/CreateSection';
 })
 export class ResultSectionService {
 
-  basePath = 'http://127.0.0.1:8000/resultSection/ResultSectionViewSets/';
-  basePath2 = 'http://127.0.0.1:8000/resultSection/getResultSectionbyTestAndResultTest/'
+  basePath = 'http://107.20.6.100:8000/resultSection/ResultSectionViewSets/';
+  basePath2 = 'http://107.20.6.100:8000/resultSection/getResultSectionbyTestAndResultTest/'
 
  
   httpOptions = {

@@ -8,7 +8,7 @@ import {catchError, retry} from "rxjs/operators";
 })
 export class CourseService {
 
-  basePath = 'http://127.0.0.1:8000/course/CourseViewSets';
+  basePath = 'http://107.20.6.100:8000/course/CourseViewSets';
 
   httpOptions = {
     headers: new HttpHeaders({

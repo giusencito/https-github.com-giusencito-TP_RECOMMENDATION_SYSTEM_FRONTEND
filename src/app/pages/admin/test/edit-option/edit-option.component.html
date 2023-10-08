@@ -10,7 +10,7 @@
   <mat-card class="principal">
     <mat-form-field appearance="outline" class="matfield">
          
-      <input matInput placeholder="Nombre de la pregunta" type="text"  formControlName="namequestion"   #namequestion maxlength="200" >
+      <input matInput placeholder="Nombre de la pregunta" type="text"  formControlName="namequestion"   #namequestion maxlength="500" >
       <mat-icon matSuffix >view_headline</mat-icon>
       <mat-error  align="start" *ngIf="changesquestion.controls['namequestion'].dirty && changesquestion.hasError('required','namequestion')">Es requerido</mat-error>
       <mat-error  align="end" *ngIf="changesquestion.controls['namequestion'].dirty && changesquestion.hasError('minlength','namequestion')">Más de tres caracteres</mat-error>

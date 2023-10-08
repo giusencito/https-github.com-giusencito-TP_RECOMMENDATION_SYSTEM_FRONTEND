@@ -9,7 +9,7 @@ import { ResetPassword } from 'src/app/models/authentication/ResetPassword';
 })
 export class SelectedjobService {
 
-  basePath = 'http://127.0.0.1:8000/selectedJob/SelectedJobViewSets';
+  basePath = 'http://107.20.6.100:8000/selectedJob/SelectedJobViewSets';
 
   httpOptions = {
     headers: new HttpHeaders({

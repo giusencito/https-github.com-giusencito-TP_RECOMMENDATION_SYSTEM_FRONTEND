@@ -9,7 +9,7 @@ import { Question } from 'src/app/models/test/Question';
 })
 export class QuestionService {
 
-  basePath = 'http://127.0.0.1:8000/question/QuestionViewSet/';
+  basePath = 'http://107.20.6.100:8000/question/QuestionViewSet/';
 
  
   httpOptions = {
