@@ -9,7 +9,7 @@ import { Question } from 'src/app/models/test/Question';
 })
 export class QuestionService {
 
-  basePath = 'http://107.20.6.100:8000/question/QuestionViewSet/';
+  basePath = 'http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/question/QuestionViewSet/';
 
  
   httpOptions = {

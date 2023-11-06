@@ -8,7 +8,7 @@ import {catchError, retry} from "rxjs/operators";
 })
 export class RecommendationService {
 
-  basePath = 'http://107.20.6.100:8000/recomendation/RecomendationViewset';
+  basePath = 'http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/recomendation/RecomendationViewset';
               
  
  

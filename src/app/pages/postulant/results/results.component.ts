@@ -68,7 +68,7 @@ export class ResultsComponent implements OnInit {
       this.recommendation()
     })
     
-    this.ResultSectionService.getByTestandResulTest(7,this.resulTest).subscribe((responsesections:any)=>{
+    this.ResultSectionService.getByTestandResulTest(6,this.resulTest).subscribe((responsesections:any)=>{
       console.log(responsesections.rows)
       
       const todosCumplenCondicion = responsesections.rows.every((item: any) => {
@@ -183,6 +183,40 @@ gotoCourseUrl(url:string){
           this.isLoading=true
           
               
+        },err=>{
+          console.log(err)
+          this.RecommendationService.getAllJobs().subscribe((response:any)=>{
+            this.RecommendationService.hydridRecommendation().subscribe((response:any)=>{
+              response = response.sort((a:any, b:any) => b.similarity_pred - a.similarity_pred);
+              this.tenfirstjobs = response.slice(0, 10);
+              console.log(this.tenfirstjobs) 
+              for(const job of this.tenfirstjobs){       
+                    const validCharactersRegex: RegExp = /[\x20-\x7E\u00A0-\u00FF\u0100-\u017F]/g;
+                    const cleanedText: string = job.Description.match(validCharactersRegex)?.join('') || '';
+                    this.jobdata.jobName = job.Jobname
+                    this.jobdata.jobDescription = cleanedText
+                    this.jobdata.jobUrl = job.URL
+                    this.jobdata.jobLocation = job.Location
+                    this.jobdata.jobCompany = job.Company
+                    this.jobdata.jobDate = job.Date
+                    if (!isNaN(job.similarity_pred) && job.similarity_pred % 1 !== 0) {
+                      this.jobdata.posibilityPercentage = parseFloat(job.similarity_pred.toFixed(4));
+                    } else {
+                      this.jobdata.posibilityPercentage = job.similarity_pred;
+                    }
+                    this.jobdata.resultTest = this.resulTest
+                    this.JobService.CreateJobs(this.jobdata).subscribe((response:any)=>{
+                        this.Posibilitypercentageint = response.posibilityPercentage * 100
+                        response.posibilityPercentage = Math.round(this.Posibilitypercentageint)
+                        this.jobs.push(response)
+                    })
+                } 
+              console.log(this.jobs);
+              this.jobsorder=this.jobs
+              this.isLoading=true
+
+            })
+          })
         })
       } else {
         for(const jobsreturned of responsejobs.rows){

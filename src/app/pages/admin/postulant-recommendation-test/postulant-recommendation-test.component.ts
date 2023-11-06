@@ -33,8 +33,8 @@ export class PostulantRecommendationTestComponent implements OnInit {
   getTest(){
     this.TestService.getAllTest().subscribe((response:any)=>{
           this.dataSource.data=response.rows
-          this.dataSource.data.shift()
-          this.dataSource.data.pop()
+          this.dataSource.data =  this.dataSource.data.filter(item => item.id !== 1 && item.id !== 7);
+
     })
   }
   GoToJobResults(){

@@ -10,7 +10,7 @@ import { CreateSection } from 'src/app/models/test/CreateSection';
 })
 export class SectionService {
 
-  basePath = 'http://107.20.6.100:8000/section/SectionViewSet/';
+  basePath = 'http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/section/SectionViewSet/';
  
  
    

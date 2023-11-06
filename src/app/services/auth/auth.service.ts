@@ -9,7 +9,7 @@ import { Login } from 'src/app/models/authentication/Login';
 })
 export class AuthService {
            
-basePath = 'http://107.20.6.100:8000';
+basePath = 'http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com';
 
 
 

@@ -8,7 +8,7 @@ import {catchError, retry} from "rxjs/operators";
 })
 export class CourseService {
 
-  basePath = 'http://107.20.6.100:8000/course/CourseViewSets';
+  basePath = 'http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/course/CourseViewSets';
 
   httpOptions = {
     headers: new HttpHeaders({

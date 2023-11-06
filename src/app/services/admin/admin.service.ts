@@ -11,9 +11,9 @@ import { Name } from 'src/app/models/authentication/Name';
   providedIn: 'root'
 })
 export class AdminService {
-
-  basePath='http://107.20.6.100:8000/adminsite/AdminViewSet/'
-  basePath2='http://107.20.6.100:8000/adminsite'
+ 
+  basePath='http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/adminsite/AdminViewSet/'
+  basePath2='http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/adminsite'
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

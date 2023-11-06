@@ -9,7 +9,7 @@ import { ResetPassword } from 'src/app/models/authentication/ResetPassword';
 })
 export class SelectedjobService {
 
-  basePath = 'http://107.20.6.100:8000/selectedJob/SelectedJobViewSets';
+  basePath = 'http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/selectedJob/SelectedJobViewSets';
 
   httpOptions = {
     headers: new HttpHeaders({

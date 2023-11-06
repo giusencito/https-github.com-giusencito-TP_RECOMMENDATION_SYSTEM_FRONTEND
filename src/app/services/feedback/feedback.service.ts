@@ -8,7 +8,7 @@ import { Feedback } from 'src/app/models/history/Feedback';
 })
 export class FeedbackService {
 
-  basePath = 'http://107.20.6.100:8000/feedback/FeedbackViewSets';
+  basePath = 'http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/feedback/FeedbackViewSets';
 
   httpOptions = {
     headers: new HttpHeaders({

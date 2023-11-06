@@ -10,7 +10,7 @@ import { CreateResultTest } from 'src/app/models/result/CreateResultTest';
 })
 export class ResultTestService {
 
-  basePath = 'http://107.20.6.100:8000/resultTest/ResultTestViewSets/';
+  basePath = 'http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/resultTest/ResultTestViewSets/';
              
 
  

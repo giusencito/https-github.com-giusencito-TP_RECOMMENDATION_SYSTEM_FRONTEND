@@ -52,8 +52,28 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
-
-
+.buttonskip{
+    display: flex;
+    justify-content: center;
+ align-items: center;
+    width: 30%;
+    background: #166dba;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: bold; 
+    font-family: 'Futura';
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.button-content {
+    display: flex;
+    align-items: center;
+  }
+.skip{
+    margin: 0;
+    margin-right: 8px;
+}
 .radio-button-container {
     display: block;
     margin-bottom: 20px; 
@@ -82,6 +102,9 @@
    
 }
 @media (max-width: 767px) {
+    .buttonskip{
+        width: 50%;
+    }
     .button{
         width: 80%;
     }

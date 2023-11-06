@@ -11,7 +11,7 @@ import { ConfigurePassword } from 'src/app/models/authentication/ConfigurePasswo
 })
 export class PasswordService {
 
-  basePath = 'http://107.20.6.100:8000/user';
+  basePath = 'http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/user';
 
 
 

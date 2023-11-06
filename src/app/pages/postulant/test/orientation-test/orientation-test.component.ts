@@ -77,9 +77,9 @@ sectionmaxnum!:number
     },err=>{
       alert('no se pudo hacer una conexión con Linkedin intente más tarde')
     })
-    this.CourserecomendationService.GetAllCourses().subscribe((response:any)=>{
+    /*this.CourserecomendationService.GetAllCourses().subscribe((response:any)=>{
       console.log("Generando CSV de Cursos...!!")
-    })
+    })*/
 
 
 
@@ -175,11 +175,48 @@ excludes(){
   this.TestService.excludeTests(1,7).subscribe((response:any)=>{
         this.testSource=response.rows
         this.testToTAL=this.testSource.length-1
+        console.log(this.testSource)
         this.completeTest(this.testSource[this.TestNumber].id)
   })
 }
 
+skip(){
+  const newResult: CreateResultSection = {
+    developmentPercentage:0,
+    section:this.sectionid,
+    resultTest: 0
+  }
+  this.resultSectionSource.push(newResult)
+  if(this.sectionNumber+1==this.sectionmaxnum){
+    if(this.testToTAL==this.TestNumber){
+      this.goReSULTS()
+      console.log(this.resultSectionSource)
 
+    }else{
+      //continuar dentro de un diferente  test
+      this.TestNumber=this.TestNumber+1
+      this.optionSelected= -1
+      this.questionNumber=1
+      this.actualScore=0
+      this.completeTest(this.testSource[this.TestNumber].id)
+      console.log(this.resultSectionSource)
+    }
+  }else{
+ //continuar dentro de un mismo de test y diferente seccion
+       this.actualScore=0
+        this.sectionNumber= this.sectionNumber+1
+        this.questionNumber=1
+        this.sectionName=  this.sectionArray[this.sectionNumber].section
+        this.total=this.sectionArray[this.sectionNumber].questions.length
+        this.questionArray=this.sectionArray[this.sectionNumber].questions
+        this.sectionTotal= this.sectionArray[this.sectionNumber].totalscore
+        this.sectionmaxnum=this.sectionArray.length
+        this.sectionid= this.sectionArray[this.sectionNumber].id
+        this.questionName=this.questionArray[this.questionNumber-1].questionname
+        this.optionArray=this.questionArray[this.questionNumber-1].options
+        this.optionSelected= -1
+  }
+}
 
 
 
@@ -189,17 +226,21 @@ excludes(){
       
       if(this.sectionNumber+1==this.sectionmaxnum){
          if(this.testToTAL==this.TestNumber){
+          this.actualScore=this.optionSelected+this.actualScore
           const newResult: CreateResultSection = {
             developmentPercentage: Math.round((this.actualScore / this.sectionTotal) * 100),
             section:this.sectionid,
             resultTest: 0
           };
+          console.log("dinito")
+          console.log(newResult)
           this.resultSectionSource.push(newResult)
           console.log(this.resultSectionSource)
                 this.goReSULTS()
          }else{
           //continuar dentro de un diferente  test
           console.log('nuevo test')
+          this.actualScore=this.optionSelected+this.actualScore
           this.TestNumber=this.TestNumber+1
           this.optionSelected= -1
           this.questionNumber=1
@@ -219,11 +260,15 @@ excludes(){
          
       }else{
         //continuar dentro de un mismo de test y diferente seccion
+        this.actualScore=this.optionSelected+this.actualScore
+        console.log(this.actualScore)
+        console.log(this.sectionTotal)
         const newResult: CreateResultSection = {
           developmentPercentage: Math.round((this.actualScore /  this.sectionTotal) * 100),
           section:this.sectionid,
           resultTest: 0
         }
+        console.log(newResult)
         this.resultSectionSource.push(newResult)
         this.actualScore=0
         this.sectionNumber= this.sectionNumber+1

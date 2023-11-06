@@ -10,8 +10,8 @@ import { Name } from 'src/app/models/authentication/Name';
   providedIn: 'root'
 })
 export class PostulantService {
-basePath='http://107.20.6.100:8000/postulant/PostulantViewSet/'
-basePath2='http://107.20.6.100:8000/postulant'
+basePath='http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/postulant/PostulantViewSet/'
+basePath2='http://jobbrainprofile-env.eba-3vphmfgm.us-east-1.elasticbeanstalk.com/postulant'
 httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',

@@ -7,6 +7,14 @@
         <p class="tittle">{{testOriented}}</p>
         <br>
 <p class="sub">{{sectionName}}</p>
+
+<button mat-flat-button class="buttonskip" (click)="skip()" *ngIf="TestNumber==1">
+  <span class="button-content">
+    <p class="skip">Saltar Sección</p>
+    <mat-icon>skip_next</mat-icon>
+  </span>
+</button>
+
   <br>
   <p class="subquestion"> 
     Pregunta {{questionNumber}} de {{total}}
