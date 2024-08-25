@@ -4,12 +4,13 @@ import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import { CreateQuestion } from 'src/app/models/test/CreateQuestion';
 import { Question } from 'src/app/models/test/Question';
+import { urlDev } from '../HttpCommon';
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
 
-  basePath = 'http://127.0.0.1:8000/question/QuestionViewSet/';
+  basePath = urlDev+'question/QuestionViewSet/';
 
  
   httpOptions = {

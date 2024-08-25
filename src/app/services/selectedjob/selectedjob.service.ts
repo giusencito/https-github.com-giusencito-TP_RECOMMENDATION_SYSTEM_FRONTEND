@@ -3,13 +3,14 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import { ResetPassword } from 'src/app/models/authentication/ResetPassword';
+import { urlDev } from '../HttpCommon';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SelectedjobService {
 
-  basePath = 'http://127.0.0.1:8000/selectedJob/SelectedJobViewSets';
+  basePath = urlDev+'selectedJob/SelectedJobViewSets';
 
   httpOptions = {
     headers: new HttpHeaders({

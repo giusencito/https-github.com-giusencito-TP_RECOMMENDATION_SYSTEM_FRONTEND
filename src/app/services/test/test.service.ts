@@ -3,12 +3,13 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import { CreateTest } from 'src/app/models/test/CreateTest';
+import { urlDev } from '../HttpCommon';
 @Injectable({
   providedIn: 'root'
 })
 export class TestService {
 
-  basePath = 'http://127.0.0.1:8000/tests/TestViewSet/';
+  basePath = urlDev+'tests/TestViewSet/';
  
  
    

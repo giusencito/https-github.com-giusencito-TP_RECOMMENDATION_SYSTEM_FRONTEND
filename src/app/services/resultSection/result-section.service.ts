@@ -4,13 +4,14 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import { CreateSection } from 'src/app/models/test/CreateSection';
+import { urlDev } from '../HttpCommon';
 @Injectable({
   providedIn: 'root'
 })
 export class ResultSectionService {
 
-  basePath = 'http://127.0.0.1:8000/resultSection/ResultSectionViewSets/';
-  basePath2 = 'http://127.0.0.1:8000/resultSection/getResultSectionbyTestAndResultTest/'
+  basePath = urlDev+'resultSection/ResultSectionViewSets/';
+  basePath2 = urlDev+'resultSection/getResultSectionbyTestAndResultTest/'
 
  
   httpOptions = {

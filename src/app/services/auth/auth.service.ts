@@ -4,12 +4,13 @@ import { Observable, throwError } from 'rxjs';
 
 import {catchError, retry} from "rxjs/operators"
 import { Login } from 'src/app/models/authentication/Login';
+import { urlDev } from '../HttpCommon';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
            
-basePath = 'http://127.0.0.1:8000';
+basePath = urlDev;
 
 
 

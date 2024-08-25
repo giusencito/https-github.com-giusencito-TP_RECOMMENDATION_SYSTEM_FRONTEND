@@ -6,12 +6,13 @@ import {catchError, retry} from "rxjs/operators"
 import { SignIn } from 'src/app/models/authentication/SignIn';
 import { Lastname } from 'src/app/models/authentication/Lastname';
 import { Name } from 'src/app/models/authentication/Name';
+import { urlDev } from '../HttpCommon';
 @Injectable({
   providedIn: 'root'
 })
 export class PostulantService {
-basePath='http://127.0.0.1:8000/postulant/PostulantViewSet/'
-basePath2='http://127.0.0.1:8000/postulant'
+basePath=urlDev+'postulant/PostulantViewSet/'
+basePath2=urlDev+'postulant'
 httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',

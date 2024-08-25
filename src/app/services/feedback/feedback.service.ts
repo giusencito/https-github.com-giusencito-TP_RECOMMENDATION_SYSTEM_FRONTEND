@@ -3,12 +3,13 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import { Feedback } from 'src/app/models/history/Feedback';
+import { urlDev } from '../HttpCommon';
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackService {
 
-  basePath = 'http://127.0.0.1:8000/feedback/FeedbackViewSets';
+  basePath = urlDev+'feedback/FeedbackViewSets';
 
   httpOptions = {
     headers: new HttpHeaders({

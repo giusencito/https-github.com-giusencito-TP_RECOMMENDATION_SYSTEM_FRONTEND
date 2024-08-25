@@ -4,13 +4,14 @@ import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import { CreateTest } from 'src/app/models/test/CreateTest';
 import { CreateSection } from 'src/app/models/test/CreateSection';
+import { urlDev } from '../HttpCommon';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SectionService {
 
-  basePath = 'http://127.0.0.1:8000/section/SectionViewSet/';
+  basePath = urlDev+'section/SectionViewSet/';
  
  
    

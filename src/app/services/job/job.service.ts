@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
+import { urlDev } from '../HttpCommon';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobService {
 
-  basePath = 'http://127.0.0.1:8000/linkedinJob/LinkedinJobsViewSets';
-  basePath2='https://restcountries.com/v3.1/all'
+  basePath = urlDev+'linkedinJob/LinkedinJobsViewSets';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,13 +37,6 @@ export class JobService {
       retry(2),
       catchError(this.handleError));
   }
-  GetContries(){
-    return this.http.get<any>(`${this.basePath2}/` ,this.httpOptions)
-    .pipe(
-      retry(2),
-      catchError(this.handleError));
-  }
-  
   GetJobById(id:number){
     return this.http.get<any>(`${this.basePath}/${id}/` ,this.httpOptions)
     .pipe(

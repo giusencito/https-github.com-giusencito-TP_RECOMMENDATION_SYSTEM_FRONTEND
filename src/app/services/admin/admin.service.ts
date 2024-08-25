@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import {urlDev} from '../HttpCommon'
 
 import {catchError, retry} from "rxjs/operators"
 import { SignIn } from 'src/app/models/authentication/SignIn';
@@ -12,8 +13,8 @@ import { Name } from 'src/app/models/authentication/Name';
 })
 export class AdminService {
 
-  basePath='http://127.0.0.1:8000/adminsite/AdminViewSet/'
-  basePath2='http://127.0.0.1:8000/adminsite'
+  basePath= urlDev+'adminsite/AdminViewSet/'
+  basePath2=urlDev+'adminsite'
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

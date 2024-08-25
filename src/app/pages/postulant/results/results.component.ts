@@ -1,3 +1,4 @@
+import { HydridService } from './../../../services/hybrid/hydrid.service';
 import { RecommendationService } from './../../../services/recommendation/recommendation.service';
 import { CourserecomendationService } from 'src/app/services/courserecomendation/courserecomendation.service';
 import { CourseService } from 'src/app/services/course/course.service';
@@ -50,7 +51,7 @@ export class ResultsComponent implements OnInit {
   tenfirstjobs:any[] = []
   constructor(public dialog:MatDialog, private RecommendationService:RecommendationService, private CourserecomendationService: CourserecomendationService, private CourseService:CourseService,
               private JobService:JobService, private InterviewquestionService:InterviewquestionService, private route:ActivatedRoute, private SelectedjobService:SelectedjobService, private ResultSectionService:ResultSectionService,
-              private Router:Router) { 
+              private Router:Router,private HydridService:HydridService) { 
               
               this.jobdata = {} as Job;
               this.coursedata = {} as Course;
@@ -65,7 +66,7 @@ export class ResultsComponent implements OnInit {
     console.log(this.resulTest)
     this.RecommendationService.getSectionResults(this.resulTest).subscribe((responsejobs:any)=>{
       console.log("Se creo correctamente los CSVs sections and ratings_section")
-      this.recommendation()
+      this.PrinReccomendation()
     })
     
     this.ResultSectionService.getByTestandResulTest(7,this.resulTest).subscribe((responsesections:any)=>{
@@ -85,12 +86,7 @@ export class ResultsComponent implements OnInit {
     })
   }
 
-  GetJoBbs(){
-    this.JobService.GetLinkedinJobbyResultTestId(this.resulTest).subscribe((response:any)=>{
-          this.jobsorder=response.rows
-          console.log(this.jobsorder)
-    })
-  }
+ 
 
   isRemote(Jobname:string){
     const remotePatterns = [
@@ -199,6 +195,41 @@ gotoCourseUrl(url:string){
     
   }
 
+
+
+  HybridRecommendation(){
+    this.HydridService.hydridRecommendation(this.resulTest).subscribe((response:any)=>{
+          this.jobs = response
+          for(const jobsreturned of this.jobs){
+            const percentage = jobsreturned.posibilityPercentage * 100
+            jobsreturned.posibilityPercentage = Math.round(percentage)
+          }
+          this.jobsorder=this.jobs
+          this.isLoading=true
+    })
+  }
+  PrinReccomendation(){
+    this.JobService.GetLinkedinJobbyResultTestId(this.resulTest).subscribe((responsejobs:any)=>{
+      if(responsejobs.rows.length == 0){
+        this.HybridRecommendation()
+      }else{
+        for(const jobsreturned of responsejobs.rows){
+          const percentage = jobsreturned.posibilityPercentage * 100
+          jobsreturned.posibilityPercentage = Math.round(percentage)
+        }
+        this.jobs = responsejobs.rows
+        this.jobsorder=this.jobs
+        this.isLoading=true
+      }
+         
+    })
+
+  }
+
+
+
+
+
   openCourses(id:number){
     if(this.opencourses == false){
       this.opencourses = true
@@ -219,15 +250,10 @@ gotoCourseUrl(url:string){
   }
 
   courserecommendation(id:number){
-    console.log(id)
-    
-    console.log("esta afuera del servicio")
     this.CourseService.GetCoursesByLinkedinJobsId(id).subscribe((responsecoursesjob:any)=>{
       console.log(responsecoursesjob.rows)
       if(responsecoursesjob.rows.length == 0){
         this.CourserecomendationService.courseRecommendation(id).subscribe((response:any)=>{
-          console.log("esta entrando")
-
           for(const course of response){
             this.coursedata.courseName = course.CourseTitle
             this.coursedata.courseDescription = course.Description

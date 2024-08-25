@@ -6,12 +6,13 @@ import { Observable, throwError } from 'rxjs';
 import {catchError, retry} from "rxjs/operators"
 import { ResetPassword } from 'src/app/models/authentication/ResetPassword';
 import { ConfigurePassword } from 'src/app/models/authentication/ConfigurePassword';
+import { urlDev } from '../HttpCommon';
 @Injectable({
   providedIn: 'root'
 })
 export class PasswordService {
 
-  basePath = 'http://127.0.0.1:8000/user';
+  basePath = urlDev+'user';
 
 
 

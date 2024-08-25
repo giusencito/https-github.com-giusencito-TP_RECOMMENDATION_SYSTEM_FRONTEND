@@ -5,12 +5,13 @@ import {Observable, throwError} from "rxjs";
 import {catchError, retry} from "rxjs/operators";
 import { CreateTest } from 'src/app/models/test/CreateTest';
 import { CreateResultTest } from 'src/app/models/result/CreateResultTest';
+import { urlDev } from '../HttpCommon';
 @Injectable({
   providedIn: 'root'
 })
 export class ResultTestService {
 
-  basePath = 'http://127.0.0.1:8000/resultTest/ResultTestViewSets/';
+  basePath = urlDev+'resultTest/ResultTestViewSets/';
              
 
  
